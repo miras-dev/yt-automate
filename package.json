@@ -1,0 +1,12 @@
+{
+  "name": "shorts-factory",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dashboard": "cd dashboard && npx next dev",
+    "studio": "cd video && npx remotion studio src/index.ts",
+    "register": "python3 scripts/register.py",
+    "check": "python3 scripts/check_setup.py",
+    "postinstall": "cd video && npm install --no-audit --no-fund && cd ../dashboard && npm install --no-audit --no-fund"
+  }
+}

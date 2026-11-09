@@ -1,0 +1,30 @@
+.env
+out/
+sfx-library/
+shorts/*/images/
+video/public/*/
+node_modules/
+
+# build + caches
+.next/
+video/build/
+video/.remotion/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+next-env.d.ts
+*.tsbuildinfo
+
+# real-sfx per-machine state (library index, caches, work folders)
+.claude/skills/real-sfx/library_index.json
+.claude/skills/real-sfx/ambience_steady.json
+.claude/skills/real-sfx/vendor/venv/
+work/
+
+# raw library pictures (the keyed, trimmed poses are committed)
+library/characters/*/raw/
+library/characters/*/cut/
+
+# the CC0 UI sound pack that ships inside the real-sfx skill is part of the skill
+!.claude/skills/real-sfx/vendor/node_modules/

@@ -1,0 +1,6 @@
+{
+  "env": {
+    "REAL_SFX_CONFIG": "sfx-library/real-sfx-config.json",
+    "EARSHOT_THREADS": "3"
+  }
+}
