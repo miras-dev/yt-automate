@@ -170,6 +170,12 @@ description: Research a surprising fact or curious question and write one 20-30 
 - Banned: "Did you know", "This will blow your mind", "You won't believe", "here's the thing", "but here's the part",
   hype words (incredible, shocking, amazing, insane), "!" lines, calls to action, AI-sounding phrases.
 - Original wording only; never copy another creator's script.
+- ElevenLabs audio tags, sparingly (a Short 1-3, a long video about one every 2-3 lines, one per line at most):
+  emotion ([excited], [playful], [tired] ...), delivery ([whispering], [softly], [slowly], [pause] ...) and
+  vocalizations ([gasping], [chuckling], [sighing] ...), written where they are performed; a vocalization is a beat
+  the character acts on screen. Character voices only on a quoted line. Never sound-effect tags ([dog barking],
+  [applause], [drum roll] ...): sounds come from Openverse. Tags are not counted as words and never shown in
+  subtitles; audio_tags.py checks them before the voice is made.
 
 ## 4. Output (write files, then show the user)
 - shorts/<date>-<slug>/script.md: one-sentence idea, the voiceover (one line per beat, no scene directions),
@@ -218,9 +224,11 @@ node_modules/@remotion/compositor-*); the real-sfx, openverse-sfx and earshot sk
 
 ## 2. Voice + word times
 - Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
-  female), for every Short and every long video unless the user names another voice for that video. Natural delivery,
-  plain text (no tags that make it over-act). Model eleven_v4, generations_count 1, the same voice settings for every
-  take. If Zephrael is not on the account, stop and report; never swap in another voice silently.
+  female), for every Short and every long video unless the user names another voice for that video. Natural delivery:
+  send the script lines exactly as written, audio tags included (Eleven v4 performs them); never add a tag the script
+  does not have. Model eleven_v4, generations_count 1, the same voice settings for every take. If Zephrael is not on
+  the account, stop and report; never swap in another voice silently. subtitles.py then reports when each audio tag
+  happened in the take (a gasp's sound onset between the words around it), for the T table.
 - Poll creative_get_flow_run_status, download content_url to video/public/<slug>/vo/take1.mp3.
 - Word times: `python scripts/words.py <mp3>` (faster-whisper word_timestamps=True). Whisper edges are ±0.2 s, so
   words.py also finds real pauses by loudness (RMS every 20 ms, silence < -42 dB for ≥ 0.18 s) and snaps to them.
@@ -428,8 +436,9 @@ Make a new YouTube Short in this repo. Input: $ARGUMENTS (may be empty).
 2. Build: follow the cutout-cartoon-shorts skill section by section:
    - Format: 1080x1920, 60 fps; final 2160x3840 MP4 with voice and sound effects mixed. Length follows the voice
      (20-30 s).
-   - Voice: ElevenLabs, Zephrael (voice id BpZ8aKvwvbZf602CLu11, the channel's own voice), natural delivery, one
-     take, eleven_v4, word times, every beat timed to its word.
+   - Voice: ElevenLabs, Zephrael (voice id BpZ8aKvwvbZf602CLu11, the channel's own voice), natural delivery, the
+     script's audio tags performed as written (checked with audio_tags.py first; never sound-effect tags), one take,
+     eleven_v4, word times, every beat timed to its word, every vocalization (a gasp, a chuckle) acted on its sound.
    - Beat sheet: one beat per line on the exact word; frame 0 = premise like a thumbnail; one funny gag per beat;
      last frame loops to the first.
    - Pictures: Gemini, keyed to transparent cut-outs, 4K. Every pose/expression, every moving prop and every set piece
@@ -518,6 +527,7 @@ build and register.
   for word as subtitles, so write numbers and names the way they should read on screen.
 - Scene 1 opens on the premise like a Short. Every scene ends with a small open question that the next scene answers
   ("so why doesn't that work?"). The main payoff still lands at the end.
+- Audio tags as in Part 2, about one every 2-3 lines per scene.
 - Same research rules: every fact in sources.md, cross-checked; more facts means more checking.
 
 ### 7.2 Character library (do this once, reuse forever)

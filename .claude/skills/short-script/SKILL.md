@@ -37,12 +37,32 @@ today's date.
 - Banned: "Did you know", "This will blow your mind", "You won't believe", "here's the thing", "but here's the part",
   hype words (incredible, shocking, amazing, insane), "!" lines, calls to action, AI-sounding phrases.
 - Original wording only; never copy another creator's script.
+- Audio tags: Eleven v4 performs words in square brackets instead of reading them, and the subtitles never show
+  them. Use them sparingly, where a real reaction belongs; plain lines are the default.
+  - Allowed: emotion [excited] [playful] [tired] [bored] [angry] [menacing] [weak]; delivery [whispering] [softly]
+    [slowly] [pause] [voice breaking] [singing]; vocalizations [chuckling] [laughing] [sighing] [gasping] [scoffing]
+    [sharp exhale] [clears throat] [yawning] [humming] [panting] [sniffling] [coughing]. Lower case, spelled exactly so.
+  - How many: a Short 1-3, a long video about one every 2-3 lines; one per line at most, never on every line, never
+    the same tag twice in a row.
+  - Where: right before the words it colours (emotion, delivery), or exactly where the sound happens (vocalization,
+    [pause]). A vocalization is a beat the character acts on screen at that moment: [gasping] when the volcano opens
+    its eyes, [chuckling] on the payoff. A [pause] goes before a reveal.
+  - Character voices ([witch voice], [sleepy drowsy voice], [drunken voice]) only on a quoted line spoken by a
+    character or an object, at most once per video.
+  - Never sound-effect tags ([dog barking], [applause], [drum roll], [rain falling], [keyboard typing], [echoing],
+    [knocking on door], [bell ringing], [phone ringing], [crowd cheering], [heartbeat], [engine starting] ...): every
+    sound in a video is a real Openverse recording placed on its frame by the sound step.
+  - Every line must read well with its tags removed (that is what the subtitles show). Tags are not words: leave them
+    out of the word count; each vocalization or [pause] adds about half a second.
+  - Check: `python .claude/skills/cutout-cartoon-shorts/scripts/audio_tags.py --slug <slug>` (fails on a sound-effect
+    tag; warns on too many tags, an unknown spelling, a character voice outside quotes, a length outside the format).
 
 ## 4. Output (write files, then show the user)
 - shorts/<date>-<slug>/script.md, in this layout (subtitles.py reads it, so keep it exact):
   `Idea: <one sentence>`, a blank line, the voiceover (one line per beat, no scene directions, no list markers, no
-  quotes), a blank line, `Words: N`. The voiceover lines are exactly what the voice will say: they become the
-  subtitles of long videos word for word.
+  quotes around whole lines; audio tags inline where they are performed), a blank line, `Words: N` (spoken words, tags
+  not counted). The voiceover lines are exactly what the voice will say: without their tags they become the subtitles
+  of long videos word for word. Run audio_tags.py on it.
 - shorts/<date>-<slug>/sources.md: the links, each with one line on what it supports.
 - shorts/<date>-<slug>/meta.json: {slug, date, title, category, topic, status: "script", word_count}.
   For a Short also `format: "short"`. Keep any fields that are already there.
@@ -68,10 +88,12 @@ length: there is no need to pass 3:00.
   scene boundary.
 - Verify every fact, not just the central one: each claim in the script gets a line in sources.md with the link that
   supports it, cross-checked in a second source. More facts means more checking; cut a fact you cannot confirm.
-- Same wording rules and the same banned phrases as section 3.
+- Same wording rules, the same banned phrases and the same audio tag rules as section 3 (about one tag every 2-3
+  lines in each scene; audio_tags.py checks each scene).
 - Output: script.md with `Idea: <one sentence>`, then one `## Scene N - <name>` heading per scene (N = 1, 2, ...; the
-  name in a few words) with its lines (one line per beat, no scene directions, no list markers) and a `Words: N` line,
-  and at the end `Total: N words, about M:SS` (words / 150 x 60 s). The lines are said word for word and shown word for
+  name in a few words) with its lines (one line per beat, no scene directions, no list markers; audio tags inline)
+  and a `Words: N` line (tags not counted), and at the end `Total: N words, about M:SS` (words / 150 x 60 s, plus about
+  half a second per vocalization or [pause]). The lines are said word for word and shown word for
   word as subtitles: write numbers and names the way they should read on screen ("1,500", "FDE"), and make sure each
   reads well spoken too. meta.json gets `format: "long-horizontal"`, `aspect: "16:9"`, `word_count`,
   `scenes: {count, names}` and `image_budget: 60`. topics.json and register.py as in section 4.

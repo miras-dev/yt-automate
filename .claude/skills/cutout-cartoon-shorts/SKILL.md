@@ -39,7 +39,13 @@ sfx-library/; `.claude/settings.json` sets REAL_SFX_CONFIG to it, in a plain she
 openverse="$(pwd)/sfx-library" --index`. After downloading new sounds: `python .claude/skills/real-sfx/scripts/build_index.py`.
 
 ## 1. Script → beat sheet
-- Input: shorts/<slug>/script.md (from short-script). Keep the lines; only fix words that would make a voice over-act.
+- Input: shorts/<slug>/script.md (from short-script). Keep the lines and their audio tags; only fix words that would
+  make a voice over-act. Run `python .claude/skills/cutout-cartoon-shorts/scripts/audio_tags.py --slug <slug>` before
+  the voice is made: it fails on a sound-effect tag (take it out) and warns on too many tags.
+- Every vocalization tag is a beat: the character does it on screen on the frame its sound starts. [gasping] eyes pop
+  or a surprised swap; [chuckling] / [laughing] the happy pose with small bounces while the sound lasts; [sighing]
+  shoulders drop (squash about 0.97) on the exhale; [scoffing] half-closed lids; [yawning] the tired pose;
+  [clears throat] a hand to the mouth or a small nod. A [pause] is a hold: the camera and the character wait.
 - 20-30 s = 6-9 lines. One visual beat per line, landing on the exact word ("throw" = the throw).
 - Frame 0 = the premise (character + the thing + the setting), centred, readable like a thumbnail. No intro.
 - As few cuts as possible; one continuous camera move is best. A cut only for a new shot (e.g. reaction close-up).
@@ -50,9 +56,10 @@ openverse="$(pwd)/sfx-library" --index`. After downloading new sounds: `python .
 
 ## 2. Voice + word times
 - Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
-  female), for every Short and every long video unless the user names another voice for that video. Natural delivery,
-  plain text (no tags that make it over-act). Model eleven_v4, generations_count 1, the same voice settings for every
-  take. If Zephrael is not on the account, stop and report; never swap in another voice silently.
+  female), for every Short and every long video unless the user names another voice for that video. Natural delivery:
+  send the script lines exactly as written, audio tags included (Eleven v4 performs them); never add a tag the script
+  does not have. Model eleven_v4, generations_count 1, the same voice settings for every take. If Zephrael is not on
+  the account, stop and report; never swap in another voice silently.
 - With the ElevenLabs connector: creative_generate_speech with that voice id, poll creative_get_flow_run_status,
   download content_url to video/public/<slug>/vo/take1.mp3.
   No connector: the ElevenLabs HTTP API, `POST https://api.elevenlabs.io/v1/text-to-speech/BpZ8aKvwvbZf602CLu11?output_format=mp3_44100_128`
@@ -62,9 +69,16 @@ openverse="$(pwd)/sfx-library" --index`. After downloading new sounds: `python .
 - Word times: `python .claude/skills/cutout-cartoon-shorts/scripts/words.py video/public/<slug>/vo/take1.mp3 --ts video/src/<slug>/timing.ts`
   (faster-whisper word_timestamps=True; `--ts` writes a starter timing.ts with the voice end and the pauses). Whisper edges are ±0.2 s, so
   words.py also finds real pauses by loudness (RMS every 20 ms, silence < -42 dB for ≥ 0.18 s) and snaps to them.
+- Script against take: `python .claude/skills/cutout-cartoon-shorts/scripts/subtitles.py --slug <slug>` (Shorts too;
+  for a Short the subtitles.json it writes stays unused unless subtitles are turned on). It reports lines the voice
+  says differently and, for every audio tag, when it happened: a vocalization at the onset of its sound between the
+  words around it (Whisper gives a gasp or a laugh no time of its own), a [pause] where its silence starts, an emotion
+  or delivery tag at the first word it colours. Exit code 1 when a tag was read out loud: make the take again. A
+  vocalization with "NO separate sound found" was probably skipped: make the take again if the beat needs it.
 - Voice starts at 0.1 s. Write every beat as a constant in video/src/<slug>/timing.ts:
-  `export const T = {turn: 2.05, release: 3.7, land: 4.8, ...}`. Composition length = voice end + 0.5 s.
-  Big sounds go into pauses, not on top of words.
+  `export const T = {turn: 2.05, release: 3.7, land: 4.8, ...}`. Vocalization beats take the time subtitles.py gives
+  (`gasp: 5.30`). Composition length = voice end + 0.5 s. Big sounds go into pauses, not on top of words or on top of
+  a vocalization.
 - Done = take1.mp3 + words.json (next to the mp3) + timing.ts.
 
 ## 3. Pictures (Gemini → keyed transparent cut-outs)
@@ -323,9 +337,11 @@ or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video
   (video/src/lib/scenes.tsx, a `<Series>`). Each scene has its own T table (times relative to the scene start; inside
   a scene `useT()` gives scene seconds) and its own camera plan. `sceneLayout(scenes)` gives every scene's start on
   the full timeline and the total length for registry.ts.
-- Voice: one ElevenLabs take per scene (same voice, same settings) → vo/scene-N.mp3, so one scene can be fixed alone.
-  Word times per scene (`words.py vo/scene-N.mp3 -o vo/scene-N.words.json --ts .../scenes/<name>/timing.ts`). Join
-  with 0.25-0.4 s gaps (`gapAfter`); the scene boundaries are where cuts go.
+- Voice: one ElevenLabs take per scene (same voice, same settings, the scene's lines with their audio tags exactly
+  as written) → vo/scene-N.mp3, so one scene can be fixed alone. Word times per scene
+  (`words.py vo/scene-N.mp3 -o vo/scene-N.words.json --ts .../scenes/<name>/timing.ts`), then subtitles.py for the
+  scene (12.3), which also gives the scene's audio tag times for its T table (vocalization beats as in section 1).
+  Join with 0.25-0.4 s gaps (`gapAfter`); the scene boundaries are where cuts go.
 - Cuts are normal now: a hard cut or a quick whip (`whip()` camera pan with a whoosh) between scenes; still no
   cross-fades between drawings. Inside a scene keep the "one continuous move" rule.
 - Variety without new pictures: change camera distance per scene (wide → medium → close), recolour the sky, reuse set
@@ -347,8 +363,10 @@ or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video
   `subtitles.py --slug <slug>` → video/src/<slug>/subtitles.json.
 - Read its output: "voice and script differ" (the take does not say the line as written: fix the script line to match
   the take, or regenerate the take), `check: script / voice` pairs (fine for numbers and names Whisper spells another
-  way, otherwise the same fix), "left out" (lines the voice never says), and reading speed over 20 characters a second
-  (lower `--max-chars` or slow the line). Re-run it whenever a take or a script line changes.
+  way, otherwise the same fix), "left out" (lines the voice never says), reading speed over 20 characters a second
+  (lower `--max-chars` or slow the line), and the audio tags: their times (for the T table), a tag read out loud
+  (exit code 1: make the take again) or a vocalization / [pause] the take seems to have skipped. Audio tags never
+  appear in the subtitles. Re-run it whenever a take or a script line changes.
 - In each scene, last child, next to `<SoundCues>`: `import subs from './subtitles.json';` and
   `<Subtitles format={format} cues={subs.cues} />` (video/src/lib/subtitles.tsx; on by default in long videos, off in
   Shorts unless `on`). Its times are scene seconds, the same timeline as the scene's T table.

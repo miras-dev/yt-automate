@@ -19,12 +19,21 @@ Input script.md (short-script skill): an optional `Idea:` line, `## Scene N - <n
 voiceover line per beat, `Words: N` / `Total: ...` lines. Headings, `Idea:` / `Words:` / `Total:` lines and lines the
 voice never says (under 30 % of their words found) are left out and reported.
 
+Audio tags ([gasping], [pause], [excited] ..., see audio_tags.py) stay in the script lines. They are never shown, and
+the script reports when each one happened in the take, for the T table: a vocalization at the onset of the sound
+between the words around it (Whisper gives a gasp or a laugh no time of its own; the gap minus the pauses words.py
+found is the sound), a [pause] where its silence starts, an emotion / delivery / character tag at the first word it
+colours. It warns when a vocalization has no sound of its own (the take may have skipped it, or Whisper stretched a
+word over it), when a [pause] has no silence, and when the voice seems to have read a tag out loud (exit code 1).
+A sound-effect tag in the script is an error (exit code 1): sounds come from Openverse.
+
 Defaults with --slug: script shorts/<slug>/script.md, format from meta.json, words
 video/public/<slug>/vo/scene-N.words.json (scene mode) or vo/words.json, output video/src/<slug>/subtitles.json or,
 for a scene, video/src/<slug>/scenes/<folder>/subtitles.json when exactly one scene folder matches (the kebab-case
 scene name, or a folder starting with "N-", "scene-N" or "0N"); otherwise pass -o. --all does every scene.
 
-Writes {"source", "format", "max_chars", "cues": [{"start", "end", "text"}], "check"}. Times are on the words.json
+Writes {"source", "format", "max_chars", "cues": [{"start", "end", "text"}], "tags": [{"tag", "kind", "at", ...}],
+"check"}. Times are on the words.json
 timeline (the scene's own timeline in scene mode), the same one as the T table next to it. Prints the checks: share
 of script words found in the voice, lines where voice and script differ, fastest reading speed (warns over 20
 characters a second). Exit code 1 when a line differs a lot or nothing could be aligned.
@@ -39,6 +48,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from audio_tags import TAG_RE, classify, spoken, tags_in
 from common import FORMATS, ROOT, die, read_meta, write_json
 
 HOLD = 0.25        # keep a cue up this long after its last word
@@ -63,9 +73,10 @@ WEAK = {"a", "an", "the", "of", "to", "in", "on", "at", "for", "with", "by", "fr
 def clean_line(line: str) -> str:
     s = line.strip()
     s = re.sub(r"^(>\s*|[-*+]\s+|\d+[.)]\s+)", "", s)
-    s = re.sub(r"\[[^\]]*\]", "", s)                     # voice tags like [laughs]
-    s = re.sub(r"(\*\*|__|\*|`)", "", s)                 # markdown emphasis
-    s = s.strip().strip('"“”').strip()
+    s = re.sub(r"(\*\*|__|\*|`)", "", s)                 # markdown emphasis (audio tags in [ ] stay)
+    s = s.strip()
+    if len(s) > 1 and s[0] in '"“' and s[-1] in '"”' and len(re.findall(r'["“”]', s)) == 2:
+        s = s[1:-1].strip()                              # quotes around the whole line, not a quote inside it
     return re.sub(r"\s+", " ", s)
 
 
@@ -109,17 +120,23 @@ def parts(token: str) -> list[str]:
     return out
 
 
-def align(lines: list[str], words: list[dict], voice: tuple[float, float]):
-    """Per line a list of [text, start, end] tokens; per-line share of words found; extra and replaced voice words."""
-    toks = []   # (line index, display text)
+def align(lines: list[str], words: list[dict], voice: tuple[float, float], pauses: list[tuple[float, float]]):
+    """Per line a list of [text, start, end] tokens; per-line share of words found; extra and replaced voice words;
+    when each audio tag happened."""
+    toks = []   # [line index, display text, start, end]
+    tag_at = []  # (tag, index in toks of the word after it)
     sp, sp_tok = [], []   # script parts and the token index each belongs to
     for li, line in enumerate(lines):
-        for word in line.split():
-            ps = parts(word)
-            toks.append([li, word, None, None])
-            for p in ps:
-                sp.append(p)
-                sp_tok.append(len(toks) - 1)
+        for n, seg in enumerate(TAG_RE.split(line)):
+            if n % 2:                                    # inside [ ]: an audio tag, never shown
+                tag_at.append((re.sub(r"\s+", " ", seg.strip().lower()), len(toks)))
+                continue
+            for word in seg.split():
+                ps = parts(word)
+                toks.append([li, word, None, None])
+                for p in ps:
+                    sp.append(p)
+                    sp_tok.append(len(toks) - 1)
     wp, wp_time = [], []
     for w in words:
         for p in parts(w["w"]):
@@ -160,17 +177,54 @@ def align(lines: list[str], words: list[dict], voice: tuple[float, float]):
         t = toks[sp_tok[k]]
         t[2] = s if t[2] is None else min(t[2], s)
         t[3] = e if t[3] is None else max(t[3], e)
+    for k, t in enumerate(toks):
+        if t[2] is None:       # punctuation-only token ("—"): sits with its neighbour
+            t[2] = t[3] = toks[k - 1][3] if k else voice[0]
     per_line: list[list[list]] = [[] for _ in lines]
     for li, text, s, e in toks:
-        if s is None:          # punctuation-only token ("—"): sits with its neighbour
-            prev = per_line[li][-1] if per_line[li] else None
-            s = e = prev[2] if prev else voice[0]
         per_line[li].append([text, s, e])
     share = []
     for li in range(len(lines)):
         idx = [k for k in range(len(sp)) if toks[sp_tok[k]][0] == li]
         share.append(sum(equal[k] for k in idx) / len(idx) if idx else 1.0)
-    return per_line, share, extra, replaced
+    return per_line, share, extra, replaced, tag_times(tag_at, toks, voice, pauses)
+
+
+def tag_times(tag_at, toks, voice, pauses, min_sound=0.06):
+    """Where each audio tag happened: the gap between the words around it, and what is in that gap."""
+    out = []
+    for tag, k in tag_at:
+        prev = toks[k - 1] if k > 0 else None
+        nxt = toks[k] if k < len(toks) else None
+        a = prev[3] if prev else voice[0]
+        b = max(a, nxt[2] if nxt else voice[1])
+        segs = [(a, b)]
+        for ps, pe in pauses:          # the gap minus the silences = the sound made there
+            cut = []
+            for s, e in segs:
+                if pe <= s or ps >= e:
+                    cut.append((s, e))
+                    continue
+                if ps > s:
+                    cut.append((s, ps))
+                if pe < e:
+                    cut.append((pe, e))
+            segs = cut
+        segs = [(s, e) for s, e in segs if e - s >= min_sound]
+        silence = sum(max(0.0, min(b, pe) - max(a, ps)) for ps, pe in pauses)
+        kind = classify(tag)
+        item = {"tag": tag, "kind": kind, "after": prev[1] if prev else None, "before": nxt[1] if nxt else None,
+                "gap": [round(a, 3), round(b, 3)]}
+        if kind == "vocalization":
+            item["at"] = round(segs[0][0], 3) if segs else round(a, 3)
+            item["sound"] = [round(segs[0][0], 3), round(segs[-1][1], 3)] if segs else None
+        elif kind == "pause":
+            item["at"] = round(a, 3)
+            item["silence"] = round(silence, 3)
+        else:                            # emotion, delivery, character: from the next word on
+            item["at"] = round(b, 3)
+        out.append(item)
+    return out
 
 
 def spread(times, sp, i1, i2, a, b):
@@ -284,13 +338,14 @@ def run_one(words_path: Path, script: Path, scene: int | None, out: Path | None,
     voice = (float(wj.get("voice_start", words[0]["start"])), float(wj.get("voice_end", words[-1]["end"])))
     end_limit = float(wj.get("composition_s") or voice[1] + 0.5)
 
-    per_line, share, extra, replaced = align(lines, words, voice)
-    dropped = [lines[i] for i, s in enumerate(share) if s < 0.3 and len(lines[i].split()) >= 2]
+    pauses = [(float(p["start"]), float(p["end"])) for p in wj.get("pauses") or []]
+    per_line, share, extra, replaced, tags = align(lines, words, voice, pauses)
+    dropped = [lines[i] for i, s in enumerate(share) if s < 0.3 and len(spoken(lines[i]).split()) >= 2]
     if dropped:  # lines the voice never says (a title, a note): leave them out and align again
-        lines = [l for i, l in enumerate(lines) if not (share[i] < 0.3 and len(l.split()) >= 2)]
+        lines = [l for i, l in enumerate(lines) if not (share[i] < 0.3 and len(spoken(l).split()) >= 2)]
         if not lines:
             die("no script line matches the voice: is this the right words.json for this scene?", 1)
-        per_line, share, extra, replaced = align(lines, words, voice)
+        per_line, share, extra, replaced, tags = align(lines, words, voice, pauses)
 
     spec = FORMATS.get(fmt) or FORMATS["long-horizontal"]
     vertical = spec["height"] > spec["width"]
@@ -298,17 +353,20 @@ def run_one(words_path: Path, script: Path, scene: int | None, out: Path | None,
     max_chars = a.max_chars or (40 if vertical else 64)
     cues = make_cues(per_line, max_chars, row_chars, a.max_dur, end_limit)
 
-    n_parts = sum(len(parts(w)) for l in lines for w in l.split())
-    matched = sum(s * sum(len(parts(w)) for w in l.split()) for s, l in zip(share, lines)) / max(n_parts, 1)
+    n_parts = sum(len(parts(w)) for l in lines for w in spoken(l).split())
+    matched = sum(s * sum(len(parts(w)) for w in spoken(l).split()) for s, l in zip(share, lines)) / max(n_parts, 1)
+    tag_words = {p for l in lines for t in tags_in(l) for p in parts(t) if len(p) > 3}
+    read_aloud = sorted({w for w in extra if w in tag_words})
     differs = [{"line": l, "found": round(s, 2)} for s, l in zip(share, lines) if s < 0.7]
     cps = [(len(c["text"]) / max(c["end"] - c["start"], 1e-3), c["text"]) for c in cues]
     fastest = max(cps, default=(0.0, ""))
     check = {"script_words_found": round(matched, 3), "lines": len(lines), "cues": len(cues),
              "max_chars_per_s": round(fastest[0], 1), "differs": differs, "left_out": dropped + skipped,
-             "voice_words_not_in_script": extra[:40], "script_vs_voice": replaced[:40]}
+             "voice_words_not_in_script": extra[:40], "script_vs_voice": replaced[:40],
+             "tags": len(tags), "tags_read_aloud": read_aloud}
     rel = lambda p: str(p.resolve().relative_to(ROOT)) if p.resolve().is_relative_to(ROOT) else str(p)
     data = {"source": {"words": rel(words_path), "script": rel(script), "scene": scene or None},
-            "format": fmt, "max_chars": max_chars, "cues": cues, "check": check}
+            "format": fmt, "max_chars": max_chars, "cues": cues, "tags": tags, "check": check}
 
     label = f"scene {scene}" if scene else "script"
     print(f"{label}: {len(cues)} cues from {len(lines)} lines, {matched:.0%} of script words found in the voice, "
@@ -329,6 +387,30 @@ def run_one(words_path: Path, script: Path, scene: int | None, out: Path | None,
     for r in replaced[:12]:
         print(f"  check: script / voice: {r}  (fine for a number or a name Whisper misspells; otherwise the voice "
               f"said something else and the subtitle shows the script)")
+    if tags:
+        print("  audio tags (times for the T table):")
+    for t in tags:
+        near = f"between {t['after']!r} and {t['before']!r}" if t["after"] and t["before"] else \
+            f"before {t['before']!r}" if t["before"] else f"after {t['after']!r}"
+        if t["kind"] == "vocalization":
+            what = f"sound {t['sound'][0]:.2f}-{t['sound'][1]:.2f}" if t["sound"] else "NO separate sound found"
+        elif t["kind"] == "pause":
+            what = f"{t['silence']:.2f} s of silence"
+        else:
+            what = "from the next word on"
+        print(f"    {t['at']:7.2f}  [{t['tag']}] {t['kind']}: {what}, {near}")
+        if t["kind"] == "sound-effect":
+            print(f"  error: [{t['tag']}] is a sound-effect tag: sounds come from Openverse, not the voice; remove it "
+                  f"from the script and make the take again")
+            status = 1
+        elif t["kind"] == "vocalization" and not t["sound"]:
+            print(f"  warn: [{t['tag']}] has no sound of its own {near}: the take may have skipped it, or Whisper "
+                  f"stretched a word over it")
+        elif t["kind"] == "pause" and t["silence"] < 0.2:
+            print(f"  warn: [{t['tag']}] {near}: only {t['silence']:.2f} s of silence; the take may have skipped it")
+    if read_aloud:
+        print(f"  warn: the voice seems to have read a tag out loud ({', '.join(read_aloud)}): make the take again")
+        status = 1
     if a.dry_run:
         print("  (dry run, nothing written)")
     elif out is None:

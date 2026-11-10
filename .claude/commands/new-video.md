@@ -19,8 +19,9 @@ cutout-cartoon-shorts skill, Part 7.2 of SHORTS_FACTORY_PLAN.md).
    subtitle band, subtitles per scene from the script and the word times (subtitles.py, section 12.3), music bed +
    sound effects, per-scene checks, full render at 4K 16:9, verified (length 1:00-3:30, 3840x2160, subtitles present).
 3. Finish: update meta.json, run scripts/register.py, report the MP4 path, Remotion Studio link, file locations, and
-   what you chose (character, scenes, voice, new pictures + approximate cost, music and sounds + licences, subtitle
-   checks: share of script words found in the voice, any lines where voice and script differ, fastest reading speed).
+   what you chose (character, scenes, voice, audio tags, new pictures + approximate cost, music and sounds +
+   licences, subtitle checks: share of script words found in the voice, any lines where voice and script differ,
+   fastest reading speed, any audio tag read out loud or skipped).
 
 Re-making an older 9:16 video (the input names an existing slug in shorts/ whose format is `long-vertical`): keep its
 script, sources, voice takes, word times, sound cues, music and library poses; set meta.json `format` to
