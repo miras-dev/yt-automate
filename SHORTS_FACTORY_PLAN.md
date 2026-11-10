@@ -56,7 +56,7 @@ shorts-factory/
 ├─ .claude/
 │  ├─ commands/
 │  │  ├─ new-short.md            # Part 4: the one command that makes a Short
-│  │  └─ new-video.md            # Part 7: 2-3 minute videos (vertical or horizontal)
+│  │  └─ new-video.md            # Part 7: 1-3.5 minute videos (16:9 landscape, subtitles)
 │  └─ skills/
 │     ├─ short-script/SKILL.md   # Part 2: topic research + script
 │     ├─ cutout-cartoon-shorts/  # Part 3: pictures, voice, animation, sound, render
@@ -170,6 +170,12 @@ description: Research a surprising fact or curious question and write one 20-30 
 - Banned: "Did you know", "This will blow your mind", "You won't believe", "here's the thing", "but here's the part",
   hype words (incredible, shocking, amazing, insane), "!" lines, calls to action, AI-sounding phrases.
 - Original wording only; never copy another creator's script.
+- ElevenLabs audio tags, sparingly (a Short 1-3, a long video about one every 2-3 lines, one per line at most):
+  emotion ([excited], [playful], [tired] ...), delivery ([whispering], [softly], [slowly], [pause] ...) and
+  vocalizations ([gasping], [chuckling], [sighing] ...), written where they are performed; a vocalization is a beat
+  the character acts on screen. Character voices only on a quoted line. Never sound-effect tags ([dog barking],
+  [applause], [drum roll] ...): sounds come from Openverse. Tags are not counted as words and never shown in
+  subtitles; audio_tags.py checks them before the voice is made.
 
 ## 4. Output (write files, then show the user)
 - shorts/<date>-<slug>/script.md: one-sentence idea, the voiceover (one line per beat, no scene directions),
@@ -189,7 +195,7 @@ Path: `.claude/skills/cutout-cartoon-shorts/SKILL.md`
 ---
 name: cutout-cartoon-shorts
 description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
-  Gemini cut-out pictures keyed to transparency, an ElevenLabs natural voice, Remotion animation (2.5D multiplane
+  Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D multiplane
   camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
   with real-sfx and checked with earshot, 4K vertical render. Use for any cartoon / cut-out Short in this repo.
 ---
@@ -217,9 +223,12 @@ node_modules/@remotion/compositor-*); the real-sfx, openverse-sfx and earshot sk
 - Done = shorts/<slug>/beats.md: table of time / words / on screen / picture / sound.
 
 ## 2. Voice + word times
-- Voice: a normal natural voice, not deep, not a narrator. creative_list_voices (gender, languages ["en"], search
-  "natural conversational", use_cases ["social_media"]). Good picks: "Tim Riley - Natural. Conversational"
-  (1gZSmkYVRMS8w1i4plmP), "James - Natural", "Jerry B.", "Alex". Model eleven_v4, plain text, generations_count 1.
+- Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
+  female), for every Short and every long video unless the user names another voice for that video. Natural delivery:
+  send the script lines exactly as written, audio tags included (Eleven v4 performs them); never add a tag the script
+  does not have. Model eleven_v4, generations_count 1, the same voice settings for every take. If Zephrael is not on
+  the account, stop and report; never swap in another voice silently. subtitles.py then reports when each audio tag
+  happened in the take (a gasp's sound onset between the words around it), for the T table.
 - Poll creative_get_flow_run_status, download content_url to video/public/<slug>/vo/take1.mp3.
 - Word times: `python scripts/words.py <mp3>` (faster-whisper word_timestamps=True). Whisper edges are ±0.2 s, so
   words.py also finds real pauses by loudness (RMS every 20 ms, silence < -42 dB for ≥ 0.18 s) and snaps to them.
@@ -427,8 +436,9 @@ Make a new YouTube Short in this repo. Input: $ARGUMENTS (may be empty).
 2. Build: follow the cutout-cartoon-shorts skill section by section:
    - Format: 1080x1920, 60 fps; final 2160x3840 MP4 with voice and sound effects mixed. Length follows the voice
      (20-30 s).
-   - Voice: ElevenLabs, a normal natural English male voice (not deep, not a narrator), one take, eleven_v4, word
-     times, every beat timed to its word.
+   - Voice: ElevenLabs, Zephrael (voice id BpZ8aKvwvbZf602CLu11, the channel's own voice), natural delivery, the
+     script's audio tags performed as written (checked with audio_tags.py first; never sound-effect tags), one take,
+     eleven_v4, word times, every beat timed to its word, every vocalization (a gasp, a chuckle) acted on its sound.
    - Beat sheet: one beat per line on the exact word; frame 0 = premise like a thumbnail; one funny gag per beat;
      last frame loops to the first.
    - Pictures: Gemini, keyed to transparent cut-outs, 4K. Every pose/expression, every moving prop and every set piece
@@ -465,7 +475,7 @@ Goal: one page that shows every Short and how it did, read straight from the rep
   "date": "2026-11-10",
   "duration_s": 24.6,
   "word_count": 63,
-  "voice": {"name": "Tim Riley", "id": "1gZSmkYVRMS8w1i4plmP", "credits": 0},
+  "voice": {"name": "Zephrael", "id": "BpZ8aKvwvbZf602CLu11", "credits": 0},
   "images": {"model": "gemini-3-pro-image-preview", "count": 11, "est_usd": 2.64},
   "sounds": [{"cue": "splash", "source": "openverse", "license": "CC0"}],
   "files": {"render": "out/....mp4", "contact": "shorts/.../qa/contact.png"},
@@ -494,26 +504,30 @@ colour; works on a phone.
 
 ## Part 6 - (reserved for later: upload automation)
 
-## Part 7 - Longer videos (2-3 minutes)
+## Part 7 - Longer videos (1-3.5 minutes, 16:9)
 
-The same pipeline, with scenes. Three formats, set in meta.json as `"format"`:
+The same pipeline, with scenes. Rule: anything over one minute is landscape. Two formats, set in meta.json as
+`"format"`:
 
 | format | aspect / size | length | where it shows | use for |
 |---|---|---|---|---|
 | `short` | 9:16, 1080x1920 → 2160x3840 | 20-30 s | Shorts feed | one surprising fact |
-| `long-vertical` | 9:16, 1080x1920 → 2160x3840 | 60-180 s (must stay under 3:00) | Shorts feed | a story with 3-5 steps |
-| `long-horizontal` | 16:9, 1920x1080 → 3840x2160 | 3:05-3:30 (keep it over 3:00) | normal video | deeper explainers, channel watch time |
+| `long-horizontal` | 16:9, 1920x1080 → 3840x2160 | 1:00-3:30 (aim for 2:00-3:00) | normal video | stories and explainers with 3-6 steps, channel watch time |
 
-Why the limits: any vertical or square upload of 3 minutes or less is treated as a Short, so a horizontal video meant
-as a normal video should run past 3:00, and a vertical one meant for the Shorts feed must stay under it.
+Why: YouTube treats only square or vertical uploads of 3 minutes or less as Shorts, so a 16:9 video is a normal video
+at any length and needs no 3:00 rule. Long videos show burned-in subtitles (7.3). `long-vertical` (9:16, under 3:00)
+was the earlier choice for 1-3 minute videos; it is retired and stays in the code only so videos made with it still
+build and register.
 
 ### 7.1 Script (short-script skill, long mode)
-- Pass `--format long-vertical|long-horizontal`. Topic needs enough depth for 4-6 steps (a chain of causes, a
+- Pass `--format long-horizontal`. Topic needs enough depth for 4-6 steps (a chain of causes, a
   "what would happen if" with several stages, a history with a twist). Score ideas on depth as well as surprise.
-- ~150 spoken words per minute: 150-450 words. Split into 4-6 scenes of 20-40 s. Write files as
-  script.md with `## Scene 1 - <name>` headings.
+- ~150 spoken words per minute: 150-520 words (aim for 300-450). Split into 4-6 scenes of 20-40 s. Write files as
+  script.md with `Idea:`, `## Scene 1 - <name>` headings, the lines, and `Words: N` per scene. The lines are shown word
+  for word as subtitles, so write numbers and names the way they should read on screen.
 - Scene 1 opens on the premise like a Short. Every scene ends with a small open question that the next scene answers
   ("so why doesn't that work?"). The main payoff still lands at the end.
+- Audio tags as in Part 2, about one every 2-3 lines per scene.
 - Same research rules: every fact in sources.md, cross-checked; more facts means more checking.
 
 ### 7.2 Character library (do this once, reuse forever)
@@ -526,8 +540,12 @@ as a normal video should run past 3:00, and a vertical one meant for the Shorts 
 - Style drift check: every new picture goes on the sheet next to the library hero before use.
 
 ### 7.3 Build (cutout-cartoon-shorts skill, scene mode)
-- Composition size from the format. Lay out against safe areas: vertical keeps faces and payoffs in the middle 70 %;
-  horizontal uses thirds and wider sets (3:2 / 16:9 set pieces, more ground bands).
+- Composition size from the format (16:9). Lay out against safe areas: thirds and wider sets (3:2 / 16:9 set pieces,
+  more ground bands); faces and payoffs stay above the subtitle band at the bottom.
+- Subtitles: burned-in, flat style (white Nunito ExtraBold, black outline, at most two rows, bottom centre, screen
+  space). Text = the script's own words, timing = the voice's word times: subtitles.py aligns each scene's script lines
+  to its words.json and cuts them into phrases at sentence ends, commas and pauses; it reports lines where the voice
+  and the script differ. Each scene shows its subtitles.json with `<Subtitles>`.
 - One Remotion component per scene in video/src/<slug>/scenes/, played with `<Series>`. Each scene has its own
   timing.ts T table (times relative to the scene start) and its own camera plan.
 - Voice: generate one ElevenLabs take per scene (same voice, same settings) so one scene can be fixed alone. Word times
@@ -553,8 +571,8 @@ as a normal video should run past 3:00, and a vertical one meant for the Shorts 
   be a planned cut or swap.
 - Render time scales with length (the 13 s example took ~2 min on the GPU, so plan ~20-30 min for 3 min). Render
   scenes separately while iterating; render the full video once at the end.
-- Verify duration against the format rule (vertical under 3:00, horizontal over 3:00), size, fps, audio length.
-- meta.json gets `format`, `aspect`, `scenes` (count + durations) and, for horizontal videos, a `thumbnail` field:
+- Verify duration against the format range (1:00-3:30), size, fps, audio length, subtitles present.
+- meta.json gets `format`, `aspect`, `scenes` (count + durations), `subtitles: true` and a `thumbnail` field:
   make a separate 1280x720 thumbnail from the best frame with a big readable subject.
 - Dashboard: filter by format; show average view percentage and retention for long videos when the YouTube
   Analytics API is connected; compare views per minute of runtime across formats.
@@ -564,18 +582,21 @@ Path: `.claude/commands/new-video.md`
 
 ```markdown
 ---
-description: Make one 2-3 minute cut-out cartoon video (vertical Short or horizontal video), research to verified 4K MP4.
-argument-hint: [long-vertical|long-horizontal] [optional topic] [optional character name from library/characters]
+description: Make one 1-3.5 minute cut-out cartoon video in 16:9 landscape with subtitles, research to verified 4K MP4.
+argument-hint: [optional topic] [optional character name from library/characters]
+model: claude-opus-5-5
+effort: max
 ---
 
-Make a longer video in this repo. Input: $ARGUMENTS. Default format long-vertical; default character = the first in
-library/characters (if the library is empty, build it first, Part 7.2 of SHORTS_FACTORY_PLAN.md).
+Make a longer video in this repo. Input: $ARGUMENTS. Format is always long-horizontal (16:9, 1:00-3:30) with burned-in
+subtitles; default character = the first in library/characters (if the library is empty, build it first, Part 7.2 of
+SHORTS_FACTORY_PLAN.md).
 
-1. Script: short-script skill in long mode for the chosen format. Show me the idea, scene list, full lines, word count
-   and sources, then continue without waiting.
+1. Script: short-script skill in long mode (`--format long-horizontal`). Show me the idea, scene list, full lines,
+   word count and sources, then continue without waiting.
 2. Build: cutout-cartoon-shorts skill in scene mode (Part 7.3-7.5): per-scene voice and timing, library poses first,
    only new props/sets/special poses generated, scenes in <Series>, music bed + sound effects, per-scene checks,
-   full render at 4K for the format, verified (including the 3:00 rule).
+   subtitles per scene, full render at 4K 16:9, verified (length 1:00-3:30, subtitles present).
 3. Finish: update meta.json, run scripts/register.py, report the MP4 path, Remotion Studio link, file locations, and
    what you chose (format, character, scenes, voice, new pictures + approximate cost, music and sounds + licences).
 Don't ask questions; stop only if a key/tool is missing or the picture budget (default 60 new images) would be exceeded.

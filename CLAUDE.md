@@ -15,7 +15,7 @@
 
 | What | Where |
 |---|---|
-| Make a Short / a 1-3 minute video | `/new-short`, `/new-video` (.claude/commands/) |
+| Make a Short (9:16) / a 1-3.5 minute video (16:9) | `/new-short`, `/new-video` (.claude/commands/; both run on Opus 5.5 at max effort) |
 | Topic + script rules | .claude/skills/short-script/SKILL.md |
 | Pictures, voice, animation, sound, render | .claude/skills/cutout-cartoon-shorts/SKILL.md (+ scripts/) |
 | Full design document | SHORTS_FACTORY_PLAN.md |
@@ -23,8 +23,14 @@
 | Dashboard | dashboard/ (`npm run dashboard`, reads data/shorts.json and shorts/*) |
 | Setup check | `python scripts/check_setup.py` |
 
-Formats (meta.json `format`): `short` 9:16 20-30 s · `long-vertical` 9:16 60-180 s, must stay under 3:00 ·
-`long-horizontal` 16:9 3:05-3:30, must run past 3:00. Default picture budget: 40 for a Short, 60 for a long video.
+Formats (meta.json `format`): anything over one minute is landscape. `short` 9:16 20-30 s · `long-horizontal` 16:9
+1:00-3:30 (aim 2:00-3:00) with burned-in subtitles. A 16:9 upload is never a Short, so no 3:00 rule. `long-vertical`
+is retired (kept only so older videos still build). Default picture budget: 40 for a Short, 60 for a long video.
+Model: .claude/settings.json pins Opus 5.5 (`model`) at max effort (`CLAUDE_CODE_EFFORT_LEVEL=max`) for this repo.
+Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11, the channel's own cloned voice) for every Short and video,
+model eleven_v4, unless a video's request names another voice. ElevenLabs audio tags in the script ([gasping],
+[pause], [excited] ...): emotion, delivery and vocalizations only, sparingly (short-script skill, section 3); never
+sound-effect tags: every sound is an Openverse recording.
 
 Run every command from the repository root unless it says `video/`. Scripts (all have `--help`), in
 .claude/skills/cutout-cartoon-shorts/scripts/:
@@ -36,6 +42,8 @@ Run every command from the repository root unless it says `video/`. Scripts (all
 | sheet.py --slug SLUG [--hero ...] | qa/sheet.png to check every cut-out by eye |
 | prep.py --slug SLUG ... / --library NAME --src DIR | trim + measure → video/public/<slug>/ and video/src/<slug>/sprites.ts, or library/characters/NAME/poses.json |
 | words.py VO.mp3 [--ts timing.ts] | word times snapped to real pauses → words.json |
+| audio_tags.py --slug SLUG | checks script.md's audio tags before the voice is made (fails on sound-effect tags) |
+| subtitles.py --slug SLUG [--scene N -o .../subtitles.json \| --all] | script words on the voice's word times → subtitles.json (long videos); when each audio tag happened |
 | export_cues.py --slug SLUG [--apply RESOLVED.json] | T table + cues.json ⇄ real-sfx |
 | popscan.py PREVIEW.mp4 --expect ... | finds picture jumps that are not planned swaps or cuts |
 | register.py (also scripts/register.py) | rebuilds data/shorts.json |

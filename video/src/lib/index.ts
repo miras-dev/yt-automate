@@ -1,4 +1,5 @@
 export * from './formats';
+export * from './fonts';
 export * from './easing';
 export * from './camera';
 export * from './Layer';
@@ -9,3 +10,4 @@ export * from './faces';
 export * from './effects';
 export * from './sound';
 export * from './scenes';
+export * from './subtitles';

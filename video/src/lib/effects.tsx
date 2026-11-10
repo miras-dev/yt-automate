@@ -1,6 +1,7 @@
 import React from 'react';
 import {random} from 'remotion';
 import {clamp, easeOutCubic, popInOut, prog} from './easing';
+import {FONT_FAMILY, FONT_WEIGHT} from './fonts';
 import {ballistic} from './physics';
 
 /**
@@ -308,7 +309,7 @@ export const Label: React.FC<{t: number; from: number; to: number; x: number; y:
   const k = popInOut(t, from, to);
   if (k <= 0) return null;
   return (
-    <div style={{position: 'absolute', left: x, top: y, transform: `translate(-50%, -50%) scale(${k})`, background: bg, color, border: `${OUTLINE}px solid ${INK}`, borderRadius: size * 0.45, padding: `${size * 0.2}px ${size * 0.5}px`, fontFamily: 'Arial Rounded MT Bold, Nunito, Arial, sans-serif', fontWeight: 800, fontSize: size, lineHeight: 1.1, whiteSpace: 'nowrap'}}>
+    <div style={{position: 'absolute', left: x, top: y, transform: `translate(-50%, -50%) scale(${k})`, background: bg, color, border: `${OUTLINE}px solid ${INK}`, borderRadius: size * 0.45, padding: `${size * 0.2}px ${size * 0.5}px`, fontFamily: FONT_FAMILY, fontWeight: FONT_WEIGHT, fontSize: size, lineHeight: 1.1, whiteSpace: 'nowrap'}}>
       {text}
     </div>
   );

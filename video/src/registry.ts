@@ -16,8 +16,8 @@ export type VideoDef = {
 export const VIDEOS: VideoDef[] = [
   // {id: 'why-dont-ships-sink', slug: '2026-11-10-why-dont-ships-sink', format: 'short', seconds: DURATION, component: Main},
 
-  // Code-only test scene (no pictures, no sound): proves the helpers work in every format. Copy it to start a video.
+  // Code-only test scene (no pictures, no sound): proves the helpers work in both formats (a Short is 9:16, every
+  // video over one minute is 16:9 with subtitles). Copy it to start a video.
   {id: 'template-short', slug: '_template', format: 'short', seconds: TEMPLATE_SECONDS, component: Template, dev: true},
-  {id: 'template-long-vertical', slug: '_template', format: 'long-vertical', seconds: TEMPLATE_SECONDS, component: Template, dev: true},
   {id: 'template-long-horizontal', slug: '_template', format: 'long-horizontal', seconds: TEMPLATE_SECONDS, component: Template, dev: true},
 ];
