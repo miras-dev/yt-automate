@@ -4,8 +4,9 @@
   python scripts/register.py [--check]
 
 Run it after any change to a meta.json. It fills in defaults (format, aspect, date from the folder name), records
-which files exist, and prints warnings: unknown status, a length that breaks the format rule (a vertical video must
-stay under 3:00, a horizontal one must run past it), a topic missing from data/topics.json.
+which files exist, and prints warnings: unknown status, a length outside the format's range (a Short 20-30 s, a
+16:9 long video 1:00-3:30), a video over one minute that is still being made in 9:16 (long-vertical is retired: anything
+over a minute is 16:9), a long video without subtitles.json, a topic missing from data/topics.json.
 --check exits with code 1 when there are warnings.
 """
 from __future__ import annotations
@@ -66,15 +67,21 @@ def normalise(folder: Path, meta: dict, warn) -> dict:
     m["has"] = {doc.split(".")[0]: (folder / doc).exists() for doc in DOCS}
     m["has"]["render"] = bool(files.get("render")) and (ROOT / files["render"]).exists()
     m["has"]["contact"] = bool(files.get("contact")) and (ROOT / files["contact"]).exists()
+    src = ROOT / "video" / "src" / slug
+    m["has"]["subtitles"] = src.is_dir() and any(src.rglob("subtitles.json"))
     m["cost_usd"] = round(float(m["images"].get("est_usd") or 0) + float(m.get("other_cost_usd") or 0), 2)
 
+    stage = STATUSES.index(m["status"]) if m["status"] in STATUSES else 0
+    lim = FORMATS[fmt]
+    if lim.get("retired") and stage < STATUSES.index("rendered"):
+        warn(f"{slug}: format {fmt} is retired - anything over one minute is made 16:9: set format "
+             f"\"long-horizontal\" (aspect 16:9) before the pictures and layout are made")
+    if lim.get("subtitles") and STATUSES.index("qa") <= stage < STATUSES.index("published") and not m["has"]["subtitles"]:
+        warn(f"{slug}: long videos show subtitles, but video/src/{slug}/ has no subtitles.json (run subtitles.py)")
     dur = m.get("duration_s")
-    if dur and STATUSES.index(m["status"]) >= STATUSES.index("rendered") if m["status"] in STATUSES else False:
-        lim = FORMATS[fmt]
+    if dur and stage >= STATUSES.index("rendered"):
         if fmt == "long-vertical" and dur >= 180:
             warn(f"{slug}: {dur} s - a vertical video must stay UNDER 3:00 to be treated as a Short")
-        elif fmt == "long-horizontal" and dur <= 180:
-            warn(f"{slug}: {dur} s - a horizontal video should run PAST 3:00 (aim for 3:05-3:30)")
         elif not (lim["min_s"] - 2 <= dur <= lim["max_s"] + 2):
             warn(f"{slug}: {dur} s is outside the usual {lim['min_s']}-{lim['max_s']} s for format {fmt}")
     return m

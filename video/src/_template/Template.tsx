@@ -2,9 +2,10 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {
   Burst, ContactShadow, Crown, DEPTH, Eyes, FORMATS, GroundBand, Glow, Impact, Layer, Mouth, Puff, Sky, SmokeRing,
-  SweatDrop, addShake, breathe, camPath, dofBlur, easeOutCubic, eyesPop, inhaleBlast, isVertical, projectile, shake,
+  SweatDrop, Subtitles, addShake, breathe, camPath, dofBlur, easeOutCubic, eyesPop, inhaleBlast, isVertical, projectile, shake,
   throwSwap, tremble, useT, type Format,
 } from '../lib';
+import subs from './subtitles.json';
 import {DURATION, T} from './timing';
 
 export const TEMPLATE_SECONDS = DURATION;
@@ -12,7 +13,7 @@ export const TEMPLATE_SECONDS = DURATION;
 /**
  * Code-only test scene: no pictures and no sound, so it renders on a fresh checkout. It shows how a video is put
  * together - sky, ground bands, layers at depth, a camera path, a pose transform, a 3D projectile, effects, a face on
- * an object - and proves the helpers work in all three formats. Copy this folder to video/src/<slug>/ to start.
+ * an object, subtitles - and proves the helpers work in every format. Copy this folder to video/src/<slug>/ to start.
  * In a real video the blob below is a <Sprite> from sprites.ts and <Voice> + <SoundCues> are added.
  */
 export const Template: React.FC<{format: Format}> = ({format}) => {
@@ -104,6 +105,9 @@ export const Template: React.FC<{format: Format}> = ({format}) => {
         </div>
         <SweatDrop t={t} at={T.inhale + 0.1} x={hero.x + 120} y={hero.y - 500} />
       </Layer>
+
+      {/* screen space, last: on by default in long videos (16:9), off in Shorts */}
+      <Subtitles format={format} cues={subs.cues} />
     </AbsoluteFill>
   );
 };

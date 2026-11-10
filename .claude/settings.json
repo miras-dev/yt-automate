@@ -1,6 +1,8 @@
 {
+  "model": "claude-opus-5-5",
   "env": {
     "REAL_SFX_CONFIG": "sfx-library/real-sfx-config.json",
-    "EARSHOT_THREADS": "3"
+    "EARSHOT_THREADS": "3",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
   }
 }

@@ -3,8 +3,9 @@ name: cutout-cartoon-shorts
 description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
   Gemini cut-out pictures keyed to transparency, an ElevenLabs natural voice, Remotion animation (2.5D multiplane
   camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
-  with real-sfx and checked with earshot, 4K render. Three formats: short (9:16, 20-30 s), long-vertical (9:16, 1-3 min,
-  scenes) and long-horizontal (16:9, just over 3 min, scenes). Use for any cartoon / cut-out Short or video in this repo.
+  with real-sfx and checked with earshot, 4K render. Two formats: short (9:16, 20-30 s) and long-horizontal (16:9,
+  1:00-3:30, scenes, burned-in subtitles): anything over one minute is landscape. Use for any cartoon / cut-out Short
+  or video in this repo.
 ---
 
 # Cut-out cartoon Shorts
@@ -17,11 +18,13 @@ are code. Read the whole file once, then follow the order. Update meta.json stat
 Where things are
 - Scripts: `.claude/skills/cutout-cartoon-shorts/scripts/`. Each has `--help`.
 - Remotion project: `video/`. Shared helpers: `video/src/lib/` (import from `'../lib'`). A working code-only example
-  that uses most helpers: `video/src/_template/` (compositions `template-short`, `template-long-vertical`,
-  `template-long-horizontal`). Copy it to `video/src/<slug>/` to start, then add the video to `video/src/registry.ts`.
-- Formats (`meta.json` "format"): `short` 1080x1920, `long-vertical` 1080x1920, `long-horizontal` 1920x1080; all 60 fps,
-  rendered at scale 2. Sizes come from `FORMATS` in `video/src/lib/formats.ts`; never hard-code 540 / 960: use
-  `FORMATS[format]` and `safeArea(format)`. Sections 1-11 describe a Short; section 12 is scene mode for long videos.
+  that uses most helpers: `video/src/_template/` (compositions `template-short` and `template-long-horizontal`, the
+  second with subtitles). Copy it to `video/src/<slug>/` to start, then add the video to `video/src/registry.ts`.
+- Formats (`meta.json` "format"): `short` 1080x1920 (20-30 s) and `long-horizontal` 1920x1080 (every video over one
+  minute: 1:00-3:30); both 60 fps, rendered at scale 2. `long-vertical` (1080x1920) is retired: it stays in the code
+  only so videos made before the landscape rule still build; never pick it for a new video. Sizes come from `FORMATS` in
+  `video/src/lib/formats.ts`; never hard-code 540 / 960: use `FORMATS[format]`, `safeArea(format)` and
+  `subtitleBand(format)`. Sections 1-11 describe a Short; section 12 is scene mode for long videos.
 
 ## 0. Setup check
 Run `python scripts/check_setup.py`. It needs: GEMINI_API_KEY in .env; ElevenLabs connector (tools
@@ -282,8 +285,10 @@ All render commands run in `video/`. On a machine without a GPU add `--gl=swangl
 - Every visual on its word; payoff on the last word; last frame loops to the first.
 - Real facts only in the voiceover.
 
-## 12. Scene mode (long-vertical and long-horizontal)
-The same pipeline, with scenes. Everything above still applies inside a scene.
+## 12. Scene mode (long videos: 16:9 with subtitles)
+The same pipeline, with scenes. Everything above still applies inside a scene. Every video over one minute is
+`long-horizontal`: 16:9, 1920x1080 rendered at 3840x2160, 1:00-3:30, burned-in subtitles. YouTube treats only square
+or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video at any length; no 3:00 rule applies.
 
 ### 12.1 Character library (do this once, reuse forever)
 - Make the hero character, check it, then the standard pose set, each with `--ref <hero>`: idle, talk_a, talk_b (two
@@ -303,8 +308,10 @@ The same pipeline, with scenes. Everything above still applies inside a scene.
   `python .claude/skills/cutout-cartoon-shorts/scripts/sheet.py --slug <slug> --hero library/characters/<name>/hero.png`.
 
 ### 12.2 Build
-- Composition size from the format (registry.ts `format`). Lay out against `safeArea(format)`: vertical keeps faces and
-  payoffs in the middle 70 %; horizontal uses thirds and wider sets (3:2 / 16:9 set pieces, more ground bands).
+- Composition size from the format (registry.ts `format: 'long-horizontal'`). Lay out against `safeArea(format)`: thirds
+  and wider sets (3:2 / 16:9 set pieces, more ground bands); a character on one third, the thing it talks about on the
+  other. The bottom of the frame belongs to the subtitles: faces, labels and payoffs stay above
+  `subtitleBand(format).top` (about 82 % of the height); feet, ground and props may sit behind the subtitles.
 - One component per scene in video/src/<slug>/scenes/<name>/ (Scene.tsx, timing.ts, cues.json), played with `<Scenes>`
   (video/src/lib/scenes.tsx, a `<Series>`). Each scene has its own T table (times relative to the scene start; inside
   a scene `useT()` gives scene seconds) and its own camera plan. `sceneLayout(scenes)` gives every scene's start on
@@ -320,7 +327,27 @@ The same pipeline, with scenes. Everything above still applies inside a scene.
 - Life over time: `blinking()` on long holds, `talkShape()` to swap the two talking mouth shapes on voiced words,
   `idleSway()` / small idle moves every few seconds so nothing freezes.
 
-### 12.3 Sound
+### 12.3 Subtitles (every long video)
+- Burned-in, in the flat style: white Nunito ExtraBold (bundled with the video, `lib/fonts.ts`) with a black outline,
+  centred at the bottom, at most two balanced rows, screen space (camera moves and shake never move them). No
+  fades, no word-by-word animation: a subtitle is on or off.
+- Text = the script's own words (spelling of names, acronyms and numbers as written), timing = the voice's word times.
+  Per scene, after words.py:
+  `python .claude/skills/cutout-cartoon-shorts/scripts/subtitles.py --slug <slug> --scene N -o video/src/<slug>/scenes/<name>/subtitles.json`
+  (`--all` does every scene when the scene folders are named after the script's scene names or start with "N-"). It
+  aligns script.md's `## Scene N` lines to vo/scene-N.words.json, cuts them into phrases (at most 64 characters, 5 s,
+  broken at sentence ends, commas and real pauses) and prints every cue plus the checks. A Short or a single-take video:
+  `subtitles.py --slug <slug>` → video/src/<slug>/subtitles.json.
+- Read its output: "voice and script differ" (the take does not say the line as written: fix the script line to match
+  the take, or regenerate the take), `check: script / voice` pairs (fine for numbers and names Whisper spells another
+  way, otherwise the same fix), "left out" (lines the voice never says), and reading speed over 20 characters a second
+  (lower `--max-chars` or slow the line). Re-run it whenever a take or a script line changes.
+- In each scene, last child, next to `<SoundCues>`: `import subs from './subtitles.json';` and
+  `<Subtitles format={format} cues={subs.cues} />` (video/src/lib/subtitles.tsx; on by default in long videos, off in
+  Shorts unless `on`). Its times are scene seconds, the same timeline as the scene's T table.
+- Check them on the contact sheets: every subtitle readable, never over a face or a payoff, two rows at most.
+
+### 12.4 Sound
 - Music bed: instrumental, calm, CC0 or CC-BY only (Openverse music / Jamendo through openverse-sfx:
   `sfx_search.py --query "calm instrumental" --min-ms 60000`), saved in sfx-library/music/, normalised to -20 LUFS
   (`sfx_normalize.py IN OUT --mode lufs --target -20`), played with `<MusicBed>` at -30 to -34 dB under the voice,
@@ -331,14 +358,14 @@ The same pipeline, with scenes. Everything above still applies inside a scene.
 - earshot on the full mix: voice clarity across the whole length, music never fighting the voice, no level jumps at
   scene joins.
 
-### 12.4 Checks, render, dashboard
+### 12.5 Checks, render, dashboard
 - Contact sheet per scene (`contact.mjs <CompId> --slug <slug> --times ... --name contact-scene-N`) + one overview
   strip (`--name contact`). Pop scan on the whole preview; every flag must be a planned cut or swap (pass the scene
   joins in `--expect`).
 - Render time scales with length (a 13 s Short took about 2 min on the GPU, so plan 20-30 min for 3 min). Render
   scenes separately while iterating (`render.mjs <CompId> --preview --frames A-B`); render the full video once.
-- Verify duration against the format rule: vertical UNDER 3:00, horizontal OVER 3:00 (register.py warns), plus size,
-  fps and audio length.
-- meta.json gets `format`, `aspect`, `scenes: {count, durations}` and, for horizontal videos, `files.thumbnail`: a
+- Verify duration against the format range, 1:00-3:30 (register.py warns), plus size (3840x2160), fps and audio
+  length, and that subtitles.json exists for every scene (register.py warns when it is missing).
+- meta.json gets `format`, `aspect`, `scenes: {count, durations}`, `subtitles: true` and `files.thumbnail`: a
   separate 1280x720 thumbnail from the best frame with a big readable subject
   (`npx remotion still src/index.ts <CompId> ../shorts/<slug>/qa/thumbnail.png --frame N --scale 0.6667`).

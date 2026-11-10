@@ -1,9 +1,12 @@
 ---
 description: Make one complete cut-out cartoon Short, from topic research to verified 4K MP4.
 argument-hint: [optional topic or "script:<path>"] [optional reference picture path]
+model: claude-opus-5-5
+effort: max
 ---
 
-Make a new YouTube Short in this repo. Input: $ARGUMENTS (may be empty).
+Make a new YouTube Short in this repo. Input: $ARGUMENTS (may be empty). A Short is 9:16 and 20-30 s; anything over
+one minute is a 16:9 video made with /new-video instead.
 
 1. Script: if no script was given, run the short-script skill (it picks a new topic using data/topics.json).
    If a topic was given, research and verify it with the same skill. Show me the idea, the final lines, the word

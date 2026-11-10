@@ -56,7 +56,7 @@ shorts-factory/
 ├─ .claude/
 │  ├─ commands/
 │  │  ├─ new-short.md            # Part 4: the one command that makes a Short
-│  │  └─ new-video.md            # Part 7: 2-3 minute videos (vertical or horizontal)
+│  │  └─ new-video.md            # Part 7: 1-3.5 minute videos (16:9 landscape, subtitles)
 │  └─ skills/
 │     ├─ short-script/SKILL.md   # Part 2: topic research + script
 │     ├─ cutout-cartoon-shorts/  # Part 3: pictures, voice, animation, sound, render
@@ -494,24 +494,27 @@ colour; works on a phone.
 
 ## Part 6 - (reserved for later: upload automation)
 
-## Part 7 - Longer videos (2-3 minutes)
+## Part 7 - Longer videos (1-3.5 minutes, 16:9)
 
-The same pipeline, with scenes. Three formats, set in meta.json as `"format"`:
+The same pipeline, with scenes. Rule: anything over one minute is landscape. Two formats, set in meta.json as
+`"format"`:
 
 | format | aspect / size | length | where it shows | use for |
 |---|---|---|---|---|
 | `short` | 9:16, 1080x1920 → 2160x3840 | 20-30 s | Shorts feed | one surprising fact |
-| `long-vertical` | 9:16, 1080x1920 → 2160x3840 | 60-180 s (must stay under 3:00) | Shorts feed | a story with 3-5 steps |
-| `long-horizontal` | 16:9, 1920x1080 → 3840x2160 | 3:05-3:30 (keep it over 3:00) | normal video | deeper explainers, channel watch time |
+| `long-horizontal` | 16:9, 1920x1080 → 3840x2160 | 1:00-3:30 (aim for 2:00-3:00) | normal video | stories and explainers with 3-6 steps, channel watch time |
 
-Why the limits: any vertical or square upload of 3 minutes or less is treated as a Short, so a horizontal video meant
-as a normal video should run past 3:00, and a vertical one meant for the Shorts feed must stay under it.
+Why: YouTube treats only square or vertical uploads of 3 minutes or less as Shorts, so a 16:9 video is a normal video
+at any length and needs no 3:00 rule. Long videos show burned-in subtitles (7.3). `long-vertical` (9:16, under 3:00)
+was the earlier choice for 1-3 minute videos; it is retired and stays in the code only so videos made with it still
+build and register.
 
 ### 7.1 Script (short-script skill, long mode)
-- Pass `--format long-vertical|long-horizontal`. Topic needs enough depth for 4-6 steps (a chain of causes, a
+- Pass `--format long-horizontal`. Topic needs enough depth for 4-6 steps (a chain of causes, a
   "what would happen if" with several stages, a history with a twist). Score ideas on depth as well as surprise.
-- ~150 spoken words per minute: 150-450 words. Split into 4-6 scenes of 20-40 s. Write files as
-  script.md with `## Scene 1 - <name>` headings.
+- ~150 spoken words per minute: 150-520 words (aim for 300-450). Split into 4-6 scenes of 20-40 s. Write files as
+  script.md with `Idea:`, `## Scene 1 - <name>` headings, the lines, and `Words: N` per scene. The lines are shown word
+  for word as subtitles, so write numbers and names the way they should read on screen.
 - Scene 1 opens on the premise like a Short. Every scene ends with a small open question that the next scene answers
   ("so why doesn't that work?"). The main payoff still lands at the end.
 - Same research rules: every fact in sources.md, cross-checked; more facts means more checking.
@@ -526,8 +529,12 @@ as a normal video should run past 3:00, and a vertical one meant for the Shorts 
 - Style drift check: every new picture goes on the sheet next to the library hero before use.
 
 ### 7.3 Build (cutout-cartoon-shorts skill, scene mode)
-- Composition size from the format. Lay out against safe areas: vertical keeps faces and payoffs in the middle 70 %;
-  horizontal uses thirds and wider sets (3:2 / 16:9 set pieces, more ground bands).
+- Composition size from the format (16:9). Lay out against safe areas: thirds and wider sets (3:2 / 16:9 set pieces,
+  more ground bands); faces and payoffs stay above the subtitle band at the bottom.
+- Subtitles: burned-in, flat style (white Nunito ExtraBold, black outline, at most two rows, bottom centre, screen
+  space). Text = the script's own words, timing = the voice's word times: subtitles.py aligns each scene's script lines
+  to its words.json and cuts them into phrases at sentence ends, commas and pauses; it reports lines where the voice
+  and the script differ. Each scene shows its subtitles.json with `<Subtitles>`.
 - One Remotion component per scene in video/src/<slug>/scenes/, played with `<Series>`. Each scene has its own
   timing.ts T table (times relative to the scene start) and its own camera plan.
 - Voice: generate one ElevenLabs take per scene (same voice, same settings) so one scene can be fixed alone. Word times
@@ -553,8 +560,8 @@ as a normal video should run past 3:00, and a vertical one meant for the Shorts 
   be a planned cut or swap.
 - Render time scales with length (the 13 s example took ~2 min on the GPU, so plan ~20-30 min for 3 min). Render
   scenes separately while iterating; render the full video once at the end.
-- Verify duration against the format rule (vertical under 3:00, horizontal over 3:00), size, fps, audio length.
-- meta.json gets `format`, `aspect`, `scenes` (count + durations) and, for horizontal videos, a `thumbnail` field:
+- Verify duration against the format range (1:00-3:30), size, fps, audio length, subtitles present.
+- meta.json gets `format`, `aspect`, `scenes` (count + durations), `subtitles: true` and a `thumbnail` field:
   make a separate 1280x720 thumbnail from the best frame with a big readable subject.
 - Dashboard: filter by format; show average view percentage and retention for long videos when the YouTube
   Analytics API is connected; compare views per minute of runtime across formats.
@@ -564,18 +571,21 @@ Path: `.claude/commands/new-video.md`
 
 ```markdown
 ---
-description: Make one 2-3 minute cut-out cartoon video (vertical Short or horizontal video), research to verified 4K MP4.
-argument-hint: [long-vertical|long-horizontal] [optional topic] [optional character name from library/characters]
+description: Make one 1-3.5 minute cut-out cartoon video in 16:9 landscape with subtitles, research to verified 4K MP4.
+argument-hint: [optional topic] [optional character name from library/characters]
+model: claude-opus-5-5
+effort: max
 ---
 
-Make a longer video in this repo. Input: $ARGUMENTS. Default format long-vertical; default character = the first in
-library/characters (if the library is empty, build it first, Part 7.2 of SHORTS_FACTORY_PLAN.md).
+Make a longer video in this repo. Input: $ARGUMENTS. Format is always long-horizontal (16:9, 1:00-3:30) with burned-in
+subtitles; default character = the first in library/characters (if the library is empty, build it first, Part 7.2 of
+SHORTS_FACTORY_PLAN.md).
 
-1. Script: short-script skill in long mode for the chosen format. Show me the idea, scene list, full lines, word count
-   and sources, then continue without waiting.
+1. Script: short-script skill in long mode (`--format long-horizontal`). Show me the idea, scene list, full lines,
+   word count and sources, then continue without waiting.
 2. Build: cutout-cartoon-shorts skill in scene mode (Part 7.3-7.5): per-scene voice and timing, library poses first,
    only new props/sets/special poses generated, scenes in <Series>, music bed + sound effects, per-scene checks,
-   full render at 4K for the format, verified (including the 3:00 rule).
+   subtitles per scene, full render at 4K 16:9, verified (length 1:00-3:30, subtitles present).
 3. Finish: update meta.json, run scripts/register.py, report the MP4 path, Remotion Studio link, file locations, and
    what you chose (format, character, scenes, voice, new pictures + approximate cost, music and sounds + licences).
 Don't ask questions; stop only if a key/tool is missing or the picture budget (default 60 new images) would be exceeded.

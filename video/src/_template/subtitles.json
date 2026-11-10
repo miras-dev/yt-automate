@@ -1,0 +1,12 @@
+{
+  "source": "hand-written demo (a real video gets this file from subtitles.py)",
+  "format": "long-horizontal",
+  "cues": [
+    {"start": 0.1, "end": 1.6, "text": "One small rock, one sleepy volcano."},
+    {"start": 1.6, "end": 2.6, "text": "Up it goes, in a high arc,"},
+    {"start": 2.6, "end": 3.1, "text": "right into the crater."},
+    {"start": 3.1, "end": 3.7, "text": "The volcano takes a deep breath"},
+    {"start": 3.7, "end": 4.9, "text": "and sends it straight back,"},
+    {"start": 4.9, "end": 5.9, "text": "with a smug little smoke ring."}
+  ]
+}

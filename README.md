@@ -44,8 +44,11 @@ In Claude Code, in this folder:
 |---|---|
 | `/new-short` | one 20-30 s vertical Short on a new topic |
 | `/new-short why don't we throw trash into volcanoes` | a Short on your topic |
-| `/new-video long-vertical` | a 1-3 minute vertical video (stays under 3:00) |
-| `/new-video long-horizontal` | a 16:9 video just over 3 minutes |
+| `/new-video` | a 1-3.5 minute 16:9 landscape video with subtitles on a new topic |
+| `/new-video what does a forward-deployed engineer do` | a 16:9 video on your topic |
+
+Anything over one minute is landscape (16:9) and shows burned-in subtitles; only the 20-30 s Shorts are vertical.
+Both commands run on Opus 5.5 at max effort (`.claude/settings.json` and the commands' frontmatter).
 
 The finished MP4 is in `out/`. Everything else about the video is in `shorts/<date>-<slug>/`.
 
@@ -84,8 +87,8 @@ npm run studio
 cd video && node scripts/render.mjs template-short --preview
 ```
 
-`template-short`, `template-long-vertical` and `template-long-horizontal` are a code-only test scene (no pictures, no
-sound) that proves the animation helpers work in every format. Without a GPU add `--gl=swangle`.
+`template-short` and `template-long-horizontal` are a code-only test scene (no pictures, no sound) that proves the
+animation helpers and the subtitles work in both formats. Without a GPU add `--gl=swangle`.
 
 ## External skills
 
