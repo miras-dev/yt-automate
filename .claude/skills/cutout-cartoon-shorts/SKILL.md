@@ -1,7 +1,7 @@
 ---
 name: cutout-cartoon-shorts
 description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
-  Gemini cut-out pictures keyed to transparency, an ElevenLabs natural voice, Remotion animation (2.5D multiplane
+  Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D multiplane
   camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
   with real-sfx and checked with earshot, 4K render. Two formats: short (9:16, 20-30 s) and long-horizontal (16:9,
   1:00-3:30, scenes, burned-in subtitles): anything over one minute is landscape. Use for any cartoon / cut-out Short
@@ -28,7 +28,9 @@ Where things are
 
 ## 0. Setup check
 Run `python scripts/check_setup.py`. It needs: GEMINI_API_KEY in .env; ElevenLabs connector (tools
-creative_list_voices / creative_generate_speech / creative_get_flow_run_status) or ELEVENLABS_API_KEY;
+creative_list_voices / creative_generate_speech / creative_get_flow_run_status) or ELEVENLABS_API_KEY (in a cloud
+session on the yt-automate environment the key is saved there instead: check_setup.py cannot see it and warns, so test
+it with `curl -sS -o /dev/null -w '%{http_code}' https://api.elevenlabs.io/v1/voices/BpZ8aKvwvbZf602CLu11`: 200 = fine);
 python libs `google-genai pillow numpy opencv-python faster-whisper`; ffmpeg (Remotion ships one in
 node_modules/@remotion/compositor-*); the real-sfx, openverse-sfx and earshot skills. Stop and report if any is missing.
 First video on this machine: point real-sfx at the sound folder once (its per-machine config is kept out of git in
@@ -47,11 +49,16 @@ openverse="$(pwd)/sfx-library" --index`. After downloading new sounds: `python .
 - Done = shorts/<slug>/beats.md: table of time / words / on screen / picture / sound.
 
 ## 2. Voice + word times
-- Voice: a normal natural voice, not deep, not a narrator. creative_list_voices (gender, languages ["en"], search
-  "natural conversational", use_cases ["social_media"]). Good picks: "Tim Riley - Natural. Conversational"
-  (1gZSmkYVRMS8w1i4plmP), "James - Natural", "Jerry B.", "Alex". Model eleven_v4, plain text, generations_count 1.
-- Poll creative_get_flow_run_status, download content_url to video/public/<slug>/vo/take1.mp3.
-  No connector: the ElevenLabs HTTP API with ELEVENLABS_API_KEY from .env (same voice id, same model, mp3 44.1 kHz).
+- Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
+  female), for every Short and every long video unless the user names another voice for that video. Natural delivery,
+  plain text (no tags that make it over-act). Model eleven_v4, generations_count 1, the same voice settings for every
+  take. If Zephrael is not on the account, stop and report; never swap in another voice silently.
+- With the ElevenLabs connector: creative_generate_speech with that voice id, poll creative_get_flow_run_status,
+  download content_url to video/public/<slug>/vo/take1.mp3.
+  No connector: the ElevenLabs HTTP API, `POST https://api.elevenlabs.io/v1/text-to-speech/BpZ8aKvwvbZf602CLu11?output_format=mp3_44100_128`
+  with `{"text": ..., "model_id": "eleven_v4"}`. On your own computer the key is ELEVENLABS_API_KEY from .env (header
+  `xi-api-key`). In a cloud session on the yt-automate environment the key is saved on the environment and added to
+  every request to api.elevenlabs.io automatically: send no key (or a placeholder where a tool insists on one).
 - Word times: `python .claude/skills/cutout-cartoon-shorts/scripts/words.py video/public/<slug>/vo/take1.mp3 --ts video/src/<slug>/timing.ts`
   (faster-whisper word_timestamps=True; `--ts` writes a starter timing.ts with the voice end and the pauses). Whisper edges are ±0.2 s, so
   words.py also finds real pauses by loudness (RMS every 20 ms, silence < -42 dB for ≥ 0.18 s) and snaps to them.

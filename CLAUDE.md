@@ -27,6 +27,8 @@ Formats (meta.json `format`): anything over one minute is landscape. `short` 9:1
 1:00-3:30 (aim 2:00-3:00) with burned-in subtitles. A 16:9 upload is never a Short, so no 3:00 rule. `long-vertical`
 is retired (kept only so older videos still build). Default picture budget: 40 for a Short, 60 for a long video.
 Model: .claude/settings.json pins Opus 5.5 (`model`) at max effort (`CLAUDE_CODE_EFFORT_LEVEL=max`) for this repo.
+Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11, the channel's own cloned voice) for every Short and video,
+model eleven_v4, unless a video's request names another voice.
 
 Run every command from the repository root unless it says `video/`. Scripts (all have `--help`), in
 .claude/skills/cutout-cartoon-shorts/scripts/:

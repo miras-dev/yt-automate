@@ -189,7 +189,7 @@ Path: `.claude/skills/cutout-cartoon-shorts/SKILL.md`
 ---
 name: cutout-cartoon-shorts
 description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
-  Gemini cut-out pictures keyed to transparency, an ElevenLabs natural voice, Remotion animation (2.5D multiplane
+  Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D multiplane
   camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
   with real-sfx and checked with earshot, 4K vertical render. Use for any cartoon / cut-out Short in this repo.
 ---
@@ -217,9 +217,10 @@ node_modules/@remotion/compositor-*); the real-sfx, openverse-sfx and earshot sk
 - Done = shorts/<slug>/beats.md: table of time / words / on screen / picture / sound.
 
 ## 2. Voice + word times
-- Voice: a normal natural voice, not deep, not a narrator. creative_list_voices (gender, languages ["en"], search
-  "natural conversational", use_cases ["social_media"]). Good picks: "Tim Riley - Natural. Conversational"
-  (1gZSmkYVRMS8w1i4plmP), "James - Natural", "Jerry B.", "Alex". Model eleven_v4, plain text, generations_count 1.
+- Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
+  female), for every Short and every long video unless the user names another voice for that video. Natural delivery,
+  plain text (no tags that make it over-act). Model eleven_v4, generations_count 1, the same voice settings for every
+  take. If Zephrael is not on the account, stop and report; never swap in another voice silently.
 - Poll creative_get_flow_run_status, download content_url to video/public/<slug>/vo/take1.mp3.
 - Word times: `python scripts/words.py <mp3>` (faster-whisper word_timestamps=True). Whisper edges are ±0.2 s, so
   words.py also finds real pauses by loudness (RMS every 20 ms, silence < -42 dB for ≥ 0.18 s) and snaps to them.
@@ -427,8 +428,8 @@ Make a new YouTube Short in this repo. Input: $ARGUMENTS (may be empty).
 2. Build: follow the cutout-cartoon-shorts skill section by section:
    - Format: 1080x1920, 60 fps; final 2160x3840 MP4 with voice and sound effects mixed. Length follows the voice
      (20-30 s).
-   - Voice: ElevenLabs, a normal natural English male voice (not deep, not a narrator), one take, eleven_v4, word
-     times, every beat timed to its word.
+   - Voice: ElevenLabs, Zephrael (voice id BpZ8aKvwvbZf602CLu11, the channel's own voice), natural delivery, one
+     take, eleven_v4, word times, every beat timed to its word.
    - Beat sheet: one beat per line on the exact word; frame 0 = premise like a thumbnail; one funny gag per beat;
      last frame loops to the first.
    - Pictures: Gemini, keyed to transparent cut-outs, 4K. Every pose/expression, every moving prop and every set piece
@@ -465,7 +466,7 @@ Goal: one page that shows every Short and how it did, read straight from the rep
   "date": "2026-11-10",
   "duration_s": 24.6,
   "word_count": 63,
-  "voice": {"name": "Tim Riley", "id": "1gZSmkYVRMS8w1i4plmP", "credits": 0},
+  "voice": {"name": "Zephrael", "id": "BpZ8aKvwvbZf602CLu11", "credits": 0},
   "images": {"model": "gemini-3-pro-image-preview", "count": 11, "est_usd": 2.64},
   "sounds": [{"cue": "splash", "source": "openverse", "license": "CC0"}],
   "files": {"render": "out/....mp4", "contact": "shorts/.../qa/contact.png"},

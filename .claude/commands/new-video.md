@@ -13,11 +13,11 @@ cutout-cartoon-shorts skill, Part 7.2 of SHORTS_FACTORY_PLAN.md).
 
 1. Script: short-script skill in long mode (`--format long-horizontal`). Show me the idea, scene list, full lines, word
    count and sources, then continue without waiting.
-2. Build: cutout-cartoon-shorts skill in scene mode (its section 12; Part 7.3-7.5 of the plan): per-scene voice and
-   timing, library poses first, only new props/sets/special poses generated (wide 3:2 / 16:9 set pieces), scenes in
-   <Series> laid out on thirds with faces and payoffs above the subtitle band, subtitles per scene from the script and
-   the word times (subtitles.py, section 12.3), music bed + sound effects, per-scene checks, full render at 4K 16:9,
-   verified (length 1:00-3:30, 3840x2160, subtitles present).
+2. Build: cutout-cartoon-shorts skill in scene mode (its section 12; Part 7.3-7.5 of the plan): per-scene voice
+   (Zephrael, the same settings for every scene) and timing, library poses first, only new props/sets/special poses
+   generated (wide 3:2 / 16:9 set pieces), scenes in <Series> laid out on thirds with faces and payoffs above the
+   subtitle band, subtitles per scene from the script and the word times (subtitles.py, section 12.3), music bed +
+   sound effects, per-scene checks, full render at 4K 16:9, verified (length 1:00-3:30, 3840x2160, subtitles present).
 3. Finish: update meta.json, run scripts/register.py, report the MP4 path, Remotion Studio link, file locations, and
    what you chose (character, scenes, voice, new pictures + approximate cost, music and sounds + licences, subtitle
    checks: share of script words found in the voice, any lines where voice and script differ, fastest reading speed).

@@ -14,8 +14,8 @@ one minute is a 16:9 video made with /new-video instead.
 2. Build: follow the cutout-cartoon-shorts skill section by section:
    - Format: 1080x1920, 60 fps; final 2160x3840 MP4 with voice and sound effects mixed. Length follows the voice
      (20-30 s).
-   - Voice: ElevenLabs, a normal natural English male voice (not deep, not a narrator), one take, eleven_v4, word
-     times, every beat timed to its word.
+   - Voice: ElevenLabs, Zephrael (voice id BpZ8aKvwvbZf602CLu11, the channel's own voice), natural delivery, one
+     take, eleven_v4, word times, every beat timed to its word.
    - Beat sheet: one beat per line on the exact word; frame 0 = premise like a thumbnail; one funny gag per beat;
      last frame loops to the first.
    - Pictures: Gemini, keyed to transparent cut-outs, 4K. Every pose/expression, every moving prop and every set piece
