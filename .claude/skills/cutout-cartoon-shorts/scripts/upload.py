@@ -6,6 +6,7 @@
   python upload.py --slug SLUG --now [--visibility ...]   # publish right away
   python upload.py --slug SLUG --status                   # fetch the YouTube URL and status into meta.json
   python upload.py --accounts                             # list connected accounts (the YouTube account's _id)
+  python upload.py --connect youtube                      # link that connects your YouTube channel to Zernio
 
 Why Zernio: uploads through your own Google API project stay locked as private until YouTube audits that project;
 Zernio's app is already approved, and it is free for up to 2 connected accounts. Key: ZERNIO_API_KEY in .env (from
@@ -33,6 +34,7 @@ import re
 import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -178,13 +180,38 @@ def main():
     ap.add_argument("--account", help="Zernio account _id (default: data/channel.json upload.zernio_account_id)")
     ap.add_argument("--status", action="store_true", help="fetch the post's state from Zernio into meta.json")
     ap.add_argument("--accounts", action="store_true", help="list the accounts connected in Zernio")
+    ap.add_argument("--connect", metavar="PLATFORM", nargs="?", const="youtube",
+                    help="print (and open) the sign-in link that connects a channel to Zernio (default youtube)")
     ap.add_argument("--force", action="store_true", help="upload again although youtube.post_id is set")
     a = ap.parse_args()
     load_env()
 
     if a.accounts:
-        for acc in api("GET", "/v1/accounts").get("accounts", []):
+        accounts = api("GET", "/v1/accounts").get("accounts") or []
+        for acc in accounts:
             print(f"{acc.get('_id')}  {acc.get('platform'):<14} {acc.get('displayName') or acc.get('username') or ''}")
+        if not accounts:
+            print("The key works, but no account is connected to Zernio yet. Connect your YouTube channel: "
+                  "upload.py --connect youtube (prints a sign-in link), or in Zernio's dashboard.")
+        return
+    if a.connect:
+        profiles = api("GET", "/v1/profiles").get("profiles") or []
+        if not profiles:
+            die("no Zernio profile yet: create one in Zernio's dashboard, then run this again", 2)
+        profile = profiles[0]
+        query = urllib.parse.urlencode({"profileId": profile.get("_id", "")})
+        res = api("GET", f"/v1/connect/{urllib.parse.quote(a.connect)}?{query}")
+        url = res.get("authUrl") or res.get("url")
+        if not url:
+            die(f"Zernio returned no sign-in link: {json.dumps(res)[:300]}")
+        print(f"Open this link, sign in with the Google account that owns the channel and pick the channel "
+              f"(Zernio profile \"{profile.get('name') or profile.get('_id')}\"):\n{url}\n"
+              f"Then check with: upload.py --accounts")
+        try:
+            import webbrowser
+            webbrowser.open(url)
+        except Exception:  # noqa: BLE001 - printing the link is enough
+            pass
         return
     if not a.slug:
         ap.error("--slug is required")
