@@ -2,7 +2,7 @@
 """Burned-in subtitles: the script's own words on the voice's word times, cut into short phrases.
 
   python subtitles.py --slug SLUG [--scene N | --all] [-o OUT.json] [--words WORDS.json] [--script SCRIPT.md]
-                      [--format long-horizontal|short] [--max-chars N] [--max-dur S] [--dry-run]
+                      [--format short|long-horizontal|long-midroll] [--max-chars N] [--max-dur S] [--dry-run]
   python subtitles.py WORDS.json --script SCRIPT.md [--scene N] -o OUT.json [--format ...]
 
 Why not use Whisper's text: it mishears names, acronyms and numbers ("FDE", "1,500", "CO2"). The script is what the
@@ -429,7 +429,7 @@ def main():
     ap.add_argument("--scene", type=int, help="scene number (the '## Scene N' heading)")
     ap.add_argument("--all", action="store_true", help="every scene of the script (with --slug)")
     ap.add_argument("-o", "--out")
-    ap.add_argument("--format", help="short | long-horizontal (default: meta.json, else long-horizontal)")
+    ap.add_argument("--format", help="short | long-horizontal | long-midroll (default: meta.json, else long-horizontal)")
     ap.add_argument("--max-chars", type=int, default=0, help="longest cue (default 64 for 16:9, 40 for 9:16)")
     ap.add_argument("--max-dur", type=float, default=5.0, help="longest cue in seconds")
     ap.add_argument("--dry-run", action="store_true")

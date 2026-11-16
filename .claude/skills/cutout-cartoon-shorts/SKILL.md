@@ -1,11 +1,12 @@
 ---
 name: cutout-cartoon-shorts
-description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
-  Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D multiplane
-  camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
-  with real-sfx and checked with earshot, 4K render. Two formats: short (9:16, 20-30 s) and long-horizontal (16:9,
-  1:00-3:30, scenes, burned-in subtitles): anything over one minute is landscape. Use for any cartoon / cut-out Short
-  or video in this repo.
+description: Turn a script into a 2D cut-out cartoon video starring the channel's own mascot (data/channel.json):
+  Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D
+  multiplane camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound
+  effects placed with real-sfx and checked with earshot, 4K render, thumbnail, and publishing through Zernio when asked.
+  Formats: short (9:16, 20-30 s), long-horizontal (16:9, 1:00-3:30) and long-midroll (16:9, 8:00-12:00, for mid-roll
+  ads); the long ones have scenes and burned-in subtitles: anything over one minute is landscape. Use for any cartoon /
+  cut-out Short or video in this repo.
 ---
 
 # Cut-out cartoon Shorts
@@ -20,11 +21,18 @@ Where things are
 - Remotion project: `video/`. Shared helpers: `video/src/lib/` (import from `'../lib'`). A working code-only example
   that uses most helpers: `video/src/_template/` (compositions `template-short` and `template-long-horizontal`, the
   second with subtitles). Copy it to `video/src/<slug>/` to start, then add the video to `video/src/registry.ts`.
-- Formats (`meta.json` "format"): `short` 1080x1920 (20-30 s) and `long-horizontal` 1920x1080 (every video over one
-  minute: 1:00-3:30); both 60 fps, rendered at scale 2. `long-vertical` (1080x1920) is retired: it stays in the code
+- Formats (`meta.json` "format"): `short` 1080x1920 (20-30 s); every video over one minute is 1920x1080, either
+  `long-horizontal` (1:00-3:30) or `long-midroll` (8:00-12:00: YouTube allows mid-roll ads only from 8:00, so it must
+  never end under 8:00); all 60 fps, rendered at scale 2. `long-vertical` (1080x1920) is retired: it stays in the code
   only so videos made before the landscape rule still build; never pick it for a new video. Sizes come from `FORMATS` in
   `video/src/lib/formats.ts`; never hard-code 540 / 960: use `FORMATS[format]`, `safeArea(format)` and
-  `subtitleBand(format)`. Sections 1-11 describe a Short; section 12 is scene mode for long videos.
+  `subtitleBand(format)`. Sections 1-11 describe a Short; section 12 is scene mode for long videos; section 13 is
+  the thumbnail and publishing.
+- The channel: data/channel.json holds the mascot (look, signature detail, library folder), the packaging style and
+  the upload settings. gen_image.py and thumbnail.py read it; never paste another look into a prompt. The mascot is
+  the same in every video, Shorts included: every character picture uses its library hero as a reference (3, 12.1).
+- shorts/<slug>/packaging.md (title, thumbnail idea, frame 0, promise) comes from the short-script skill before the
+  script: frame 0 shows what packaging.md promises.
 
 ## 0. Setup check
 Run `python scripts/check_setup.py`. It needs: GEMINI_API_KEY in .env; ElevenLabs connector (tools
@@ -33,6 +41,8 @@ session on the yt-automate environment the key is saved there instead: check_set
 it with `curl -sS -o /dev/null -w '%{http_code}' https://api.elevenlabs.io/v1/voices/BpZ8aKvwvbZf602CLu11`: 200 = fine);
 python libs `google-genai pillow numpy opencv-python faster-whisper`; ffmpeg (Remotion ships one in
 node_modules/@remotion/compositor-*); the real-sfx, openverse-sfx and earshot skills. Stop and report if any is missing.
+Optional: YOUTUBE_API_KEY (find_topics.py, youtube_stats.py; without it the topic research and the lookalike check
+use web search) and ZERNIO_API_KEY (upload.py, only for publishing).
 First video on this machine: point real-sfx at the sound folder once (its per-machine config is kept out of git in
 sfx-library/; `.claude/settings.json` sets REAL_SFX_CONFIG to it, in a plain shell export it yourself):
 `REAL_SFX_CONFIG=sfx-library/real-sfx-config.json python .claude/skills/real-sfx/scripts/setup.py init --library
@@ -55,6 +65,11 @@ openverse="$(pwd)/sfx-library" --index`. After downloading new sounds: `python .
 - Done = shorts/<slug>/beats.md: table of time / words / on screen / picture / sound.
 
 ## 2. Voice + word times
+- Credits first: `python .claude/skills/cutout-cartoon-shorts/scripts/voice_budget.py --slug <slug>` before the first
+  take (it counts the characters of every take, audio tags included, plus 15 % for retakes, and reads what is left
+  on the ElevenLabs plan this month). Exit code 3 = the plan would run out in the middle of the video: stop and
+  report (the Starter plan has 40,000 credits a month and cannot go over: about 90 Shorts, 12 videos of 2-3 minutes
+  or 4 long-midroll videos).
 - Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11), the channel's own cloned voice (English, young
   female), for every Short and every long video unless the user names another voice for that video. Natural delivery:
   send the script lines exactly as written, audio tags included (Eleven v4 performs them); never add a tag the script
@@ -87,10 +102,16 @@ in code.
 
 - Model: `gemini-3-pro-image-preview` (best) or `gemini-3.1-flash-image-preview` (cheaper). image_size "4K"
   (uppercase K). Aspect: full body 2:3, waist-up 4:5, props 1:1, wide set pieces 3:2.
-- References: pass 1-2 crops with `--ref` (one panel each, never a whole collage). No reference? Make ONE hero
-  picture of the main character, check it, then use it as the reference for every other pose.
+- References: pass 1-2 crops with `--ref` (one panel each, never a whole collage). The mascot: every character
+  picture passes the library hero (`--ref library/characters/<mascot.library>/hero.png`) or the library pose closest
+  to the one needed, so the mascot looks the same in every Short and video. No library yet (data/channel.json
+  mascot.chosen false or library/characters empty): build it first, section 12.1 (it is also the mascot design step).
+  Characters other than the mascot (a second figure the story needs) get their own hero picture first, in the same
+  flat style, and that hero is their reference.
 - Key colour: light blue #9BCFFD by default; if the subject contains blue, use green #3CD070.
-- Prompt = what is different in THIS picture + a fixed STYLE block (same words every time):
+- Prompt = what is different in THIS picture + a fixed STYLE block that gen_image.py adds itself. For characters it
+  is built from data/channel.json: `mascot.look` (and `mascot.signature`, "always visible and always the same") in
+  place of the built-in look shown below; for objects STYLE_OBJ. The built-in blocks (used until a mascot is chosen):
 
 ```
 STYLE_CHAR = "Flat 2D cartoon in exactly the same drawing style as the reference images: the same simple white
@@ -122,8 +143,10 @@ no checkerboard."
 - Two poses that must line up (same pose with/without the object): make the second as an EDIT of the first
   (`--ref raw/first.png`, prompt "the same picture with the bag removed, the hand now empty and open, everything else
   identical, same background colour"), then align them (section 4).
-- Check: `python .claude/skills/cutout-cartoon-shorts/scripts/sheet.py --slug <slug>` → qa/sheet.png (all cut-outs on magenta and on dark grey). Open the PNG. Look for fringe, holes,
-  half-transparent fills, wrong hands, style drift. Regenerate failures.
+- Check: `python .claude/skills/cutout-cartoon-shorts/scripts/sheet.py --slug <slug> --hero library/characters/<name>/hero.png`
+  → qa/sheet.png (all cut-outs on magenta and on dark grey, next to the mascot hero). Open the PNG. Look for fringe,
+  holes, half-transparent fills, wrong hands, a mascot that drifts from the hero (signature detail missing or changed).
+  Regenerate failures.
 - gen_image.py logs every prompt in prompts.md and the image count + model + cost estimate in meta.json (Pro 4K ≈
   $0.24/image, Flash ≈ $0.15; check current Gemini pricing).
 - Done = every picture passes the sheet check.
@@ -297,8 +320,12 @@ All render commands run in `video/`. On a machine without a GPU add `--gl=swangl
   (popscan reports "frozen at the end").
 - Update meta.json (status "rendered", duration, image count, model, voice id, ElevenLabs credits, sounds used,
   render path), run register.py.
+- Thumbnail of a Short: frame 0 is its thumbnail (that is why frame 0 is the premise). Optional custom one:
+  `thumbnail.py --slug <slug> --still shorts/<slug>/qa/frame0.png --no-text` (free). Then section 13.
 
 ## 11. Rules that keep it hand-made
+- The mascot is the channel's (data/channel.json): the same look and signature detail in every video, never another
+  channel's character or look.
 - Frame 0 = premise, centred, big; the first line names what you see.
 - Centred and balanced on holds; nothing important cut by the edge.
 - No motion blur, no cross-fades between drawings, no random jitter; every move eased.
@@ -307,11 +334,27 @@ All render commands run in `video/`. On a machine without a GPU add `--gl=swangl
 - Real facts only in the voiceover.
 
 ## 12. Scene mode (long videos: 16:9 with subtitles)
-The same pipeline, with scenes. Everything above still applies inside a scene. Every video over one minute is
-`long-horizontal`: 16:9, 1920x1080 rendered at 3840x2160, 1:00-3:30, burned-in subtitles. YouTube treats only square
-or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video at any length; no 3:00 rule applies.
+The same pipeline, with scenes. Everything above still applies inside a scene. Every video over one minute is 16:9,
+1920x1080 rendered at 3840x2160, with burned-in subtitles: `long-horizontal` (1:00-3:30, 4-6 scenes, 60 new pictures)
+or `long-midroll` (8:00-12:00, 10-16 scenes, 100 new pictures; it exists for mid-roll ads, which YouTube allows only
+from 8:00, so the render must never come out under 8:00). YouTube treats only square or vertical uploads of 3:00 or
+less as Shorts, so a 16:9 video is a normal video at any length; no 3:00 rule applies.
 
-### 12.1 Character library (do this once, reuse forever)
+### 12.1 Mascot and character library (do this once, reuse forever)
+- Design the mascot first when data/channel.json says `mascot.chosen: false`. A channel that looks like another
+  channel gets compared with it and buried; a distinct mascot pulls its own audience. So:
+  1. Look at the niche: `find_topics.py --query "<2-3 searches in our categories>" --for short --sheet
+     work/niche-thumbs.png` (without YOUTUBE_API_KEY: look at the top results of those searches on the web). Note the
+     looks the big channels use.
+  2. Write 3 mascot concepts in our flat cut-out style (thick even black outlines, flat colours), each with ONE
+     signature detail that none of those channels has and that reads at 168 px (a colour, a prop, a silhouette:
+     e.g. "a bright orange hard hat with a small headlamp"). Never a version of an existing character, never a famous
+     franchise's look.
+  3. Pick the one that is most distinct at thumbnail size, simplest to draw the same way every time, and fits the
+     channel's promise and topics. Write it into data/channel.json: `mascot.look` (the full look, written to follow
+     "a" / "the same"), `mascot.signature`, `mascot.name`, `mascot.library` (the folder name), `angle` if empty (one
+     sentence: what makes this channel different), and `chosen: true`. Report the choice and the other two concepts.
+     The user can change the file and rebuild the library.
 - Make the hero character, check it, then the standard pose set, each with `--ref <hero>`: idle, talk_a, talk_b (two
   mouth shapes), point_left, point_right, shrug, thinking, scared, happy, surprised, walk_a, walk_b, holding (empty
   hand open to receive a prop), closeup_talk, closeup_react. Generate into a work folder with
@@ -324,12 +367,15 @@ or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video
   prompt used). Fill in the `prompt` of each pose in poses.json. Commit the folder.
 - A new video reuses library poses (`prep.py --slug <slug> --use-library <name>`) and only generates the props, set
   pieces and special poses it needs, each special pose as an EDIT of a library pose (`--ref` that pose) so it matches.
-  That keeps a 3-minute video to roughly 2-3x the picture cost of a Short (budget: 60 new images).
+  That keeps a 3-minute video to roughly 2-3x the picture cost of a Short (budget: 60 new images) and a long-midroll
+  video to about 100 new images (about $24 at 4K): reuse set pieces across scenes, mirror them, recolour the sky.
+  Shorts use the library too: library poses where they fit, special poses as edits of them.
 - Style drift check: every new picture goes on the sheet next to the library hero before use:
   `python .claude/skills/cutout-cartoon-shorts/scripts/sheet.py --slug <slug> --hero library/characters/<name>/hero.png`.
 
 ### 12.2 Build
-- Composition size from the format (registry.ts `format: 'long-horizontal'`). Lay out against `safeArea(format)`: thirds
+- Composition size from the format (registry.ts `format: 'long-horizontal'` or `'long-midroll'`, the same 1920x1080).
+  Lay out against `safeArea(format)`: thirds
   and wider sets (3:2 / 16:9 set pieces, more ground bands); a character on one third, the thing it talks about on the
   other. The bottom of the frame belongs to the subtitles: faces, labels and payoffs stay above
   `subtitleBand(format).top` (about 82 % of the height); feet, ground and props may sit behind the subtitles.
@@ -387,10 +433,42 @@ or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a normal video
 - Contact sheet per scene (`contact.mjs <CompId> --slug <slug> --times ... --name contact-scene-N`) + one overview
   strip (`--name contact`). Pop scan on the whole preview; every flag must be a planned cut or swap (pass the scene
   joins in `--expect`).
-- Render time scales with length (a 13 s Short took about 2 min on the GPU, so plan 20-30 min for 3 min). Render
-  scenes separately while iterating (`render.mjs <CompId> --preview --frames A-B`); render the full video once.
-- Verify duration against the format range, 1:00-3:30 (register.py warns), plus size (3840x2160), fps and audio
-  length, and that subtitles.json exists for every scene (register.py warns when it is missing).
-- meta.json gets `format`, `aspect`, `scenes: {count, durations}`, `subtitles: true` and `files.thumbnail`: a
-  separate 1280x720 thumbnail from the best frame with a big readable subject
-  (`npx remotion still src/index.ts <CompId> ../shorts/<slug>/qa/thumbnail.png --frame N --scale 0.6667`).
+- Render time scales with length (a 13 s Short took about 2 min on the GPU, so plan 20-30 min for 3 min and 1.5-2
+  hours for a long-midroll video). Render scenes separately while iterating (`render.mjs <CompId> --preview --frames
+  A-B`); render the full video once.
+- Verify duration against the format range, 1:00-3:30 or 8:00-12:00 (register.py warns, and warns when a
+  long-midroll render is under 8:00), plus size (3840x2160), fps and audio length, and that subtitles.json exists for
+  every scene (register.py warns when it is missing).
+- meta.json gets `format`, `aspect`, `scenes: {count, durations}` (durations in seconds, joins included: upload.py
+  turns them into ad break suggestions) and `subtitles: true`.
+- Thumbnail (13.1): long videos are found by their thumbnail, so it is made from packaging.md's idea, not grabbed.
+
+## 13. Thumbnail and publishing (Part 6)
+
+### 13.1 Thumbnail
+- Long videos: `python .claude/skills/cutout-cartoon-shorts/scripts/thumbnail.py --slug <slug> [--ref
+  shorts/<slug>/images/cut/<prop>.png] [--side left|right]` makes 3 variants with Gemini from packaging.md's
+  "Thumbnail:" idea and the mascot hero (2K, about $0.13 each, counted in image_budget), sets packaging.md's
+  "Thumbnail text:" (0-4 words) in Nunito ExtraBold, and writes qa/thumbnail-preview.png: every variant large and at
+  246 px and 168 px wide (a phone's feed and its search / suggestion lists). Open it. Pick the variant whose subject
+  and words still read at 168 px (`thumbnail.py --slug <slug> --pick N`; variant 1 is used until then). Nothing
+  important in the bottom-right corner (YouTube puts the length there).
+- Free alternative: a strong frame of the video, `thumbnail.py --slug <slug> --still <frame.png>` (render it with
+  `npx remotion still src/index.ts <CompId> ../work/<slug>-still.png --frame N`).
+- The result is shorts/<slug>/qa/thumbnail.jpg (under 2 MB) and meta.json files.thumbnail; the dashboard shows it.
+
+### 13.2 Publish (only when the user asks)
+- At the end of every build: `python .claude/skills/cutout-cartoon-shorts/scripts/upload.py --slug <slug> --dry-run`.
+  It uploads nothing: it checks the render, the title (packaging.md), the thumbnail and the settings, writes the
+  YouTube description to shorts/<slug>/description.txt (packaging.md's description, the sources, the sound credits)
+  and, for long-midroll, ad break suggestions at scene joins (meta.json ad_breaks). Report its "blocked" lines.
+- Publishing is outward-facing and hard to undo: run it only when the user asks, with the time they give:
+  `upload.py --slug <slug> --when "YYYY-MM-DD HH:MM" [--tz Area/City]` or `--now`. It needs ZERNIO_API_KEY and,
+  in data/channel.json, `upload.made_for_kids` and `upload.contains_synthetic_media` set to true or false by a
+  person (it refuses while either is null; never set them yourself). Zernio uploads through its approved Google app,
+  so the video is not locked as private the way uploads from an unaudited API project are.
+- Afterwards: `upload.py --slug <slug> --status` fills in the YouTube URL and status; long-midroll ad breaks can be
+  set by hand in YouTube Studio (Editor > Ad breaks) if YouTube's automatic ones fall badly. Then
+  `python scripts/youtube_stats.py` once a day (views, likes, comments, snapshots; the dashboard's Partner Program
+  progress comes from them). Copy the average percentage viewed from YouTube Studio into stats.avg_view_pct now and
+  then: the watch-hours estimate needs it.

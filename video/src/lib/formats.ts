@@ -2,14 +2,17 @@ export const FPS = 60;
 
 /**
  * The formats (Part 7). Compositions are authored at width x height and rendered at `scale` (4K).
- * Rule: anything over one minute is landscape. A Short is 9:16 and 20-30 s; every longer video is `long-horizontal`
- * (16:9, 1:00-3:30). YouTube treats only square or vertical uploads of 3:00 or less as Shorts, so a 16:9 video is a
- * normal video at any length. `long-vertical` is retired: it stays only so videos made before this rule still build.
- * `subtitles` = burned-in subtitles on by default (lib/subtitles.tsx).
+ * Rule: anything over one minute is landscape. A Short is 9:16 and 20-30 s; a longer video is 16:9: `long-horizontal`
+ * (1:00-3:30, an explainer) or `long-midroll` (8:00-12:00: YouTube places mid-roll ads only in videos of 8:00 or
+ * more, so it must never end under 8:00). YouTube treats only square or vertical uploads of 3:00 or less as Shorts,
+ * so a 16:9 video is a normal video at any length. `long-vertical` is retired: it stays only so videos made before
+ * this rule still build. `subtitles` = burned-in subtitles on by default (lib/subtitles.tsx). Keep in step with
+ * FORMATS in .claude/skills/cutout-cartoon-shorts/scripts/common.py.
  */
 export const FORMATS = {
   short: {width: 1080, height: 1920, scale: 2, aspect: '9:16', minSeconds: 20, maxSeconds: 30, subtitles: false},
   'long-horizontal': {width: 1920, height: 1080, scale: 2, aspect: '16:9', minSeconds: 60, maxSeconds: 210, subtitles: true},
+  'long-midroll': {width: 1920, height: 1080, scale: 2, aspect: '16:9', minSeconds: 480, maxSeconds: 720, subtitles: true},
   'long-vertical': {width: 1080, height: 1920, scale: 2, aspect: '9:16', minSeconds: 60, maxSeconds: 179.5, subtitles: true},
 } as const;
 

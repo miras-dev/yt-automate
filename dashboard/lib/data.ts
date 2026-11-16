@@ -23,15 +23,30 @@ export type Short = {
   sounds: {cue?: string; source?: string; license?: string; title?: string}[];
   scenes?: {count?: number; durations?: number[]};
   files: Record<string, string>;
-  youtube: {url: string; video_id: string; published: string};
+  youtube: {url: string; video_id: string; published: string; status?: string; post_id?: string; scheduled_for?: string};
+  ad_breaks?: number[];
   stats: {views: number; likes: number; comments: number; avg_view_pct: number | null; updated: string};
   stats_history: Snapshot[];
   has: Record<string, boolean>;
 };
 
+type Targets = {subscribers: number; shorts_views_90d: number; watch_hours_365d: number};
+
+/** Partner Program progress, computed by register.py from the stats youtube_stats.py keeps in every meta.json. */
+export type PartnerProgress = {
+  subscribers: number | null;
+  channel_updated: string;
+  shorts_views_90d: number;
+  shorts_views_exact: boolean;
+  watch_hours_365d: number;
+  watch_hours_exact: boolean;
+  long_videos_without_avg_view_pct: number;
+  targets: {now: Targets; from_2027_02_01: Targets};
+};
+
 export type Index = {
   generated: string;
-  totals: {count: number; published: number; spend_usd: number; views: number; avg_views: number; best_category: string | null};
+  totals: {count: number; published: number; spend_usd: number; views: number; avg_views: number; best_category: string | null; ypp?: PartnerProgress};
   shorts: Short[];
 };
 
