@@ -36,7 +36,7 @@ def env_keys() -> dict[str, bool]:
             m = re.match(r"\s*([A-Z0-9_]+)\s*=\s*(.*)", line)
             if m and not line.lstrip().startswith("#"):
                 found[m.group(1)] = bool(m.group(2).strip().strip('"').strip("'"))
-    for k in ("GEMINI_API_KEY", "ELEVENLABS_API_KEY", "YOUTUBE_API_KEY"):
+    for k in ("GEMINI_API_KEY", "ELEVENLABS_API_KEY", "YOUTUBE_API_KEY", "ZERNIO_API_KEY"):
         found[k] = found.get(k, False) or bool(os.environ.get(k))
     return found
 
@@ -59,7 +59,10 @@ def main():
     add("keys", "ElevenLabs", OK if keys["ELEVENLABS_API_KEY"] else WARN,
         "ELEVENLABS_API_KEY set" if keys["ELEVENLABS_API_KEY"] else
         "no ELEVENLABS_API_KEY: fine if the ElevenLabs connector is connected in Claude Code (a script cannot see connectors)")
-    add("keys", "YOUTUBE_API_KEY", OK if keys["YOUTUBE_API_KEY"] else WARN, "" if keys["YOUTUBE_API_KEY"] else "optional: only for refreshing view counts later")
+    add("keys", "YOUTUBE_API_KEY", OK if keys["YOUTUBE_API_KEY"] else WARN, "" if keys["YOUTUBE_API_KEY"] else
+        "optional: find_topics.py (outlier topics, title lookalike check) and youtube_stats.py; without it web search is used")
+    add("keys", "ZERNIO_API_KEY", OK if keys["ZERNIO_API_KEY"] else WARN, "" if keys["ZERNIO_API_KEY"] else
+        "optional: only for publishing with upload.py (zernio.com > Settings > API keys)")
 
     # python -------------------------------------------------------------------------------------------------------
     add("python", "Python 3.10+", OK if sys.version_info >= (3, 10) else MISSING, sys.version.split()[0])
@@ -125,7 +128,24 @@ def main():
         ok = (ROOT / rel).exists()
         add("repo", rel, OK if ok else MISSING, "" if ok else "missing file")
     chars = [p.parent.name for p in (ROOT / "library" / "characters").glob("*/poses.json")]
-    add("repo", "character library", OK if chars else WARN, ", ".join(chars) if chars else "empty: /new-video builds it first (Part 7.2)")
+    add("repo", "character library", OK if chars else WARN, ", ".join(chars) if chars else
+        "empty: the first /new-short or /new-video designs the mascot and builds it (skill section 12.1)")
+
+    # channel ------------------------------------------------------------------------------------------------------
+    try:
+        channel = json.loads((ROOT / "data" / "channel.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        channel = None
+    add("channel", "data/channel.json", OK if channel else MISSING, "" if channel else "missing or not valid JSON")
+    if channel:
+        mascot = channel.get("mascot") or {}
+        add("channel", "mascot", OK if mascot.get("chosen") else WARN,
+            mascot.get("name") or mascot.get("library") or "" if mascot.get("chosen") else
+            "not chosen yet: the first video designs one (skill section 12.1); change it in data/channel.json")
+        up = channel.get("upload") or {}
+        unset = [k for k in ("made_for_kids", "contains_synthetic_media") if not isinstance(up.get(k), bool)]
+        add("channel", "upload settings", OK if not unset else WARN,
+            "" if not unset else f"set {', '.join(unset)} to true or false before the first upload (your decision)")
 
     missing = [r for r in rows if r[2] == MISSING]
     if as_json:

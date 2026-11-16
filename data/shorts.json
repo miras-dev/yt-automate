@@ -1,12 +1,33 @@
 {
-  "generated": "2026-11-09T19:46:26Z",
+  "generated": "2026-11-16T18:39:17Z",
   "totals": {
     "count": 0,
     "published": 0,
     "spend_usd": 0,
     "views": 0,
     "avg_views": 0,
-    "best_category": null
+    "best_category": null,
+    "ypp": {
+      "subscribers": null,
+      "channel_updated": "",
+      "shorts_views_90d": 0,
+      "shorts_views_exact": true,
+      "watch_hours_365d": 0.0,
+      "watch_hours_exact": true,
+      "long_videos_without_avg_view_pct": 0,
+      "targets": {
+        "now": {
+          "subscribers": 1000,
+          "shorts_views_90d": 10000000,
+          "watch_hours_365d": 4000
+        },
+        "from_2027_02_01": {
+          "subscribers": 1000,
+          "shorts_views_90d": 20000000,
+          "watch_hours_365d": 8000
+        }
+      }
+    }
   },
   "shorts": []
 }

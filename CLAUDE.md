@@ -8,24 +8,36 @@
 - One timing source: the T table in video/src/<slug>/timing.ts. Sound cues, beats and camera all read from it.
 - Sounds: only CC0, CC-BY or public-domain from Openverse; no NC, no ND. Every CC-BY sound goes into credits.txt.
 - Large files (raw pictures, renders, sfx-library) are gitignored. Commit prompts, scripts, code, meta and qa sheets.
+- Package first: the title and the thumbnail (a Short: frame 0) are chosen before the script, in
+  shorts/<slug>/packaging.md, and the script delivers them (short-script skill, section 1).
+- Originality: the mascot, art style, titles and thumbnails are the channel's own (data/channel.json). Never copy or
+  closely imitate another channel's character, look, script, title or thumbnail, and never use characters, logos or
+  art owned by others (Family Guy, Disney, anime, games ...), not even "a version of" one. Other videos are only a
+  topic signal (find_topics.py: titles and view counts), never a source of scripts or transcripts.
+- Publishing is outward-facing: every build ends with `upload.py --slug <slug> --dry-run`; a real upload only when
+  the user asks for it. Never set data/channel.json upload.made_for_kids or upload.contains_synthetic_media yourself.
 - Don't ask questions mid-run. Choose sensible defaults and report them at the end. Stop only if a key, login or
-  tool is missing, or if picture spend would pass the budget in meta.json (default 40 images).
+  tool is missing, if picture spend would pass the budget in meta.json (default 40 images for a Short, 60 / 100 for a
+  long video), or if voice_budget.py says the ElevenLabs credits would run out (exit code 3).
 
 ## Where things are
 
 | What | Where |
 |---|---|
-| Make a Short (9:16) / a 1-3.5 minute video (16:9) | `/new-short`, `/new-video` (.claude/commands/; both run on Opus 5.5 at max effort) |
-| Topic + script rules | .claude/skills/short-script/SKILL.md |
-| Pictures, voice, animation, sound, render | .claude/skills/cutout-cartoon-shorts/SKILL.md (+ scripts/) |
-| Full design document | SHORTS_FACTORY_PLAN.md |
+| Make a Short (9:16) / a 16:9 video | `/new-short`, `/new-video` (`/new-video 8min ...` = the 8-12 minute mid-roll format; .claude/commands/; both run on Opus 5.5 at max effort) |
+| Channel identity: mascot, packaging style, upload settings | data/channel.json |
+| Topic, packaging (title + thumbnail idea), script rules | .claude/skills/short-script/SKILL.md |
+| Pictures, voice, animation, sound, render, thumbnail, publishing | .claude/skills/cutout-cartoon-shorts/SKILL.md (+ scripts/; publishing is section 13) |
+| Full design document (Part 9: decisions and why) | SHORTS_FACTORY_PLAN.md |
 | Remotion project | video/ (helpers in video/src/lib/, example in video/src/_template/, list of videos in video/src/registry.ts) |
-| Dashboard | dashboard/ (`npm run dashboard`, reads data/shorts.json and shorts/*) |
+| Dashboard | dashboard/ (`npm run dashboard`, reads data/shorts.json and shorts/*; Partner Program progress) |
 | Setup check | `python scripts/check_setup.py` |
 
 Formats (meta.json `format`): anything over one minute is landscape. `short` 9:16 20-30 s · `long-horizontal` 16:9
-1:00-3:30 (aim 2:00-3:00) with burned-in subtitles. A 16:9 upload is never a Short, so no 3:00 rule. `long-vertical`
-is retired (kept only so older videos still build). Default picture budget: 40 for a Short, 60 for a long video.
+1:00-3:30 (aim 2:00-3:00) · `long-midroll` 16:9 8:00-12:00 (aim 8:20-10:00; mid-roll ads need 8:00, so it never ends
+under 8:00). Both 16:9 formats have burned-in subtitles. A 16:9 upload is never a Short, so no 3:00 rule.
+`long-vertical` is retired (kept only so older videos still build). Default picture budget: 40 for a Short, 60 for
+long-horizontal, 100 for long-midroll.
 Model: .claude/settings.json pins Opus 5.5 (`model`) at max effort (`CLAUDE_CODE_EFFORT_LEVEL=max`) for this repo.
 Voice: Zephrael (ElevenLabs voice id BpZ8aKvwvbZf602CLu11, the channel's own cloned voice) for every Short and video,
 model eleven_v4, unless a video's request names another voice. ElevenLabs audio tags in the script ([gasping],
@@ -46,7 +58,12 @@ Run every command from the repository root unless it says `video/`. Scripts (all
 | subtitles.py --slug SLUG [--scene N -o .../subtitles.json \| --all] | script words on the voice's word times → subtitles.json (long videos); when each audio tag happened |
 | export_cues.py --slug SLUG [--apply RESOLVED.json] | T table + cues.json ⇄ real-sfx |
 | popscan.py PREVIEW.mp4 --expect ... | finds picture jumps that are not planned swaps or cuts |
-| register.py (also scripts/register.py) | rebuilds data/shorts.json |
+| register.py (also scripts/register.py) | rebuilds data/shorts.json (with Partner Program progress) |
+| find_topics.py --query Q [--for FORMAT] / --similar "TITLE" | outlier videos as a topic signal (YouTube Data API); lookalike check of a title, exit 4 = change it |
+| voice_budget.py --slug SLUG [--scene N] | ElevenLabs credits the voice needs vs what is left this month; exit 3 = stop |
+| thumbnail.py --slug SLUG [--still FRAME] [--pick N] | YouTube thumbnail from packaging.md + the mascot (Gemini) or from a frame; preview at phone sizes |
+| upload.py --slug SLUG --dry-run / --when "..." / --now / --status | publish through Zernio (only when asked); description.txt, ad breaks |
+| youtube_stats.py (also scripts/youtube_stats.py) | views / likes / comments of published videos into meta.json, daily snapshots |
 
 In video/: `node scripts/contact.mjs <CompId> --slug SLUG --times all-T` (contact sheet + frame 0),
 `node scripts/render.mjs <CompId> [--preview]` (render + verify; `--gl=swangle` without a GPU),

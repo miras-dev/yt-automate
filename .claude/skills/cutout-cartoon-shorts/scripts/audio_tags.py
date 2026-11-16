@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check the ElevenLabs audio tags in script.md before the voice is made (and the tag list subtitles.py uses).
 
-  python audio_tags.py --slug SLUG [--script SCRIPT.md] [--format short|long-horizontal]
+  python audio_tags.py --slug SLUG [--script SCRIPT.md] [--format short|long-horizontal|long-midroll]
 
 Audio tags are lower-case words in square brackets that Eleven v4 performs instead of reading: [excited],
 [whispering], [pause], [gasping] ... They stay in script.md exactly where they are performed. subtitles.py leaves them
@@ -15,7 +15,8 @@ Rules (short-script skill, section 3):
            of a long video; the same tag twice in a row
   warning  a tag that is not in the lists below (tags are open-ended, so it may still work: check the spelling)
 Prints every tag with its line, the spoken word count (tags left out) and an estimated length (150 words a minute,
-plus about half a second per vocalization or pause). Exit code 1 when there is an error.
+plus about half a second per vocalization or pause). For long-midroll it also warns when the estimate is under the
+format's aim (8:20): a take that comes out under 8:00 gets no mid-roll ads. Exit code 1 when there is an error.
 """
 from __future__ import annotations
 
@@ -25,7 +26,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import FORMATS, ROOT, die, read_meta
+from common import FORMATS, MIDROLL_MIN_S, ROOT, WORDS_PER_MIN, die, read_meta
 
 TAG_RE = re.compile(r"\[([^\[\]]+)\]")
 
@@ -115,7 +116,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--slug")
     ap.add_argument("--script", help="script.md (default shorts/<slug>/script.md)")
-    ap.add_argument("--format", help="short | long-horizontal (default: meta.json, else from the script)")
+    ap.add_argument("--format", help="short | long-horizontal | long-midroll (default: meta.json, else from the script)")
     a = ap.parse_args()
     if not a.slug and not a.script:
         ap.error("pass --slug SLUG or --script SCRIPT.md")
@@ -131,13 +132,17 @@ def main():
         die(f"unknown format {fmt!r} (use {', '.join(FORMATS)})")
 
     rows, errors, warnings, words, sounding = lint(sections, fmt)
-    est = words / 150 * 60 + 0.5 * sounding
-    lo, hi = FORMATS[fmt]["min_s"], FORMATS[fmt]["max_s"]
+    est = words / WORDS_PER_MIN * 60 + 0.5 * sounding
+    spec = FORMATS[fmt]
+    lo, hi = spec["min_s"], spec["max_s"]
     print(f"{script.name} ({fmt}): {words} spoken words, {len(rows)} tags, about {est:.0f} s")
     for where, i, t, kind, line in rows:
         print(f"  {where} line {i:<2} [{t}] {kind}: {spoken(line)[:70]}")
     if not lo - 2 <= est <= hi + 2:
         warnings.append(f"about {est:.0f} s is outside {lo}-{hi} s for {fmt}")
+    elif spec.get("midroll") and est < spec["aim_s"][0]:
+        warnings.append(f"about {est:.0f} s is under {spec['aim_s'][0]} s: the take may end under "
+                        f"{MIDROLL_MIN_S // 60}:00 and then gets no mid-roll ads; add a beat or a scene")
     for e in errors:
         print(f"  error: {e}")
     for w in warnings:

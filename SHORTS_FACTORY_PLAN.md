@@ -15,9 +15,18 @@ No Higgsfield. The tools are:
 | Listening / checking the mix | `earshot` (Leonxlnx/earshot): MCP server + skills |
 | Animation + render | Remotion 4 (React/TypeScript) |
 | Dashboard | Next.js app in the same repo |
+| Topic signal, title lookalike check, view counts | YouTube Data API v3 (`YOUTUBE_API_KEY`, free): find_topics.py, youtube_stats.py |
+| Thumbnails | Gemini again (thumbnail.py), text in Nunito ExtraBold |
+| Publishing | Zernio API (`ZERNIO_API_KEY`, free for up to 2 accounts): upload.py, only when asked (Part 6) |
+
+Added in November 2026 (Part 9): the title and thumbnail come first, the channel has its own mascot
+(data/channel.json), an 8-12 minute `long-midroll` format, a voice credit check, thumbnails and publishing.
 
 How to use this file: create an empty repo, open it in Claude Code, paste **Part 0** as your first message. Claude Code
 builds the whole repo from Parts 1–5. After that, every new video is just `/new-short`.
+
+The repository has moved on since the skill and command texts in Parts 2-4 and 7 were written: the files in
+`.claude/` and CLAUDE.md are the current versions, and Part 9 says what changed and why.
 
 ---
 
@@ -194,7 +203,7 @@ Path: `.claude/skills/cutout-cartoon-shorts/SKILL.md`
 ````markdown
 ---
 name: cutout-cartoon-shorts
-description: Turn a short script into a vertical 2D cut-out cartoon Short (style of "Can we throw trash in a volcano?"):
+description: Turn a short script into a vertical 2D cut-out cartoon Short starring the channel's own mascot (data/channel.json):
   Gemini cut-out pictures keyed to transparency, the channel's ElevenLabs voice (Zephrael), Remotion animation (2.5D multiplane
   camera, squash-swap poses, real physics, code-drawn effects, faces on objects), real Openverse sound effects placed
   with real-sfx and checked with earshot, 4K vertical render. Use for any cartoon / cut-out Short in this repo.
@@ -492,17 +501,37 @@ Goal: one page that shows every Short and how it did, read straight from the rep
   description), the MP4 player if the file exists locally, and the stats history.
 - `/topics` - every topic used, by category, so you can see the rotation.
 
-**Outcomes:** start by pasting the YouTube URL into meta.json after upload. Later, add `scripts/youtube_stats.py`
-(YouTube Data API v3, `videos.list` part=statistics) to refresh views/likes/comments for every published Short and
-append a dated snapshot to meta.json; run it daily with a scheduled task. Average-view-percentage needs the YouTube
-Analytics API (OAuth), so leave it for a later step.
+**Outcomes:** `upload.py` (Part 6) stores the Zernio post and, with `--status`, the YouTube URL. `scripts/youtube_stats.py`
+(YouTube Data API v3, `videos.list` part=statistics, 1 unit per 50 videos) refreshes views/likes/comments for every
+published video, appends one dated snapshot a day to meta.json and stores the channel's subscribers in
+data/youtube_channel.json; run it daily with a scheduled task. Average-view-percentage needs the YouTube Analytics
+API (OAuth): copy it from YouTube Studio into `stats.avg_view_pct`. register.py turns all this into the dashboard's
+Partner Program progress: subscribers, Shorts views in the last 90 days (from the snapshots) and estimated watch hours
+of long videos in the last 12 months (views x length x average % viewed), against today's thresholds and the doubled
+ones for new applicants from 1 Feb 2027.
 
 Run: `npm run dashboard` from the repo root (script: `cd dashboard && next dev`). Style: dark, simple, one accent
 colour; works on a phone.
 
 ---
 
-## Part 6 - (reserved for later: upload automation)
+## Part 6 - Thumbnail and publishing (cutout-cartoon-shorts skill, section 13)
+
+- Thumbnail: `thumbnail.py --slug <slug>` makes 3 Gemini variants from packaging.md's thumbnail idea with the mascot
+  hero as reference, sets the 0-4 words of packaging.md's "Thumbnail text" in Nunito ExtraBold, and writes a preview
+  at the sizes a phone shows (246 and 168 px wide); pick the one that reads at 168 px (`--pick N`). `--still FRAME`
+  makes it from a rendered frame for free. A Short's thumbnail is normally its frame 0.
+- Why Zernio and not our own Google API project: videos uploaded through an unaudited API project (created after
+  28 July 2020) are locked as private until YouTube audits the project, and a locked video cannot be made public
+  later. Zernio's app is approved; it is free for up to 2 connected accounts (then per account). Its API, as in the
+  official SDK (zernio-sdk 1.4): `POST /v1/media/presign` + PUT for the MP4 and the thumbnail, `POST /v1/posts` with
+  `platformSpecificData` (title, visibility, madeForKids, containsSyntheticMedia, categoryId ...), `GET
+  /v1/posts/{id}` for the YouTube URL.
+- `upload.py --slug <slug> --dry-run` ends every build: checks, the description (packaging.md, sources.md links,
+  credits.txt) in shorts/<slug>/description.txt, ad break suggestions for long-midroll. A real upload (`--when` /
+  `--now`) only when the user asks: publishing cannot be taken back. It refuses while data/channel.json
+  `made_for_kids` or `contains_synthetic_media` is null: those two are the channel owner's decision.
+- Afterwards `upload.py --status`, then youtube_stats.py daily (Part 5).
 
 ## Part 7 - Longer videos (1-3.5 minutes, 16:9)
 
@@ -513,6 +542,7 @@ The same pipeline, with scenes. Rule: anything over one minute is landscape. Two
 |---|---|---|---|---|
 | `short` | 9:16, 1080x1920 → 2160x3840 | 20-30 s | Shorts feed | one surprising fact |
 | `long-horizontal` | 16:9, 1920x1080 → 3840x2160 | 1:00-3:30 (aim for 2:00-3:00) | normal video | stories and explainers with 3-6 steps, channel watch time |
+| `long-midroll` | 16:9, 1920x1080 → 3840x2160 | 8:00-12:00 (aim for 8:20-10:00) | normal video | deep topics with 8-12 steps; mid-roll ads (YouTube allows them from 8:00) and watch hours |
 
 Why: YouTube treats only square or vertical uploads of 3 minutes or less as Shorts, so a 16:9 video is a normal video
 at any length and needs no 3:00 rule. Long videos show burned-in subtitles (7.3). `long-vertical` (9:16, under 3:00)
@@ -611,4 +641,44 @@ Don't ask questions; stop only if a key/tool is missing or the picture budget (d
 - [ ] Node 18+, Python 3.10+, GPU drivers for `--gl=angle`
 - [ ] real-sfx, openverse-sfx and earshot installed from their original repos and their SKILL.md files read
 - [ ] `python scripts/check_setup.py` all green
-- [ ] Then: `/new-short`
+- [ ] Optional: `YOUTUBE_API_KEY` (topics, lookalike check, stats) and `ZERNIO_API_KEY` (publishing) in `.env`
+- [ ] Before the first upload: data/channel.json `upload.made_for_kids` and `upload.contains_synthetic_media` set
+- [ ] Then: `/new-short` (the first run designs the mascot if data/channel.json has none yet)
+
+---
+
+## Part 9 - Decisions (November 2026)
+
+Made after comparing this pipeline with a popular "YouTube automation stack" and a creator's how-to video. The
+reasons are kept here so they are not argued again.
+
+Adopted:
+- **Package first.** The title and the thumbnail (a Short: frame 0) are chosen before the script, in packaging.md,
+  and the script delivers them. Viewers choose by the package before they hear a word.
+- **The channel's own mascot** (data/channel.json, built once into library/characters, used in every video). A
+  channel that copies another channel's look or character is compared with it and buried by YouTube's
+  inauthentic-content rules (clarified July 2026); a different mascot pulls a different audience. Characters owned by
+  others (the "Peter Griffin with muscles" idea) are out: copyright strikes end channels.
+- **Outliers as a topic signal** (find_topics.py): videos with far more views than their channel usually gets show
+  what people want answered. Titles and view counts only; never scripts or transcripts (the official API does not
+  give other channels' captions anyway, and copying breaks our originality rule).
+- **long-midroll, 8-12 minutes.** Mid-roll ads need 8:00, and long videos build watch hours far faster per view than
+  Shorts, which earn only cents per 1,000 views. From 1 Feb 2027 new Partner Program applicants need 20M Shorts views in
+  90 days or 8,000 watch hours (reported by Tubefilter, Aug 2026).
+- **Voice credit check** (voice_budget.py). The ElevenLabs Starter plan has 40,000 credits a month with no overage:
+  about 90 Shorts, 12 videos of 2-3 minutes or 4 long-midroll videos.
+- **Thumbnails** with the Gemini key we already have, and **publishing through Zernio** (Part 6), only when asked.
+
+Considered and not adopted:
+- 30-40 minute videos: one would use almost the whole monthly voice plan (27,000-36,000 credits), and they are the
+  mass-produced format YouTube's inauthentic-content rules target. long-midroll covers the mid-roll benefit.
+- Claude Fable 5.1 for scripts: superseded by Fable 5.2, which is cheaper ($8 / $40 per million tokens against
+  $10 / $50; Opus 5.5 is $4 / $20). Scripts are a small part of the cost either way; if a stronger writer is wanted,
+  try Fable 5.2 on long scripts only.
+- Perplexity for research: the short-script skill already checks every fact in two sources with web search.
+- HyperFrames instead of Remotion: a good open-source tool (Apache-2.0), but switching would rewrite video/src/lib,
+  and Remotion is free for teams of up to 3 people. real-sfx already reads HyperFrames projects if that changes.
+- Suno music: no public API (partners only), downloads capped (Pro 20 a month), commercial rights only for songs
+  made while subscribed, label lawsuits still open in August 2026. CC0 / CC-BY music from Openverse costs nothing.
+- Higgsfield: replaced earlier by calling Gemini directly and keying on a flat colour (cleaner outlines than a
+  generic background remover, and we pay only per picture).

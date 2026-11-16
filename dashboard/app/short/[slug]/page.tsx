@@ -19,12 +19,15 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
   const s = loadIndex().shorts.find((x) => x.slug === decodeURIComponent(slug));
   if (!s) notFound();
 
-  const [script, sources, beats, prompts, credits] = ['script.md', 'sources.md', 'beats.md', 'prompts.md', 'credits.txt'].map((f) => readShortFile(s.slug, f));
-  const qa = listQa(s.slug).filter((f) => f !== 'frame0.png');
+  const [packaging, script, sources, beats, prompts, credits, written] = ['packaging.md', 'script.md', 'sources.md', 'beats.md', 'prompts.md', 'credits.txt', 'description.txt'].map((f) => readShortFile(s.slug, f));
+  const qa = listQa(s.slug).filter((f) => !['frame0.png', 'thumbnail.jpg', 'thumbnail.png'].includes(f));
   const render = s.files?.render && servablePath(s.files.render) ? fileUrl(s.files.render) : null;
+  const thumbnail = s.files?.thumbnail && servablePath(s.files.thumbnail) ? fileUrl(s.files.thumbnail) : null;
   const history = s.stats_history ?? [];
   const maxViews = Math.max(1, ...history.map((h) => h.views ?? 0));
-  const description = [s.title, '', credits ? `Sound credits:\n${credits.trim()}` : ''].join('\n').trim();
+  // description.txt is written by upload.py (also with --dry-run); before that, the title and the sound credits
+  const description = written?.trim() || [s.title, '', credits ? `Sound credits:\n${credits.trim()}` : ''].join('\n').trim();
+  const clock = (t: number) => `${Math.floor(t / 60)}:${String(Math.round(t % 60)).padStart(2, '0')}`;
 
   return (
     <main>
@@ -35,6 +38,9 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
         <span className="pill">{s.category}</span>
         <span className="pill">{s.format} · {s.aspect}</span>
         <span className="pill num">{s.date}</span>
+        {s.youtube?.status && s.youtube.status !== 'published' ? (
+          <span className="pill">YouTube: {s.youtube.status}{s.youtube.scheduled_for ? ` · ${s.youtube.scheduled_for}` : ''}</span>
+        ) : null}
         {s.youtube?.url ? <a className="pill accent" href={s.youtube.url} target="_blank" rel="noreferrer noopener">Open on YouTube</a> : null}
       </div>
 
@@ -48,6 +54,7 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
               MP4 files live in <code>out/</code> and are not committed.{s.files?.render ? <> Expected: <code>{s.files.render}</code></> : null}
             </div>
           )}
+          <Section title="Packaging" text={packaging} />
           <Section title="Script" text={script} />
           <Section title="Beat sheet" text={beats} />
           <Section title="Sources" text={sources} />
@@ -68,6 +75,11 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
         </div>
 
         <aside>
+          {thumbnail ? (
+            <div className="panel" style={{marginBottom: 14}}>
+              <img className="sheet" src={thumbnail} alt="YouTube thumbnail" loading="lazy" />
+            </div>
+          ) : null}
           <div className="panel">
             <dl className="kv">
               <dt>Length</dt><dd className="num">{fmtDuration(s.duration_s)}</dd>
@@ -77,6 +89,7 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
               <dt>Pictures</dt><dd>{s.images?.count ?? 0}{s.images?.model ? <span className="muted"> · {s.images.model}</span> : null}</dd>
               <dt>Cost</dt><dd className="num">{fmtUsd(s.cost_usd)}</dd>
               <dt>Sounds</dt><dd>{s.sounds?.length ? s.sounds.map((x) => `${x.cue ?? x.title ?? 'sound'} (${x.license ?? '?'})`).join(', ') : '-'}</dd>
+              {s.ad_breaks?.length ? (<><dt>Ad breaks</dt><dd className="num">{s.ad_breaks.map(clock).join(', ')}</dd></>) : null}
             </dl>
           </div>
 
@@ -112,10 +125,14 @@ export default async function ShortPage({params}: {params: Promise<{slug: string
 
           <div className="rowhead">
             <h2>YouTube description</h2>
-            {credits ? <CopyButton text={description} label="Copy description" /> : null}
+            {written || credits ? <CopyButton text={description} label="Copy description" /> : null}
           </div>
           <div className="panel md">
-            {credits ? <pre style={{margin: 0}}>{credits.trim()}</pre> : <span className="muted">No credits.txt yet (it is written in the sound step).</span>}
+            {written || credits ? (
+              <pre style={{margin: 0, whiteSpace: 'pre-wrap'}}>{written ? description : credits?.trim()}</pre>
+            ) : (
+              <span className="muted">No credits.txt yet (it is written in the sound step); upload.py --dry-run writes the full description.</span>
+            )}
           </div>
         </aside>
       </div>

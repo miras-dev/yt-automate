@@ -1,0 +1,38 @@
+{
+  "_about": "The channel's own identity. gen_image.py and thumbnail.py draw the mascot from it, the short-script skill packages every video in its style, upload.py takes its settings from it. Change the channel here, not in the scripts. The two null fields under upload are a person's decision: upload.py refuses to publish until both are true or false.",
+  "name": "",
+  "promise": "One surprising question about the everyday world, answered with real sources by a cartoon mascot that acts it out.",
+  "audience": "Curious teens and adults who like quick science, engineering, nature and history answers. English.",
+  "angle": "",
+  "_angle": "The twist that makes this channel different from the big channels in the same topics: a different mascot, world or audience, never a copy of another channel's look. Written by the mascot design step (cutout-cartoon-shorts skill, section 12.1) when empty.",
+  "mascot": {
+    "chosen": false,
+    "name": "",
+    "library": "",
+    "look": "simple white character with a big round head, a small soft body, noodle arms with simple four-finger hands and short legs with rounded feet, thick smooth black outlines of even weight, flat white fill with a very soft pale-grey shade on one side, small solid black oval eyes, simple curved black eyebrows, no nose, no hair, no clothes, a pink tongue only when the mouth is open",
+    "signature": "",
+    "_help": "look = how every character picture is drawn (written to follow 'a' / 'the same'). signature = one ownable detail that is always visible and readable at thumbnail size (a colour, a prop, a silhouette). library = the folder in library/characters/. chosen = true once a person or the mascot design step has settled it."
+  },
+  "packaging": {
+    "title_max_chars": {"short": 50, "long-horizontal": 60, "long-midroll": 60},
+    "thumbnail_max_words": 4,
+    "thumbnail_style": "The mascot big and close with one clear emotion, beside the one thing the video is about; a simple flat background in one or two bold colours that contrast with both; one focal point; readable at phone size.",
+    "text_colour": "#FFFFFF",
+    "text_outline": "#111111",
+    "accent": "#FFD23F"
+  },
+  "upload": {
+    "zernio_account_id": "",
+    "made_for_kids": null,
+    "contains_synthetic_media": null,
+    "visibility": "public",
+    "category_id": "27",
+    "default_language": "en",
+    "default_audio_language": "en",
+    "timezone": "UTC",
+    "notify_subscribers": true,
+    "playlists": {"short": "", "long-horizontal": "", "long-midroll": ""},
+    "tags": [],
+    "_help": "made_for_kids: true when children are the main audience (COPPA; it turns off comments and personalised ads). contains_synthetic_media: true when anything could be mistaken for real, for example a realistic AI voice of a real person; YouTube then adds a label. category_id 27 = Education, 28 = Science & Technology, 24 = Entertainment. zernio_account_id: the YouTube account's _id from `upload.py --accounts`."
+  }
+}
