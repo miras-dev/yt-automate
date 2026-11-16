@@ -60,7 +60,7 @@ def main():
         "ELEVENLABS_API_KEY set" if keys["ELEVENLABS_API_KEY"] else
         "no ELEVENLABS_API_KEY: fine if the ElevenLabs connector is connected in Claude Code (a script cannot see connectors)")
     add("keys", "YOUTUBE_API_KEY", OK if keys["YOUTUBE_API_KEY"] else WARN, "" if keys["YOUTUBE_API_KEY"] else
-        "optional: find_topics.py (outlier topics, title lookalike check) and youtube_stats.py; without it web search is used")
+        "optional: find_topics.py (outlier topics, title lookalike check) and youtube_stats.py; without it web search is used. In a cloud session a network secret for www.googleapis.com (header X-Goog-Api-Key) works too; a script cannot see that one")
     add("keys", "ZERNIO_API_KEY", OK if keys["ZERNIO_API_KEY"] else WARN, "" if keys["ZERNIO_API_KEY"] else
         "optional: only for publishing with upload.py (zernio.com > Settings > API keys)")
 

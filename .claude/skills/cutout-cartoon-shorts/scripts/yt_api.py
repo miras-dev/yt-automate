@@ -2,7 +2,9 @@
 
 Quota: a project gets 10,000 units a day (it resets at midnight Pacific time). search.list costs 100 units;
 videos.list and channels.list cost 1 unit per call of up to 50 ids. The key is YOUTUBE_API_KEY from .env or the
-environment; it is never printed (error messages leave the URL out).
+environment; it is never printed (error messages leave the URL out). In a Claude Code cloud session the key can
+instead be saved on the environment as a network secret for www.googleapis.com, header X-Goog-Api-Key: then no
+YOUTUBE_API_KEY is set, a placeholder header is sent and the session's proxy puts the real key into it.
 """
 from __future__ import annotations
 
@@ -23,18 +25,28 @@ class YouTubeError(RuntimeError):
     pass
 
 
+class MissingKey(YouTubeError):
+    """No usable key: neither YOUTUBE_API_KEY nor a network secret the proxy adds."""
+
+
+NO_KEY = ("no YouTube API key: put YOUTUBE_API_KEY in .env (Google Cloud console > APIs & Services > enable "
+          "YouTube Data API v3 > Credentials > API key), or in a Claude Code cloud session save the key as a network "
+          "secret for www.googleapis.com with the header X-Goog-Api-Key")
+
+
 class Client:
     def __init__(self, key: str | None = None):
         self.key = key or os.environ.get("YOUTUBE_API_KEY") or ""
         self.units = 0
-        if not self.key:
-            raise YouTubeError("YOUTUBE_API_KEY is not set: put it in .env (Google Cloud console > APIs & Services > "
-                               "enable YouTube Data API v3 > Credentials > API key)")
 
     def get(self, endpoint: str, **params) -> dict:
         params = {k: v for k, v in params.items() if v not in (None, "")}
-        url = API + endpoint + "?" + urllib.parse.urlencode({**params, "key": self.key}, doseq=True)
-        req = urllib.request.Request(url, headers={"Accept": "application/json", "User-Agent": "shorts-factory/1.0"})
+        headers = {"Accept": "application/json", "User-Agent": "shorts-factory/1.0"}
+        if self.key:
+            params["key"] = self.key
+        else:  # a cloud session's proxy replaces this placeholder with the key saved on the environment
+            headers["X-Goog-Api-Key"] = "added-by-the-session-proxy"
+        req = urllib.request.Request(API + endpoint + "?" + urllib.parse.urlencode(params, doseq=True), headers=headers)
         last: Exception | None = None
         for attempt in range(3):
             try:
@@ -50,10 +62,14 @@ class Client:
                 if "quotaExceeded" in body or "dailyLimitExceeded" in body:
                     raise YouTubeError("YouTube API quota used up for today (10,000 units; resets at midnight "
                                        "Pacific time)") from None
+                if not self.key and e.code in (400, 401, 403):
+                    raise MissingKey(f"{NO_KEY} (answer: HTTP {e.code} {_reason(body)[:160]})") from None
                 raise YouTubeError(f"YouTube API {endpoint}: HTTP {e.code} {_reason(body)}") from None
             except (urllib.error.URLError, TimeoutError) as e:
                 last = e
                 time.sleep(2 ** attempt)
+        if not self.key:
+            raise MissingKey(f"{NO_KEY} (www.googleapis.com could not be reached: {type(last).__name__})")
         raise YouTubeError(f"YouTube API {endpoint}: network error {type(last).__name__}: {str(last)[:200]}")
 
     def videos(self, ids: list[str], parts: str = "snippet,statistics,contentDetails") -> list[dict]:

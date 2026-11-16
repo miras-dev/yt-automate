@@ -39,7 +39,13 @@ You also need: Node 18+, Python 3.10+, ffmpeg in PATH, a GPU for fast renders, a
 Code (or `ELEVENLABS_API_KEY` in `.env`). The first Remotion render downloads its own headless browser.
 
 Optional keys in `.env`: `YOUTUBE_API_KEY` (topic research, the title lookalike check and view counts; free) and
-`ZERNIO_API_KEY` (publishing; free for up to 2 accounts).
+`ZERNIO_API_KEY` (publishing; free for up to 2 accounts). In a Claude Code cloud session, save the YouTube key on the
+environment as a network secret for `www.googleapis.com` with the header `X-Goog-Api-Key` instead: the scripts then
+need no `.env` entry (the session's proxy adds the key to every request).
+
+Getting a YouTube key: in the Google Cloud console (console.cloud.google.com) create or pick a project, open APIs &
+Services > Library, enable "YouTube Data API v3", then APIs & Services > Credentials > Create credentials > API key.
+Restrict it to the YouTube Data API v3 (API restrictions). No billing is needed; the free quota is 10,000 units a day.
 
 Before the first upload, decide two settings in [data/channel.json](data/channel.json) (`upload`): `made_for_kids`
 (are children the main audience?) and `contains_synthetic_media` (could anything be mistaken for real?). They are

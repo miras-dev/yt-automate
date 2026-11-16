@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ROOT, die, load_env, read_json, write_json
-from yt_api import Client, YouTubeError, iso_seconds, video_id_from
+from yt_api import Client, MissingKey, YouTubeError, iso_seconds, video_id_from
 
 
 def main():
@@ -51,7 +51,7 @@ def main():
         channel_ids = sorted({it["snippet"]["channelId"] for it in items.values()})
         channels = client.channels(channel_ids) if channel_ids else {}
     except YouTubeError as e:
-        die(str(e), 2 if "not set" in str(e) else 1)
+        die(str(e), 2 if isinstance(e, MissingKey) else 1)
 
     today = dt.date.today().isoformat()
     for vid, (path, m) in metas.items():

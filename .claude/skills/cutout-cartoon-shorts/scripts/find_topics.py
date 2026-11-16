@@ -21,7 +21,8 @@ thumbnail idea look like none of them.
 
 Quota: 100 units per query (search) + 1 unit per 50 videos and per 50 channels; a project has 10,000 units a day.
 Output: a table, and JSON (default work/topics/<date>-<query>.json; work/ is not committed). YOUTUBE_API_KEY comes
-from .env or the environment. Exit codes: 0 ok, 1 error, 2 no key, 4 lookalike found.
+from .env or the environment; in a Claude Code cloud session it can be a network secret instead (see yt_api.py).
+Exit codes: 0 ok, 1 error, 2 no key, 4 lookalike found.
 """
 from __future__ import annotations
 
@@ -36,7 +37,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ROOT, die, load_env, read_json, write_json
-from yt_api import Client, YouTubeError, clock, iso_seconds, parse_time
+from yt_api import Client, MissingKey, YouTubeError, clock, iso_seconds, parse_time
 
 # --for: (min seconds, max seconds, YouTube search videoDuration: short = under 4 min, medium = 4-20 min)
 LENGTHS = {"short": (1, 180, "short"), "long-horizontal": (60, 240, "short"), "long-midroll": (420, 1200, "medium")}
@@ -195,10 +196,7 @@ def main():
         a.similar = a.similar or saved.get("similar")
         queries = saved.get("queries", [])
     else:
-        try:
-            client = Client()
-        except YouTubeError as e:
-            die(str(e), 2)
+        client = Client()
         queries = [a.similar] if a.similar else a.query
         ids: list[str] = []
         try:
@@ -217,7 +215,7 @@ def main():
             chans = client.channels([v["snippet"]["channelId"] for v in raw["videos"] if v.get("snippet")])
             raw["channels"] = {k: {"statistics": v.get("statistics", {})} for k, v in chans.items()}
         except YouTubeError as e:
-            die(str(e))
+            die(str(e), 2 if isinstance(e, MissingKey) else 1)
         units = client.units
 
     rows = rows_from(raw["videos"], raw["channels"])
