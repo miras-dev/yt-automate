@@ -1,0 +1,27 @@
+# Credits: sounds and music in "A day as a student in Germany"
+# All from Openverse (Freesound), CC0 or CC BY only. Attribution lines are verbatim from Openverse.
+
+## Sounds that need attribution (CC BY)
+sdg_shutter_02.mp3: "Roller shutter lowered - 3" by onda_stazionaria is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as shutter.wav]
+sdg_snore_02.mp3: "Snoring 1" by sankalp is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as snore.wav, snore_b.wav, snore_s.wav]
+chime_01.mp3: "Trinkets jingling - Soft jingle" by AshtiHari is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as chime.wav]
+eep_coins_01.mp3: "20080928.coins.05.wav" by dobroide is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as coins.wav]
+
+## CC0 sounds and music (no attribution required, logged)
+sdg_music_01.mp3: "Blue Sky.mp3" by Sergmusic is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as music bed (sfx/music_bed.wav: looped on its own 28-bar phrase, 84.96 s -> 37.64 s, twice)]
+sdg_alarm_02.mp3: "alarm clock.aif" by hookhead is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as alarm.wav]
+sdg_knock_02.mp3: "rapid knocking.wav" by tbone1999 is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as knock.wav]
+sdg_knock_04.mp3: "Knock knock.wav" by DanaGarcia is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as knock_b.wav]
+sdg_tick_03.mp3: "Clock Ticking" by florianreichelt is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as tick.wav]
+sdg_bottle_01.mp3: "Glass Bottle Clink" by twohoursago is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as bottle.wav]
+sdg_bottle_02.mp3: "Empty Beer Bottles Clinking, Clanking.wav" by Fugeni is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as bottle_b.wav]
+sdg_bite_02.mp3: "Bite (Apple)" by wadaltmon is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as bite.wav]
+sdg_switch_02.mp3: "Light Switch 2.wav" by RutgerMuller is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as switch.wav]
+sdg_trambell_02.mp3: "11-1 Tram bell" by 16HPanskaWillheimova_Sara is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as bell.wav]
+whoosh_01.mp3: "Cartoony whooshes" by Reitanna is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as whoosh.wav, whoosh_b.wav]
+stamp_01.mp3: "Thump.mp3" by mpuffenbarger is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as thump.wav]
+boom_01.mp3: "BOOM IMPACT 2" by cosmicembers is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as boom.wav, thump_b.wav]
+pop_01.mp3: "Pop Sound" by DrMinky is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as pop.wav]
+eep_paper_01.mp3: "paper flip 1.wav" by gynation is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as paper.wav]
+eep_paper_02.mp3: "paper flip 2.wav" by gynation is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as paper_b.wav]
+eep_boing_02.mp3: "Boing Spring Mouth harp downward 1.wav" by pan14 is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as boing.wav]

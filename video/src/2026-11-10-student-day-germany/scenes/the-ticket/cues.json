@@ -1,0 +1,182 @@
+[
+ {
+  "cue": "ticket",
+  "key": "ticket",
+  "role": "paper",
+  "f": "paper",
+  "db": -20,
+  "lead": 0.1103,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "sparkle",
+  "key": "ticket",
+  "role": "chime",
+  "f": "chime",
+  "db": -24,
+  "dt": -0.04,
+  "anchor": "arrive",
+  "lead": 0.0703
+ },
+ {
+  "cue": "busIcon",
+  "key": "bus",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "trainIcon",
+  "key": "train",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "stamp",
+  "key": "include",
+  "role": "thump",
+  "f": "thump",
+  "db": -16,
+  "lead": 0.1903,
+  "anchor": "peak"
+ },
+ {
+  "cue": "busPass",
+  "key": "buses",
+  "role": "whoosh",
+  "f": "whoosh_b",
+  "db": -24,
+  "anchor": "peak",
+  "lead": 0.0503,
+  "dt": 0.4
+ },
+ {
+  "cue": "tramBell",
+  "key": "trams",
+  "role": "chime",
+  "f": "bell",
+  "db": -21,
+  "dt": -0.45,
+  "anchor": "start",
+  "lead": 0.348
+ },
+ {
+  "cue": "uSign",
+  "key": "subways",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "dt": -0.1,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "trainPass",
+  "key": "regional",
+  "role": "whoosh",
+  "f": "whoosh",
+  "db": -25,
+  "dt": 0.6,
+  "anchor": "peak",
+  "lead": 0.0703
+ },
+ {
+  "cue": "germany",
+  "key": "germany",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "price",
+  "key": "price",
+  "role": "paper",
+  "f": "paper_b",
+  "db": -21,
+  "lead": 0.2903,
+  "anchor": "peak"
+ },
+ {
+  "cue": "bars",
+  "key": "sixty",
+  "role": "coins",
+  "f": "coins",
+  "db": -23,
+  "dt": 0.45,
+  "anchor": "arrive",
+  "lead": 0.0703
+ },
+ {
+  "cue": "map",
+  "key": "cologne",
+  "role": "whoosh",
+  "f": "whoosh_b",
+  "db": -23,
+  "dt": -0.4,
+  "anchor": "peak",
+  "lead": 0.0503
+ },
+ {
+  "cue": "berlin",
+  "key": "berlin",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "noExtra",
+  "key": "noExtra",
+  "role": "chime",
+  "f": "chime",
+  "db": -22,
+  "anchor": "arrive",
+  "lead": 0.0703
+ },
+ {
+  "cue": "clock",
+  "key": "longer",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "dt": -0.1,
+  "lead": 0.0843,
+  "anchor": "start"
+ },
+ {
+  "cue": "lecture",
+  "key": "lecture",
+  "role": "paper",
+  "f": "paper",
+  "db": -20,
+  "lead": 0.1103,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "camPush",
+  "key": "lecture",
+  "role": "whoosh",
+  "f": "whoosh",
+  "db": -26,
+  "dt": -0.1,
+  "anchor": "peak",
+  "lead": 0.0703
+ },
+ {
+  "cue": "nobody",
+  "key": "nobody",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.0843,
+  "anchor": "start"
+ }
+]

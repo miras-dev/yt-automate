@@ -1,0 +1,159 @@
+[
+  {
+    "cue": "passport",
+    "key": "eu",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "fall",
+    "key": "show",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -24,
+    "dt": -0.2,
+    "anchor": "peak",
+    "lead": 0.0497
+  },
+  {
+    "cue": "safe",
+    "key": "show",
+    "role": "hit",
+    "f": "boom",
+    "db": -17,
+    "lead": 0.0097,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "count",
+    "key": "amount",
+    "role": "coins",
+    "f": "coins",
+    "db": -22,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "lock",
+    "key": "blocked",
+    "role": "click",
+    "f": "switch",
+    "db": -18,
+    "lead": 0.0357,
+    "anchor": "start"
+  },
+  {
+    "cue": "pie",
+    "key": "monthly",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "wg",
+    "key": "wg",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "bite",
+    "key": "eat",
+    "role": "hit",
+    "f": "bite",
+    "db": -14,
+    "lead": 0.1497,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "half",
+    "key": "half",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "tuition",
+    "key": "tuition",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "hop",
+    "key": "day",
+    "role": "pop",
+    "f": "boing",
+    "db": -21,
+    "lead": 0.0317,
+    "anchor": "start"
+  },
+  {
+    "cue": "flop",
+    "key": "day",
+    "role": "hit",
+    "f": "thump_b",
+    "db": -25,
+    "dt": 0.4,
+    "lead": 0.0097,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "lamp",
+    "key": "rule",
+    "role": "click",
+    "f": "switch",
+    "db": -16,
+    "lead": 0.0357,
+    "anchor": "start"
+  },
+  {
+    "cue": "snore1",
+    "key": "rule",
+    "role": "ambience",
+    "f": "snore",
+    "db": -25,
+    "dt": 0.6,
+    "anchor": "start",
+    "lead": -0.0003
+  },
+  {
+    "cue": "free",
+    "key": "free",
+    "role": "thump",
+    "f": "thump",
+    "db": -17,
+    "lead": 0.1897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "isnt",
+    "key": "isnt",
+    "role": "thump",
+    "f": "thump",
+    "db": -16,
+    "lead": 0.1897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "snore2",
+    "key": "isnt",
+    "role": "ambience",
+    "f": "snore_b",
+    "db": -26,
+    "dt": -0.19,
+    "anchor": "start",
+    "lead": -0.0003
+  }
+]

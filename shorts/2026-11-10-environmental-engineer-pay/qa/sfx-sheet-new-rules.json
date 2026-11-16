@@ -1,0 +1,138 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 55.1467,
+      "label": "y2024",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 56.5867,
+      "label": "epa",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 58.7567,
+      "label": "tap_on",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pour.wav",
+      "role": "water"
+    },
+    {
+      "t": 59.1067,
+      "label": "critters",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 61.0067,
+      "label": "tap_on2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pour.wav",
+      "role": "water"
+    },
+    {
+      "t": 62.1067,
+      "label": "pfoa",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 63.8567,
+      "label": "react",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/boing.wav",
+      "role": "pop"
+    },
+    {
+      "t": 66.0067,
+      "label": "to_pools",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 66.9667,
+      "label": "drop_lbl",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 67.6067,
+      "label": "five_lbl",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 68.1267,
+      "label": "drop_land",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/drop.wav",
+      "role": "water"
+    },
+    {
+      "t": 69.9967,
+      "label": "to_street",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 72.7867,
+      "label": "calendar",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/paper_b.wav",
+      "role": "paper"
+    },
+    {
+      "t": 73.8267,
+      "label": "yank",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh_b.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 74.5267,
+      "label": "new_pipe",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump.wav",
+      "role": "hit"
+    },
+    {
+      "t": 77.0467,
+      "label": "law2021",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 78.8267,
+      "label": "money",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/coins.wav",
+      "role": "hit"
+    },
+    {
+      "t": 79.1767,
+      "label": "money2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/paper.wav",
+      "role": "paper"
+    },
+    {
+      "t": 80.6467,
+      "label": "sparkle",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/chime.wav",
+      "role": "chime"
+    },
+    {
+      "t": 84.2467,
+      "label": "plans",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/paper.wav",
+      "role": "paper"
+    },
+    {
+      "t": 85.8867,
+      "label": "pen",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 86.9267,
+      "label": "qmark3",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-environmental-engineer-pay-preview.mp4"
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "t": 0.1,
+    "type": "ambience",
+    "label": "air_bed"
+  },
+  {
+    "t": 3.76,
+    "type": "whoosh",
+    "label": "swoosh_pullout"
+  },
+  {
+    "t": 7.18,
+    "type": "hit",
+    "label": "stamp_disaster"
+  },
+  {
+    "t": 10.46,
+    "type": "pop",
+    "label": "pop_square"
+  },
+  {
+    "t": 13.06,
+    "type": "whoosh",
+    "label": "inhale"
+  },
+  {
+    "t": 14.18,
+    "type": "whoosh",
+    "label": "exhale"
+  },
+  {
+    "t": 15.5,
+    "type": "pop",
+    "label": "crack"
+  },
+  {
+    "t": 16.94,
+    "type": "pop",
+    "label": "crack2"
+  },
+  {
+    "t": 17.82,
+    "type": "hit",
+    "label": "stamp_1954"
+  },
+  {
+    "t": 21.6,
+    "type": "hit",
+    "label": "tear_impact"
+  },
+  {
+    "t": 23.92,
+    "type": "chime",
+    "label": "spread_chime"
+  }
+]

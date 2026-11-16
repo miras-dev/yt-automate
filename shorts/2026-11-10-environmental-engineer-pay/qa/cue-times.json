@@ -1,0 +1,535 @@
+{
+ "fps": 60,
+ "events": [
+  {
+   "t": 1.4,
+   "kind": "squelch",
+   "label": "dirty-job:burp1"
+  },
+  {
+   "t": 2.35,
+   "kind": "whoosh_b",
+   "label": "dirty-job:puff"
+  },
+  {
+   "t": 3.45,
+   "kind": "drop",
+   "label": "dirty-job:bubbles1"
+  },
+  {
+   "t": 3.75,
+   "kind": "drop",
+   "label": "dirty-job:bubbles2"
+  },
+  {
+   "t": 5.14,
+   "kind": "paper",
+   "label": "dirty-job:cash_a"
+  },
+  {
+   "t": 5.4,
+   "kind": "paper_b",
+   "label": "dirty-job:cash_b"
+  },
+  {
+   "t": 5.66,
+   "kind": "paper",
+   "label": "dirty-job:cash_c"
+  },
+  {
+   "t": 5.79,
+   "kind": "thump",
+   "label": "dirty-job:cash_land"
+  },
+  {
+   "t": 5.86,
+   "kind": "coins",
+   "label": "dirty-job:cash_coins"
+  },
+  {
+   "t": 7.94,
+   "kind": "pop",
+   "label": "dirty-job:label_eng"
+  },
+  {
+   "t": 9.84,
+   "kind": "coins",
+   "label": "dirty-job:salary_coins"
+  },
+  {
+   "t": 12.77,
+   "kind": "whoosh",
+   "label": "dirty-job:pull_back"
+  },
+  {
+   "t": 13.4,
+   "kind": "pop",
+   "label": "dirty-job:x2"
+  },
+  {
+   "t": 14.02,
+   "kind": "pop",
+   "label": "dirty-job:median"
+  },
+  {
+   "t": 17.96,
+   "kind": "squelch_b",
+   "label": "dirty-job:burp2"
+  },
+  {
+   "t": 19.2,
+   "kind": "pop",
+   "label": "dirty-job:qmark"
+  },
+  {
+   "t": 20.7,
+   "kind": "whoosh",
+   "label": "whip1"
+  },
+  {
+   "t": 21.52,
+   "kind": "thump",
+   "label": "the-law:book_slam"
+  },
+  {
+   "t": 22.84,
+   "kind": "pop",
+   "label": "the-law:lbl70s"
+  },
+  {
+   "t": 24.36,
+   "kind": "pop",
+   "label": "the-law:lblair"
+  },
+  {
+   "t": 25.5,
+   "kind": "pop",
+   "label": "the-law:lblwater"
+  },
+  {
+   "t": 26.86,
+   "kind": "whoosh_b",
+   "label": "the-law:limit"
+  },
+  {
+   "t": 29.94,
+   "kind": "whoosh",
+   "label": "the-law:to_factory"
+  },
+  {
+   "t": 31.04,
+   "kind": "squelch",
+   "label": "the-law:gush"
+  },
+  {
+   "t": 31.14,
+   "kind": "pour",
+   "label": "the-law:gush_pour"
+  },
+  {
+   "t": 33.72,
+   "kind": "paper",
+   "label": "the-law:permit"
+  },
+  {
+   "t": 34.38,
+   "kind": "thump_b",
+   "label": "the-law:tank"
+  },
+  {
+   "t": 35.28,
+   "kind": "pour",
+   "label": "the-law:clean_pour"
+  },
+  {
+   "t": 36.62,
+   "kind": "chime",
+   "label": "the-law:river_smile"
+  },
+  {
+   "t": 37.68,
+   "kind": "squelch_b",
+   "label": "the-law:break"
+  },
+  {
+   "t": 38.9,
+   "kind": "paper",
+   "label": "the-law:fine1"
+  },
+  {
+   "t": 42.52,
+   "kind": "paper_b",
+   "label": "the-law:fine2"
+  },
+  {
+   "t": 42.84,
+   "kind": "paper",
+   "label": "the-law:fine3"
+  },
+  {
+   "t": 43.16,
+   "kind": "paper_b",
+   "label": "the-law:fine4"
+  },
+  {
+   "t": 44.56,
+   "kind": "whoosh_b",
+   "label": "the-law:balance"
+  },
+  {
+   "t": 45.18,
+   "kind": "coins",
+   "label": "the-law:salary_pan"
+  },
+  {
+   "t": 46.6,
+   "kind": "pop",
+   "label": "the-law:nice"
+  },
+  {
+   "t": 49.0,
+   "kind": "paper",
+   "label": "the-law:fines_pan1"
+  },
+  {
+   "t": 49.22,
+   "kind": "paper_b",
+   "label": "the-law:fines_pan2"
+  },
+  {
+   "t": 49.44,
+   "kind": "paper",
+   "label": "the-law:fines_pan3"
+  },
+  {
+   "t": 50.02,
+   "kind": "thump",
+   "label": "the-law:slam"
+  },
+  {
+   "t": 50.52,
+   "kind": "pop",
+   "label": "the-law:rules_tag"
+  },
+  {
+   "t": 52.88,
+   "kind": "whoosh",
+   "label": "the-law:arrow"
+  },
+  {
+   "t": 53.64,
+   "kind": "pop",
+   "label": "the-law:qmark2"
+  },
+  {
+   "t": 54.867,
+   "kind": "whoosh",
+   "label": "whip2"
+  },
+  {
+   "t": 55.147,
+   "kind": "pop",
+   "label": "new-rules:y2024"
+  },
+  {
+   "t": 56.587,
+   "kind": "pop",
+   "label": "new-rules:epa"
+  },
+  {
+   "t": 58.757,
+   "kind": "pour",
+   "label": "new-rules:tap_on"
+  },
+  {
+   "t": 59.107,
+   "kind": "pop",
+   "label": "new-rules:critters"
+  },
+  {
+   "t": 61.007,
+   "kind": "pour",
+   "label": "new-rules:tap_on2"
+  },
+  {
+   "t": 62.107,
+   "kind": "pop",
+   "label": "new-rules:pfoa"
+  },
+  {
+   "t": 63.857,
+   "kind": "boing",
+   "label": "new-rules:react"
+  },
+  {
+   "t": 66.007,
+   "kind": "whoosh",
+   "label": "new-rules:to_pools"
+  },
+  {
+   "t": 66.967,
+   "kind": "pop",
+   "label": "new-rules:drop_lbl"
+  },
+  {
+   "t": 67.607,
+   "kind": "pop",
+   "label": "new-rules:five_lbl"
+  },
+  {
+   "t": 68.127,
+   "kind": "drop",
+   "label": "new-rules:drop_land"
+  },
+  {
+   "t": 69.997,
+   "kind": "whoosh",
+   "label": "new-rules:to_street"
+  },
+  {
+   "t": 72.787,
+   "kind": "paper_b",
+   "label": "new-rules:calendar"
+  },
+  {
+   "t": 73.827,
+   "kind": "whoosh_b",
+   "label": "new-rules:yank"
+  },
+  {
+   "t": 74.527,
+   "kind": "thump",
+   "label": "new-rules:new_pipe"
+  },
+  {
+   "t": 77.047,
+   "kind": "pop",
+   "label": "new-rules:law2021"
+  },
+  {
+   "t": 78.827,
+   "kind": "coins",
+   "label": "new-rules:money"
+  },
+  {
+   "t": 79.177,
+   "kind": "paper",
+   "label": "new-rules:money2"
+  },
+  {
+   "t": 80.647,
+   "kind": "chime",
+   "label": "new-rules:sparkle"
+  },
+  {
+   "t": 84.247,
+   "kind": "paper",
+   "label": "new-rules:plans"
+  },
+  {
+   "t": 85.887,
+   "kind": "pop",
+   "label": "new-rules:pen"
+  },
+  {
+   "t": 86.927,
+   "kind": "pop",
+   "label": "new-rules:qmark3"
+  },
+  {
+   "t": 88.3,
+   "kind": "whoosh",
+   "label": "whip3"
+  },
+  {
+   "t": 88.95,
+   "kind": "whoosh",
+   "label": "the-stamp:pullback"
+  },
+  {
+   "t": 92.14,
+   "kind": "pop",
+   "label": "the-stamp:crowd_pop"
+  },
+  {
+   "t": 92.44,
+   "kind": "crowd",
+   "label": "the-stamp:crowd"
+  },
+  {
+   "t": 95.58,
+   "kind": "boom",
+   "label": "the-stamp:stadium"
+  },
+  {
+   "t": 95.98,
+   "kind": "whoosh_b",
+   "label": "the-stamp:hop_in"
+  },
+  {
+   "t": 96.62,
+   "kind": "pop",
+   "label": "the-stamp:ballpark"
+  },
+  {
+   "t": 97.99,
+   "kind": "whoosh",
+   "label": "the-stamp:to_desk"
+  },
+  {
+   "t": 98.54,
+   "kind": "pop",
+   "label": "the-stamp:card"
+  },
+  {
+   "t": 100.66,
+   "kind": "whoosh_b",
+   "label": "the-stamp:stamp_up"
+  },
+  {
+   "t": 101.28,
+   "kind": "thump",
+   "label": "the-stamp:stamp"
+  },
+  {
+   "t": 103.3,
+   "kind": "boing",
+   "label": "the-stamp:leap"
+  },
+  {
+   "t": 104.7,
+   "kind": "pop",
+   "label": "the-stamp:cap"
+  },
+  {
+   "t": 105.14,
+   "kind": "boing",
+   "label": "the-stamp:step1"
+  },
+  {
+   "t": 105.96,
+   "kind": "paper",
+   "label": "the-stamp:exams"
+  },
+  {
+   "t": 106.56,
+   "kind": "pop",
+   "label": "the-stamp:step2"
+  },
+  {
+   "t": 107.82,
+   "kind": "paper_b",
+   "label": "the-stamp:calendar"
+  },
+  {
+   "t": 108.74,
+   "kind": "boing",
+   "label": "the-stamp:step3"
+  },
+  {
+   "t": 109.52,
+   "kind": "chime",
+   "label": "the-stamp:license"
+  },
+  {
+   "t": 112.74,
+   "kind": "pop",
+   "label": "the-stamp:qmark4"
+  },
+  {
+   "t": 114.4,
+   "kind": "whoosh",
+   "label": "whip4"
+  },
+  {
+   "t": 115.1,
+   "kind": "pop",
+   "label": "the-promise:skills"
+  },
+  {
+   "t": 116.94,
+   "kind": "pop",
+   "label": "the-promise:flask"
+  },
+  {
+   "t": 117.84,
+   "kind": "squelch_b",
+   "label": "the-promise:microbe"
+  },
+  {
+   "t": 118.92,
+   "kind": "thump",
+   "label": "the-promise:book"
+  },
+  {
+   "t": 120.6,
+   "kind": "whoosh",
+   "label": "the-promise:fly_off"
+  },
+  {
+   "t": 121.2,
+   "kind": "thump",
+   "label": "the-promise:certainty"
+  },
+  {
+   "t": 123.13,
+   "kind": "paper",
+   "label": "the-promise:checklist"
+  },
+  {
+   "t": 124.08,
+   "kind": "pop",
+   "label": "the-promise:tick1"
+  },
+  {
+   "t": 125.86,
+   "kind": "pop",
+   "label": "the-promise:tick2"
+  },
+  {
+   "t": 128.76,
+   "kind": "pop",
+   "label": "the-promise:tick3"
+  },
+  {
+   "t": 131.18,
+   "kind": "thump",
+   "label": "the-promise:st_required"
+  },
+  {
+   "t": 132.2,
+   "kind": "thump_b",
+   "label": "the-promise:st_urgent"
+  },
+  {
+   "t": 132.86,
+   "kind": "thump",
+   "label": "the-promise:st_rare"
+  },
+  {
+   "t": 134.08,
+   "kind": "coins",
+   "label": "the-promise:expensive"
+  },
+  {
+   "t": 135.72,
+   "kind": "whoosh_b",
+   "label": "the-promise:tap_up"
+  },
+  {
+   "t": 136.9,
+   "kind": "pop",
+   "label": "the-promise:glass"
+  },
+  {
+   "t": 138.15,
+   "kind": "pour",
+   "label": "the-promise:pour"
+  },
+  {
+   "t": 139.04,
+   "kind": "chime",
+   "label": "the-promise:smile"
+  }
+ ]
+}

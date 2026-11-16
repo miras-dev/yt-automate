@@ -28,3 +28,7 @@ library/characters/*/cut/
 
 # the CC0 UI sound pack that ships inside the real-sfx skill is part of the skill
 !.claude/skills/real-sfx/vendor/node_modules/
+
+# Claude Code runtime lock; verify_mix.py audio exports (regenerated on every check)
+.claude/scheduled_tasks.lock
+shorts/*/qa/verify/*.wav

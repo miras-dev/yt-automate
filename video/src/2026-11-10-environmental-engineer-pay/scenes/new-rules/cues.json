@@ -1,0 +1,207 @@
+[
+  {
+    "cue": "y2024",
+    "key": "y2024",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "epa",
+    "key": "epa",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "tap_on",
+    "key": "forever",
+    "role": "water",
+    "f": "pour",
+    "db": -23,
+    "dt": -0.35,
+    "lead": 0.3497,
+    "anchor": "start"
+  },
+  {
+    "cue": "tap_on2",
+    "key": "forever",
+    "role": "water",
+    "f": "pour",
+    "db": -25,
+    "dt": 1.9,
+    "lead": 0.3497,
+    "anchor": "start"
+  },
+  {
+    "cue": "critters",
+    "key": "forever",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "pfoa",
+    "key": "bestKnown",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "react",
+    "key": "four",
+    "role": "pop",
+    "f": "boing",
+    "db": -21,
+    "dt": -0.05,
+    "lead": 0.0317,
+    "anchor": "start"
+  },
+  {
+    "cue": "to_pools",
+    "key": "pools",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -25,
+    "dt": -0.1,
+    "lead": 0.0697,
+    "anchor": "peak"
+  },
+  {
+    "cue": "drop_lbl",
+    "key": "drop",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "five_lbl",
+    "key": "five",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "drop_land",
+    "key": "olympic",
+    "role": "water",
+    "f": "drop",
+    "db": -15,
+    "lead": 0.3497,
+    "anchor": "start"
+  },
+  {
+    "cue": "to_street",
+    "key": "sameYear",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -25,
+    "dt": -0.15,
+    "lead": 0.0697,
+    "anchor": "peak"
+  },
+  {
+    "cue": "calendar",
+    "key": "tenYears",
+    "role": "paper",
+    "f": "paper_b",
+    "db": -21,
+    "lead": 0.2897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "yank",
+    "key": "replace",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -23,
+    "lead": 0.0497,
+    "anchor": "peak"
+  },
+  {
+    "cue": "new_pipe",
+    "key": "all",
+    "role": "hit",
+    "f": "thump",
+    "db": -16,
+    "lead": 0.1897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "law2021",
+    "key": "law2021",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "money",
+    "key": "fifty",
+    "role": "hit",
+    "f": "coins",
+    "db": -17,
+    "lead": 0.0697,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "money2",
+    "key": "fifty",
+    "role": "paper",
+    "f": "paper",
+    "db": -23,
+    "dt": 0.35,
+    "lead": 0.1097,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "sparkle",
+    "key": "fixing",
+    "role": "chime",
+    "f": "chime",
+    "db": -22,
+    "lead": 0.0697,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "plans",
+    "key": "plans",
+    "role": "paper",
+    "f": "paper",
+    "db": -19,
+    "dt": -0.4,
+    "lead": 0.1097,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "pen",
+    "key": "who",
+    "role": "pop",
+    "f": "pop",
+    "db": -26,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "qmark3",
+    "key": "sign",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.0837,
+    "anchor": "start"
+  }
+]

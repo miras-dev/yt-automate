@@ -1,0 +1,87 @@
+[
+  {
+    "t": 163.5467,
+    "type": "pop",
+    "label": "passport"
+  },
+  {
+    "t": 168.3867,
+    "type": "whoosh",
+    "label": "fall"
+  },
+  {
+    "t": 168.5867,
+    "type": "hit",
+    "label": "safe"
+  },
+  {
+    "t": 168.8867,
+    "type": "coins",
+    "label": "count"
+  },
+  {
+    "t": 173.5867,
+    "type": "click",
+    "label": "lock"
+  },
+  {
+    "t": 175.1867,
+    "type": "pop",
+    "label": "pie"
+  },
+  {
+    "t": 178.2867,
+    "type": "pop",
+    "label": "wg"
+  },
+  {
+    "t": 179.3467,
+    "type": "hit",
+    "label": "bite"
+  },
+  {
+    "t": 179.8467,
+    "type": "pop",
+    "label": "half"
+  },
+  {
+    "t": 181.1467,
+    "type": "pop",
+    "label": "tuition"
+  },
+  {
+    "t": 184.6867,
+    "type": "pop",
+    "label": "hop"
+  },
+  {
+    "t": 185.0867,
+    "type": "hit",
+    "label": "flop"
+  },
+  {
+    "t": 186.4467,
+    "type": "click",
+    "label": "lamp"
+  },
+  {
+    "t": 187.0467,
+    "type": "ambience",
+    "label": "snore1"
+  },
+  {
+    "t": 188.0467,
+    "type": "thump",
+    "label": "free"
+  },
+  {
+    "t": 189.1167,
+    "type": "ambience",
+    "label": "snore2"
+  },
+  {
+    "t": 189.3067,
+    "type": "thump",
+    "label": "isnt"
+  }
+]

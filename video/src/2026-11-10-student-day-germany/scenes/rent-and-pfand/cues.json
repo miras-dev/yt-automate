@@ -1,0 +1,139 @@
+[
+ {
+  "cue": "rentCoins",
+  "key": "rent",
+  "role": "coins",
+  "f": "coins",
+  "db": -20,
+  "dt": -0.1,
+  "anchor": "arrive",
+  "lead": 0.07
+ },
+ {
+  "cue": "wg",
+  "key": "wg",
+  "role": "pop",
+  "f": "pop",
+  "db": -23,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "price",
+  "key": "price",
+  "role": "thump",
+  "f": "thump",
+  "db": -19,
+  "lead": 0.19,
+  "anchor": "peak"
+ },
+ {
+  "cue": "munich",
+  "key": "munich",
+  "role": "pop",
+  "f": "pop",
+  "db": -19,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "pan",
+  "key": "home",
+  "role": "whoosh",
+  "f": "whoosh",
+  "db": -22,
+  "dt": 0.05,
+  "anchor": "peak",
+  "lead": 0.07
+ },
+ {
+  "cue": "b1",
+  "key": "singleUse",
+  "role": "glass",
+  "f": "bottle",
+  "db": -18,
+  "lead": 0.01,
+  "anchor": "peak"
+ },
+ {
+  "cue": "b2",
+  "key": "bottle",
+  "role": "glass",
+  "f": "bottle_b",
+  "db": -17,
+  "lead": 0.21,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "b3",
+  "key": "can",
+  "role": "glass",
+  "f": "bottle",
+  "db": -19,
+  "lead": 0.01,
+  "anchor": "peak"
+ },
+ {
+  "cue": "refund",
+  "key": "cents",
+  "role": "coins",
+  "f": "coins",
+  "db": -21,
+  "anchor": "arrive",
+  "lead": 0.07
+ },
+ {
+  "cue": "pfand",
+  "key": "pfand",
+  "role": "pop",
+  "f": "pop",
+  "db": -22,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "shops",
+  "key": "shops",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "sunday",
+  "key": "sundays",
+  "role": "paper",
+  "f": "paper",
+  "db": -20,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "shutter",
+  "key": "closed",
+  "role": "hit",
+  "f": "shutter",
+  "db": -17,
+  "anchor": "peak",
+  "lead": 1.09
+ },
+ {
+  "cue": "closed",
+  "key": "closed",
+  "role": "thump",
+  "f": "thump",
+  "db": -16,
+  "lead": 0.19,
+  "anchor": "peak"
+ },
+ {
+  "cue": "cost",
+  "key": "cost",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.084,
+  "anchor": "start"
+ }
+]

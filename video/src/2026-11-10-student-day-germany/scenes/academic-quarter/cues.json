@@ -1,0 +1,143 @@
+[
+ {
+  "cue": "card",
+  "key": "letters",
+  "role": "paper",
+  "f": "paper",
+  "db": -21,
+  "dt": -1.23,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "ct",
+  "key": "ct",
+  "role": "pop",
+  "f": "pop",
+  "db": -23,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "withTime",
+  "key": "withTime",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "ticking",
+  "key": "listed",
+  "role": "ambience",
+  "f": "tick",
+  "db": -21,
+  "dt": -0.313,
+  "anchor": "start",
+  "lead": 0.0
+ },
+ {
+  "cue": "quarterPast",
+  "key": "past",
+  "role": "pop",
+  "f": "pop",
+  "db": -22,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "academic",
+  "key": "academic",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "stCard",
+  "key": "st",
+  "role": "paper",
+  "f": "paper_b",
+  "db": -21,
+  "dt": -0.2,
+  "lead": 0.29,
+  "anchor": "peak"
+ },
+ {
+  "cue": "handBack",
+  "key": "st",
+  "role": "pop",
+  "f": "boing",
+  "db": -22,
+  "dt": 1.2,
+  "lead": 0.032,
+  "anchor": "start"
+ },
+ {
+  "cue": "dot",
+  "key": "dot",
+  "role": "thump",
+  "f": "thump",
+  "db": -16,
+  "lead": 0.19,
+  "anchor": "peak"
+ },
+ {
+  "cue": "noClap",
+  "key": "claps",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "knock",
+  "key": "knock",
+  "role": "hit",
+  "f": "knock",
+  "db": -15,
+  "anchor": "arrive",
+  "lead": 0.01
+ },
+ {
+  "cue": "knock2",
+  "key": "knock",
+  "role": "hit",
+  "f": "knock_b",
+  "db": -19,
+  "dt": 0.06,
+  "anchor": "start",
+  "lead": 0.046
+ },
+ {
+  "cue": "huh",
+  "key": "nobody",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "push",
+  "key": "question",
+  "role": "whoosh",
+  "f": "whoosh_b",
+  "db": -26,
+  "dt": -0.1,
+  "anchor": "peak",
+  "lead": 0.05
+ },
+ {
+  "cue": "lunch",
+  "key": "lunch",
+  "role": "pop",
+  "f": "pop",
+  "db": -22,
+  "lead": 0.084,
+  "anchor": "start"
+ }
+]

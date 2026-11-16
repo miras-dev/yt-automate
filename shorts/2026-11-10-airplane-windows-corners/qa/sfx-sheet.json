@@ -1,0 +1,72 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 0.1,
+      "label": "air_bed",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/air_bed.wav",
+      "role": "ambience"
+    },
+    {
+      "t": 3.76,
+      "label": "swoosh_pullout",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/swoosh_pullout.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 7.18,
+      "label": "stamp_disaster",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/stamp.wav",
+      "role": "hit"
+    },
+    {
+      "t": 10.46,
+      "label": "pop_square",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 13.06,
+      "label": "inhale",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/inhale.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 14.18,
+      "label": "exhale",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/exhale.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 15.5,
+      "label": "crack",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/crack.wav",
+      "role": "pop"
+    },
+    {
+      "t": 16.94,
+      "label": "crack2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/crack.wav",
+      "role": "pop"
+    },
+    {
+      "t": 17.82,
+      "label": "stamp_1954",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/stamp.wav",
+      "role": "hit"
+    },
+    {
+      "t": 21.6,
+      "label": "tear_impact",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/boom.wav",
+      "role": "hit"
+    },
+    {
+      "t": 23.92,
+      "label": "spread_chime",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-airplane-windows-corners/sfx/chime.wav",
+      "role": "chime"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-airplane-windows-corners-preview.mp4"
+}

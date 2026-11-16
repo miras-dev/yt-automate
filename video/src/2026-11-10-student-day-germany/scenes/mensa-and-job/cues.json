@@ -1,0 +1,152 @@
+[
+  {
+    "cue": "mensa",
+    "key": "mensa",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "stw",
+    "key": "stw",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "four",
+    "key": "four",
+    "role": "thump",
+    "f": "thump",
+    "db": -19,
+    "lead": 0.1897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "count",
+    "key": "price",
+    "role": "coins",
+    "f": "coins",
+    "db": -23,
+    "dt": -0.6,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "spark",
+    "key": "price",
+    "role": "chime",
+    "f": "chime",
+    "db": -22,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "pan",
+    "key": "job",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -22,
+    "anchor": "peak",
+    "lead": 0.0697
+  },
+  {
+    "cue": "partTime",
+    "key": "partTime",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "week",
+    "key": "semester",
+    "role": "paper",
+    "f": "paper",
+    "db": -22,
+    "lead": 0.1097,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "twenty",
+    "key": "twenty",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "dt": 0.2,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "wage",
+    "key": "wage",
+    "role": "coins",
+    "f": "coins",
+    "db": -22,
+    "dt": -0.5,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "hourChime",
+    "key": "hour",
+    "role": "chime",
+    "f": "chime",
+    "db": -22,
+    "dt": -0.3,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "year",
+    "key": "outside",
+    "role": "paper",
+    "f": "paper_b",
+    "db": -23,
+    "lead": 0.2897,
+    "anchor": "peak"
+  },
+  {
+    "cue": "days",
+    "key": "days140",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.0837,
+    "anchor": "start"
+  },
+  {
+    "cue": "away",
+    "key": "money",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -22,
+    "dt": -0.3,
+    "anchor": "peak",
+    "lead": 0.0497
+  },
+  {
+    "cue": "awayCoins",
+    "key": "money",
+    "role": "coins",
+    "f": "coins",
+    "db": -24,
+    "dt": -0.3,
+    "anchor": "arrive",
+    "lead": 0.0697
+  },
+  {
+    "cue": "q",
+    "key": "money",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.0837,
+    "anchor": "start"
+  }
+]

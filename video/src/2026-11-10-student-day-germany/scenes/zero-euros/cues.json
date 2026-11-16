@@ -1,0 +1,160 @@
+[
+ {
+  "cue": "snore0",
+  "key": "student",
+  "role": "ambience",
+  "f": "snore_s",
+  "db": -26,
+  "dt": -0.36,
+  "anchor": "start",
+  "lead": 0.0
+ },
+ {
+  "cue": "alarm",
+  "key": "waking",
+  "role": "ambience",
+  "f": "alarm",
+  "db": -24,
+  "dt": -0.1,
+  "anchor": "start",
+  "lead": 0.0
+ },
+ {
+  "cue": "jump",
+  "key": "jump",
+  "role": "pop",
+  "f": "boing",
+  "db": -20,
+  "lead": 0.032,
+  "anchor": "start"
+ },
+ {
+  "cue": "land",
+  "key": "jump",
+  "role": "hit",
+  "f": "thump_b",
+  "db": -24,
+  "dt": 0.4,
+  "lead": 0.01,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "bill",
+  "key": "tuition",
+  "role": "paper",
+  "f": "paper",
+  "db": -20,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "zero",
+  "key": "zero",
+  "role": "chime",
+  "f": "chime",
+  "db": -19,
+  "anchor": "arrive",
+  "lead": 0.07
+ },
+ {
+  "cue": "panOut",
+  "key": "most",
+  "role": "whoosh",
+  "f": "whoosh",
+  "db": -22,
+  "anchor": "peak",
+  "lead": 0.07
+ },
+ {
+  "cue": "noTuition",
+  "key": "noTuition",
+  "role": "pop",
+  "f": "pop",
+  "db": -23,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "exceptions",
+  "key": "exceptions",
+  "role": "pop",
+  "f": "pop",
+  "db": -24,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "bw",
+  "key": "bw",
+  "role": "paper",
+  "f": "paper_b",
+  "db": -21,
+  "lead": 0.29,
+  "anchor": "peak"
+ },
+ {
+  "cue": "tum",
+  "key": "tum",
+  "role": "paper",
+  "f": "paper",
+  "db": -21,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "panBack",
+  "key": "back",
+  "role": "whoosh",
+  "f": "whoosh_b",
+  "db": -22,
+  "dt": 0.07,
+  "anchor": "peak",
+  "lead": 0.05
+ },
+ {
+  "cue": "fee",
+  "key": "fee",
+  "role": "paper",
+  "f": "paper_b",
+  "db": -20,
+  "lead": 0.29,
+  "anchor": "peak"
+ },
+ {
+  "cue": "feeCoins",
+  "key": "few",
+  "role": "coins",
+  "f": "coins",
+  "db": -21,
+  "anchor": "arrive",
+  "lead": 0.07
+ },
+ {
+  "cue": "gift",
+  "key": "hides",
+  "role": "pop",
+  "f": "pop",
+  "db": -20,
+  "dt": -0.2,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "bonus",
+  "key": "bonus",
+  "role": "chime",
+  "f": "chime",
+  "db": -21,
+  "anchor": "arrive",
+  "lead": 0.07
+ },
+ {
+  "cue": "what",
+  "key": "what",
+  "role": "pop",
+  "f": "pop",
+  "db": -25,
+  "lead": 0.084,
+  "anchor": "start"
+ }
+]

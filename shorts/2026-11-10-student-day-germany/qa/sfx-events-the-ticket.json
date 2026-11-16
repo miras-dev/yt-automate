@@ -1,0 +1,97 @@
+[
+  {
+    "t": 32.3533,
+    "type": "chime",
+    "label": "sparkle"
+  },
+  {
+    "t": 32.3933,
+    "type": "paper",
+    "label": "ticket"
+  },
+  {
+    "t": 33.7133,
+    "type": "pop",
+    "label": "busIcon"
+  },
+  {
+    "t": 34.2333,
+    "type": "pop",
+    "label": "trainIcon"
+  },
+  {
+    "t": 37.2733,
+    "type": "thump",
+    "label": "stamp"
+  },
+  {
+    "t": 40.1333,
+    "type": "whoosh",
+    "label": "busPass"
+  },
+  {
+    "t": 40.7733,
+    "type": "chime",
+    "label": "tramBell"
+  },
+  {
+    "t": 41.6733,
+    "type": "pop",
+    "label": "uSign"
+  },
+  {
+    "t": 43.0333,
+    "type": "whoosh",
+    "label": "trainPass"
+  },
+  {
+    "t": 44.1533,
+    "type": "pop",
+    "label": "germany"
+  },
+  {
+    "t": 46.2533,
+    "type": "paper",
+    "label": "price"
+  },
+  {
+    "t": 49.7033,
+    "type": "coins",
+    "label": "bars"
+  },
+  {
+    "t": 52.5933,
+    "type": "whoosh",
+    "label": "map"
+  },
+  {
+    "t": 55.4533,
+    "type": "pop",
+    "label": "berlin"
+  },
+  {
+    "t": 56.1933,
+    "type": "chime",
+    "label": "noExtra"
+  },
+  {
+    "t": 58.1133,
+    "type": "pop",
+    "label": "clock"
+  },
+  {
+    "t": 59.7133,
+    "type": "whoosh",
+    "label": "camPush"
+  },
+  {
+    "t": 59.8133,
+    "type": "paper",
+    "label": "lecture"
+  },
+  {
+    "t": 62.5733,
+    "type": "pop",
+    "label": "nobody"
+  }
+]
