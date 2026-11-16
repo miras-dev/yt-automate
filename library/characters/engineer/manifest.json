@@ -1,0 +1,82 @@
+{
+  "idle": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "point_left": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "talk_a": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "closeup_talk": {
+    "kind": "char",
+    "aspect": "4:5",
+    "framing": "waist",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "talk_b": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "thinking": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "laptop_sit": {
+    "kind": "char",
+    "aspect": "2:3",
+    "framing": "full",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  },
+  "closeup_react": {
+    "kind": "char",
+    "aspect": "4:5",
+    "framing": "waist",
+    "key": "#9BCFFD",
+    "model": "gemini-3.1-flash-image-preview",
+    "refs": [
+      "library/characters/engineer/raw/hero.png"
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "t": 88.95,
+    "type": "whoosh",
+    "label": "pullback"
+  },
+  {
+    "t": 92.14,
+    "type": "pop",
+    "label": "crowd_pop"
+  },
+  {
+    "t": 92.44,
+    "type": "ambience",
+    "label": "crowd"
+  },
+  {
+    "t": 95.58,
+    "type": "hit",
+    "label": "stadium"
+  },
+  {
+    "t": 95.98,
+    "type": "whoosh",
+    "label": "hop_in"
+  },
+  {
+    "t": 96.62,
+    "type": "pop",
+    "label": "ballpark"
+  },
+  {
+    "t": 97.99,
+    "type": "whoosh",
+    "label": "to_desk"
+  },
+  {
+    "t": 98.54,
+    "type": "pop",
+    "label": "card"
+  },
+  {
+    "t": 100.66,
+    "type": "whoosh",
+    "label": "stamp_up"
+  },
+  {
+    "t": 101.28,
+    "type": "hit",
+    "label": "stamp"
+  },
+  {
+    "t": 103.3,
+    "type": "pop",
+    "label": "leap"
+  },
+  {
+    "t": 104.7,
+    "type": "pop",
+    "label": "cap"
+  },
+  {
+    "t": 105.14,
+    "type": "pop",
+    "label": "step1"
+  },
+  {
+    "t": 105.96,
+    "type": "paper",
+    "label": "exams"
+  },
+  {
+    "t": 106.56,
+    "type": "pop",
+    "label": "step2"
+  },
+  {
+    "t": 107.82,
+    "type": "paper",
+    "label": "calendar"
+  },
+  {
+    "t": 108.74,
+    "type": "pop",
+    "label": "step3"
+  },
+  {
+    "t": 109.52,
+    "type": "chime",
+    "label": "license"
+  },
+  {
+    "t": 112.74,
+    "type": "pop",
+    "label": "qmark4"
+  }
+]

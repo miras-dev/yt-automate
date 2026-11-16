@@ -1,0 +1,92 @@
+[
+  {
+    "t": 115.1,
+    "type": "pop",
+    "label": "skills"
+  },
+  {
+    "t": 116.94,
+    "type": "pop",
+    "label": "flask"
+  },
+  {
+    "t": 117.84,
+    "type": "hit",
+    "label": "microbe"
+  },
+  {
+    "t": 118.92,
+    "type": "hit",
+    "label": "book"
+  },
+  {
+    "t": 120.6,
+    "type": "whoosh",
+    "label": "fly_off"
+  },
+  {
+    "t": 121.2,
+    "type": "hit",
+    "label": "certainty"
+  },
+  {
+    "t": 123.13,
+    "type": "paper",
+    "label": "checklist"
+  },
+  {
+    "t": 124.08,
+    "type": "pop",
+    "label": "tick1"
+  },
+  {
+    "t": 125.86,
+    "type": "pop",
+    "label": "tick2"
+  },
+  {
+    "t": 128.76,
+    "type": "pop",
+    "label": "tick3"
+  },
+  {
+    "t": 131.18,
+    "type": "hit",
+    "label": "st_required"
+  },
+  {
+    "t": 132.2,
+    "type": "hit",
+    "label": "st_urgent"
+  },
+  {
+    "t": 132.86,
+    "type": "hit",
+    "label": "st_rare"
+  },
+  {
+    "t": 134.08,
+    "type": "hit",
+    "label": "expensive"
+  },
+  {
+    "t": 135.72,
+    "type": "whoosh",
+    "label": "tap_up"
+  },
+  {
+    "t": 136.9,
+    "type": "pop",
+    "label": "glass"
+  },
+  {
+    "t": 138.15,
+    "type": "water",
+    "label": "pour"
+  },
+  {
+    "t": 139.04,
+    "type": "chime",
+    "label": "smile"
+  }
+]

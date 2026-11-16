@@ -1,0 +1,252 @@
+[
+  {
+    "cue": "book_slam",
+    "key": "law",
+    "role": "hit",
+    "f": "thump",
+    "db": -13,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "lbl70s",
+    "key": "seventies",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "lblair",
+    "key": "airAct",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "lblwater",
+    "key": "waterAct",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "limit",
+    "key": "limited",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -27,
+    "lead": 0.05,
+    "anchor": "peak"
+  },
+  {
+    "cue": "to_factory",
+    "key": "factory",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -28,
+    "dt": -0.2,
+    "lead": 0.07,
+    "anchor": "peak"
+  },
+  {
+    "cue": "gush",
+    "key": "pipe",
+    "role": "hit",
+    "f": "squelch",
+    "db": -17,
+    "lead": 0.23,
+    "anchor": "peak"
+  },
+  {
+    "cue": "gush_pour",
+    "key": "pipe",
+    "role": "water",
+    "f": "pour",
+    "db": -24,
+    "dt": 0.1,
+    "lead": 0.35,
+    "anchor": "start"
+  },
+  {
+    "cue": "permit",
+    "key": "permit",
+    "role": "paper",
+    "f": "paper",
+    "db": -16,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "tank",
+    "key": "treatment",
+    "role": "hit",
+    "f": "thump_b",
+    "db": -15,
+    "lead": 0.01,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "clean_pour",
+    "key": "keeps",
+    "role": "water",
+    "f": "pour",
+    "db": -23,
+    "lead": 0.35,
+    "anchor": "start"
+  },
+  {
+    "cue": "river_smile",
+    "key": "limits",
+    "role": "chime",
+    "f": "chime",
+    "db": -23,
+    "lead": 0.07,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "break",
+    "key": "breakLimits",
+    "role": "hit",
+    "f": "squelch_b",
+    "db": -16,
+    "lead": 0.43,
+    "anchor": "peak"
+  },
+  {
+    "cue": "fine1",
+    "key": "fines",
+    "role": "paper",
+    "f": "paper",
+    "db": -15,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "fine2",
+    "key": "violation",
+    "role": "paper",
+    "f": "paper_b",
+    "db": -17,
+    "lead": 0.29,
+    "anchor": "peak"
+  },
+  {
+    "cue": "fine3",
+    "key": "violation",
+    "role": "paper",
+    "f": "paper",
+    "db": -17,
+    "dt": 0.32,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "fine4",
+    "key": "violation2",
+    "role": "paper",
+    "f": "paper_b",
+    "db": -16,
+    "lead": 0.29,
+    "anchor": "peak"
+  },
+  {
+    "cue": "balance",
+    "key": "companies",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -28,
+    "lead": 0.05,
+    "anchor": "peak"
+  },
+  {
+    "cue": "salary_pan",
+    "key": "hire",
+    "role": "hit",
+    "f": "coins",
+    "db": -17,
+    "lead": 0.07,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "nice",
+    "key": "nice",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "dt": -0.4,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "fines_pan1",
+    "key": "breaking",
+    "role": "paper",
+    "f": "paper",
+    "db": -19,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "fines_pan2",
+    "key": "breaking",
+    "role": "paper",
+    "f": "paper_b",
+    "db": -19,
+    "dt": 0.22,
+    "lead": 0.29,
+    "anchor": "peak"
+  },
+  {
+    "cue": "fines_pan3",
+    "key": "breaking",
+    "role": "paper",
+    "f": "paper",
+    "db": -20,
+    "dt": 0.44,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "slam",
+    "key": "costs",
+    "role": "hit",
+    "f": "thump",
+    "db": -14,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "rules_tag",
+    "key": "more",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "arrow",
+    "key": "growing",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -26,
+    "dt": -0.2,
+    "lead": 0.07,
+    "anchor": "peak"
+  },
+  {
+    "cue": "qmark2",
+    "key": "now",
+    "role": "pop",
+    "f": "pop",
+    "db": -22,
+    "lead": 0.084,
+    "anchor": "start"
+  }
+]

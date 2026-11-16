@@ -1,0 +1,56 @@
+{
+  "packaging_skipped": true,
+  "slug": "2026-11-10-airplane-windows-corners",
+  "date": "2026-11-10",
+  "title": "Why don't airplane windows have corners?",
+  "category": "engineering",
+  "topic": "Airplane windows are rounded because square windows on the de Havilland Comet cracked at the corners and tore the first jet airliner open in 1954; rounded corners spread the pressure stress evenly.",
+  "status": "rendered",
+  "format": "short",
+  "aspect": "9:16",
+  "word_count": 68,
+  "image_budget": 40,
+  "duration_s": 29.167,
+  "images": {
+    "count": 9,
+    "unique": 8,
+    "model": "gemini-3.1-flash-image-preview",
+    "est_usd": 1.35,
+    "list": ["hero", "hero_shrug", "plane_round", "plane_square", "fuselage_round", "fuselage_square", "demo_round", "demo_square (x2 takes)"]
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "1gZSmkYVRMS8w1i4plmP",
+    "voice_name": "Tim Riley - Natural. Conversational",
+    "model": "eleven_v3",
+    "credits_estimate": 500
+  },
+  "sounds": [
+    {"cue": "air_bed", "source": "openverse", "license": "CC BY 3.0", "title": "Airplane - Cabin Noise", "creator": "KenzieVaness"},
+    {"cue": "swoosh_pullout", "source": "openverse", "license": "CC0 1.0", "title": "Cartoony whooshes", "creator": "Reitanna"},
+    {"cue": "pop_square", "source": "openverse", "license": "CC0 1.0", "title": "Pop Sound", "creator": "DrMinky"},
+    {"cue": "crack / crack2", "source": "openverse", "license": "CC BY 3.0", "title": "Breaking Glass 25", "creator": "michorvath"},
+    {"cue": "tear_impact", "source": "openverse", "license": "CC0 1.0", "title": "BOOM IMPACT 2", "creator": "cosmicembers"},
+    {"cue": "spread_chime", "source": "openverse", "license": "CC BY 4.0", "title": "Trinkets jingling - Soft jingle", "creator": "AshtiHari"},
+    {"cue": "stamp_disaster / stamp_1954", "source": "openverse", "license": "CC0 1.0", "title": "Thump", "creator": "mpuffenbarger"},
+    {"cue": "inhale", "source": "openverse", "license": "CC0 1.0", "title": "Balloon-Inflate-02", "creator": "Gniffelbaf"},
+    {"cue": "exhale", "source": "openverse", "license": "CC0 1.0", "title": "Balloon-Inflate-01", "creator": "Gniffelbaf"}
+  ],
+  "files": {
+    "render_4K": "out/2026-11-10-airplane-windows-corners-4K.mp4",
+    "preview": "out/2026-11-10-airplane-windows-corners-preview.mp4",
+    "thumbnail": "shorts/2026-11-10-airplane-windows-corners/qa/frame0.png",
+    "voice": "video/public/2026-11-10-airplane-windows-corners/vo/take1.mp3",
+    "script": "shorts/2026-11-10-airplane-windows-corners/script.md",
+    "sources": "shorts/2026-11-10-airplane-windows-corners/sources.md",
+    "beats": "shorts/2026-11-10-airplane-windows-corners/beats.md",
+    "credits": "shorts/2026-11-10-airplane-windows-corners/credits.txt"
+  },
+  "audio": {
+    "integrated_LUFS": -16.1,
+    "true_peak_dBTP": -2.5,
+    "LRA_LU": 2.1,
+    "noise_floor_dBFS": -50.8,
+    "p_real": 0.95
+  }
+}

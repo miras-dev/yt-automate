@@ -1,0 +1,59 @@
+{
+  "packaging_skipped": true,
+  "slug": "2026-11-10-fde-role-in-tech",
+  "date": "2026-11-10",
+  "title": "What is a Forward Deployed Engineer?",
+  "category": "tech-careers",
+  "topic": "A Forward Deployed Engineer is a software engineer who embeds with one customer and writes production code on-site until the product actually works for them. Palantir invented the title around 2009; the AI boom made it one of the hottest roles in tech in 2026.",
+  "status": "rendered",
+  "format": "long-vertical",
+  "aspect": "9:16",
+  "word_count": 356,
+  "duration_s": 132.08,
+  "scenes": {
+    "count": 5,
+    "names": ["enter", "what-they-do", "why-different", "who-hires", "the-deal"],
+    "durations": [22.2, 24.84, 25.14, 32.6, 26.1]
+  },
+  "image_budget": 60,
+  "images": {
+    "count": 5,
+    "unique": 5,
+    "model": "gemini-3.1-flash-image-preview",
+    "est_usd": 0.75,
+    "list": ["briefcase", "airplane_window", "office_desk", "money_bag", "server_rack"],
+    "note": "Library (engineer character + 10 poses, ~9 Flash images, ~$1.35) built from the first short's hero; not counted in this video's budget."
+  },
+  "character": {
+    "library": "engineer",
+    "poses": ["hero", "idle", "point_right", "point_left", "shrug", "talk_a", "talk_b", "thinking", "closeup_talk", "closeup_react", "laptop_sit"]
+  },
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "1gZSmkYVRMS8w1i4plmP",
+    "voice_name": "Tim Riley - Natural. Conversational",
+    "model": "eleven_v3",
+    "takes": 5,
+    "credits_estimate": 2500
+  },
+  "sounds": [
+    {"cue": "music_bed", "source": "openverse", "license": "CC BY 4.0", "title": "Soundscape - Dust - Ambient Guitar", "creator": "Tri-Tachyon"},
+    {"cue": "scene_whooshes", "source": "openverse (reused)", "license": "CC0 1.0", "title": "Cartoony whooshes", "creator": "Reitanna"},
+    {"cue": "scene_pops", "source": "openverse (reused)", "license": "CC0 1.0", "title": "Pop Sound", "creator": "DrMinky"},
+    {"cue": "final_chime", "source": "openverse (reused)", "license": "CC BY 4.0", "title": "Trinkets jingling - Soft jingle", "creator": "AshtiHari"}
+  ],
+  "files": {
+    "render_4K": "out/2026-11-10-fde-role-in-tech-4K.mp4",
+    "preview": "out/2026-11-10-fde-role-in-tech-preview.mp4",
+    "script": "shorts/2026-11-10-fde-role-in-tech/script.md",
+    "sources": "shorts/2026-11-10-fde-role-in-tech/sources.md",
+    "credits": "shorts/2026-11-10-fde-role-in-tech/credits.txt",
+    "voice_dir": "video/public/2026-11-10-fde-role-in-tech/vo"
+  },
+  "audio": {
+    "integrated_LUFS": -16.2,
+    "true_peak_dBTP": -3.6,
+    "LRA_LU": 3.0,
+    "noise_floor_dBFS": -55.5
+  }
+}

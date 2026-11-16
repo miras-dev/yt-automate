@@ -1,0 +1,30 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 20.7,
+      "label": "whip1",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 54.8667,
+      "label": "whip2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 88.3,
+      "label": "whip3",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 114.4,
+      "label": "whip4",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-environmental-engineer-pay-preview.mp4"
+}

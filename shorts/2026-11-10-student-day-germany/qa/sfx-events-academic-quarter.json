@@ -1,0 +1,77 @@
+[
+  {
+    "t": 64.25,
+    "type": "paper",
+    "label": "card"
+  },
+  {
+    "t": 66.78,
+    "type": "pop",
+    "label": "ct"
+  },
+  {
+    "t": 70.2,
+    "type": "pop",
+    "label": "withTime"
+  },
+  {
+    "t": 71.567,
+    "type": "ambience",
+    "label": "ticking"
+  },
+  {
+    "t": 75.36,
+    "type": "pop",
+    "label": "quarterPast"
+  },
+  {
+    "t": 76.74,
+    "type": "pop",
+    "label": "academic"
+  },
+  {
+    "t": 79.16,
+    "type": "paper",
+    "label": "stCard"
+  },
+  {
+    "t": 80.56,
+    "type": "pop",
+    "label": "handBack"
+  },
+  {
+    "t": 82.88,
+    "type": "thump",
+    "label": "dot"
+  },
+  {
+    "t": 85.6,
+    "type": "pop",
+    "label": "noClap"
+  },
+  {
+    "t": 87.06,
+    "type": "hit",
+    "label": "knock"
+  },
+  {
+    "t": 87.12,
+    "type": "hit",
+    "label": "knock2"
+  },
+  {
+    "t": 90.64,
+    "type": "pop",
+    "label": "huh"
+  },
+  {
+    "t": 94.46,
+    "type": "whoosh",
+    "label": "push"
+  },
+  {
+    "t": 96.04,
+    "type": "pop",
+    "label": "lunch"
+  }
+]

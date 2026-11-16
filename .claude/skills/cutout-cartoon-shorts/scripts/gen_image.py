@@ -102,7 +102,7 @@ def call_gemini(model: str, prompt: str, refs: list[Path], aspect: str, size: st
     key = os.environ.get("GEMINI_API_KEY")
     if not key:
         die("GEMINI_API_KEY is not set (put it in .env)", 2)
-    client = genai.Client(api_key=key)
+    client = genai.Client(api_key=key, http_options=types.HttpOptions(api_version="v1beta"))
     contents: list = [prompt] + [Image.open(r) for r in refs]
     config = types.GenerateContentConfig(
         response_modalities=["IMAGE"],

@@ -1,0 +1,9 @@
+# Sources
+
+Each claim in the script is backed below. Every fact confirmed in at least two sources.
+
+- https://en.wikipedia.org/wiki/Forward_Deployed_Engineer — definition of FDE ("customer-facing software engineer who works for a company that makes a product and helps implement that product within a client company"); Palantir popularised the title by 2009; the terminology comes from U.S. military jargon about forward positioning; AWS, Microsoft, Google Cloud, OpenAI and Anthropic expanded FDE divisions in 2026.
+- https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers — Palantir's own description: "FDE responsibilities look similar to those of a startup CTO: small teams, end-to-end execution of high-stakes projects"; FDEs write code on customer infrastructure and contribute features back to the core product; 25-50% travel; Palantir employed more FDEs than regular engineers until 2016; AI integration demand drove the surge.
+- https://www.paraform.com/blog/openai-forward-deployed-engineer — OpenAI FDE compensation bands: mid-level $160-280K base / $350-450K total, senior $220-300K / $450-550K, staff $280K+ / $550K+. Up to 50% travel. On Oct 2 2026, 24 OpenAI postings listed "Forward Deployed" in the title; NYC held 35% of them, SF 11%.
+- https://getperspective.ai/blog/rise-of-the-forward-deployed-engineer-2026-hottest-ai-role — 2026 US average FDE total compensation ~$238K across levels; frontier-lab senior packages commonly clear $500K; Anthropic and Google also hiring; AI integration into enterprise systems is the demand driver.
+- https://jobs.lever.co/palantir/5168e8fd-fec1-4fea-b7a1-81bdaea65850 — Palantir's own Forward Deployed Software Engineer job ad: "work side by side with customers, rapidly understanding their toughest issues; architecting and building solutions".

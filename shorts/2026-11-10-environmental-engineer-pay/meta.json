@@ -1,0 +1,246 @@
+{
+  "packaging_skipped": true,
+  "slug": "2026-11-10-environmental-engineer-pay",
+  "date": "2026-11-10",
+  "title": "Why are environmental engineers paid so well?",
+  "category": "careers",
+  "topic": "Environmental engineers in the US earn a median $107,110 (May 2025), more than double the $50,980 median for all workers, because pollution work is required by law (Clean Air/Water Acts, NPDES permits, fines over $60,000 a day per violation), new rules and money keep adding work (PFAS limits of 4 ppt, 10 years to replace lead pipes, $50+ billion for water), and only a small licensed group (about 39,100 people; only PEs may sign and seal plans) can sign off on the fix.",
+  "status": "rendered",
+  "format": "long-vertical",
+  "aspect": "9:16",
+  "word_count": 342,
+  "scenes": {
+    "count": 5,
+    "names": [
+      "dirty-job",
+      "the-law",
+      "new-rules",
+      "the-stamp",
+      "the-promise"
+    ],
+    "durations": [
+      20.4,
+      33.86,
+      33.14,
+      25.8,
+      25.58
+    ],
+    "gaps": [
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "starts": [
+      0.0,
+      20.7,
+      54.867,
+      88.3,
+      114.4
+    ]
+  },
+  "image_budget": 60,
+  "character": "engineer",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "1gZSmkYVRMS8w1i4plmP",
+    "voice_name": "Tim Riley - Natural. Conversational",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75,
+      "style": 0.0,
+      "speed": 1.0,
+      "seed": 4242
+    },
+    "takes": [
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-1.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-2.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-3.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-4.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-5.mp3"
+    ],
+    "voice_end_s": {
+      "1": 19.9,
+      "2": 33.36,
+      "3": 32.64,
+      "4": 25.3,
+      "5": 25.08
+    },
+    "credits_used": 807
+  },
+  "images": {
+    "count": 19,
+    "model": "gemini-3.1-flash-image-preview",
+    "est_usd": 2.85,
+    "new": [
+      "blueprint",
+      "cash_bundle",
+      "factory",
+      "faucet",
+      "flask",
+      "grad_cap",
+      "happy",
+      "hard_hat",
+      "hold_glass",
+      "law_book",
+      "lead_pipe",
+      "new_pipe",
+      "olympic_pool",
+      "rubber_stamp",
+      "sewer_pipe",
+      "stadium",
+      "town",
+      "treatment_tank",
+      "water_glass"
+    ],
+    "library": "engineer (reused poses: idle, talk_a, talk_b, point_right (also mirrored), shrug, thinking, closeup_react)",
+    "note": "count corrected after parallel generation (gen_image.py counters race when run in parallel)",
+    "unused": [
+      "hard_hat (the hat is drawn in code so it sits right on every pose)"
+    ]
+  },
+  "sounds": [
+    {
+      "cue": "music bed",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "September_Hords_Loop_mp3",
+      "creator": "ValentinSosnitskiy"
+    },
+    {
+      "cue": "coins",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "20080928.coins.05.wav",
+      "creator": "dobroide"
+    },
+    {
+      "cue": "chime",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "Trinkets jingling - Soft jingle",
+      "creator": "AshtiHari"
+    },
+    {
+      "cue": "whoosh / whoosh_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Cartoony whooshes",
+      "creator": "Reitanna"
+    },
+    {
+      "cue": "thump",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Thump.mp3",
+      "creator": "mpuffenbarger"
+    },
+    {
+      "cue": "boom / thump_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "BOOM IMPACT 2",
+      "creator": "cosmicembers"
+    },
+    {
+      "cue": "pop",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Pop Sound",
+      "creator": "DrMinky"
+    },
+    {
+      "cue": "paper / paper_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "paper flip 1.wav / paper flip 2.wav",
+      "creator": "gynation"
+    },
+    {
+      "cue": "drop",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Water drop / Splash",
+      "creator": "bxyorna"
+    },
+    {
+      "cue": "pour",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Water pouring into glass.aif",
+      "creator": "carroll27"
+    },
+    {
+      "cue": "squelch / squelch_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Squelching SFX [8] / [9]",
+      "creator": "SoundDesignForYou"
+    },
+    {
+      "cue": "crowd",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Medium crowd cheering 02",
+      "creator": "misjoc"
+    },
+    {
+      "cue": "boing",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Boing Spring Mouth harp downward 1.wav",
+      "creator": "pan14"
+    }
+  ],
+  "files": {
+    "script": "shorts/2026-11-10-environmental-engineer-pay/script.md",
+    "sources": "shorts/2026-11-10-environmental-engineer-pay/sources.md",
+    "beats": "shorts/2026-11-10-environmental-engineer-pay/beats.md",
+    "credits": "shorts/2026-11-10-environmental-engineer-pay/credits.txt",
+    "voice": [
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-1.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-2.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-3.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-4.mp3",
+      "video/public/2026-11-10-environmental-engineer-pay/vo/scene-5.mp3"
+    ],
+    "code": "video/src/2026-11-10-environmental-engineer-pay/",
+    "render_4K": "out/2026-11-10-environmental-engineer-pay-4K.mp4",
+    "preview": "out/2026-11-10-environmental-engineer-pay-preview.mp4",
+    "thumbnail": "shorts/2026-11-10-environmental-engineer-pay/qa/frame0.png",
+    "render_4K_unmastered": "out/2026-11-10-environmental-engineer-pay-4K-unmastered.mp4",
+    "sheet": "shorts/2026-11-10-environmental-engineer-pay/qa/sheet.png",
+    "prompts": "shorts/2026-11-10-environmental-engineer-pay/prompts.md"
+  },
+  "duration_s": 139.983,
+  "render": {
+    "composition": "environmental-engineer-pay",
+    "size": "2160x3840",
+    "fps": 60,
+    "frames": 8399,
+    "render_s": 16467,
+    "audio_master": "two-pass ffmpeg loudnorm I -16 / TP -4.5 / LRA 11 on the Remotion WAV mix, muxed with -c:v copy"
+  },
+  "audio": {
+    "integrated_LUFS": -16.3,
+    "true_peak_dBTP": -4.4,
+    "LRA_LU": 3.0,
+    "cue_sync_within_100ms": 0.97,
+    "cue_sync_median_ms": 24,
+    "music_bed": "September_Hords_Loop (CC BY 4.0) at -20 LUFS, played -13 dB, ducked 3.5 dB on continuous speech"
+  },
+  "qa": {
+    "popscan": "434 flags, all checked; 2 real pops fixed before the 4K render",
+    "verify_mix": "loudness_ok, peak_ok, frames_ok",
+    "contact_sheets": [
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact-scene-1.png",
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact-scene-2.png",
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact-scene-3.png",
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact-scene-4.png",
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact-scene-5.png",
+      "shorts/2026-11-10-environmental-engineer-pay/qa/contact.png"
+    ],
+    "earshot": "shorts/2026-11-10-environmental-engineer-pay/qa/earshot.md"
+  }
+}

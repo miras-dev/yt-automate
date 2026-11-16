@@ -1,0 +1,112 @@
+[
+  {
+    "t": 55.1467,
+    "type": "pop",
+    "label": "y2024"
+  },
+  {
+    "t": 56.5867,
+    "type": "pop",
+    "label": "epa"
+  },
+  {
+    "t": 58.7567,
+    "type": "water",
+    "label": "tap_on"
+  },
+  {
+    "t": 59.1067,
+    "type": "pop",
+    "label": "critters"
+  },
+  {
+    "t": 61.0067,
+    "type": "water",
+    "label": "tap_on2"
+  },
+  {
+    "t": 62.1067,
+    "type": "pop",
+    "label": "pfoa"
+  },
+  {
+    "t": 63.8567,
+    "type": "pop",
+    "label": "react"
+  },
+  {
+    "t": 66.0067,
+    "type": "whoosh",
+    "label": "to_pools"
+  },
+  {
+    "t": 66.9667,
+    "type": "pop",
+    "label": "drop_lbl"
+  },
+  {
+    "t": 67.6067,
+    "type": "pop",
+    "label": "five_lbl"
+  },
+  {
+    "t": 68.1267,
+    "type": "water",
+    "label": "drop_land"
+  },
+  {
+    "t": 69.9967,
+    "type": "whoosh",
+    "label": "to_street"
+  },
+  {
+    "t": 72.7867,
+    "type": "paper",
+    "label": "calendar"
+  },
+  {
+    "t": 73.8267,
+    "type": "whoosh",
+    "label": "yank"
+  },
+  {
+    "t": 74.5267,
+    "type": "hit",
+    "label": "new_pipe"
+  },
+  {
+    "t": 77.0467,
+    "type": "pop",
+    "label": "law2021"
+  },
+  {
+    "t": 78.8267,
+    "type": "hit",
+    "label": "money"
+  },
+  {
+    "t": 79.1767,
+    "type": "paper",
+    "label": "money2"
+  },
+  {
+    "t": 80.6467,
+    "type": "chime",
+    "label": "sparkle"
+  },
+  {
+    "t": 84.2467,
+    "type": "paper",
+    "label": "plans"
+  },
+  {
+    "t": 85.8867,
+    "type": "pop",
+    "label": "pen"
+  },
+  {
+    "t": 86.9267,
+    "type": "pop",
+    "label": "qmark3"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "cue": "air_bed",
+    "key": "look",
+    "dt": 0,
+    "role": "ambience",
+    "f": "air_bed",
+    "db": -30,
+    "lead": 0.0,
+    "anchor": "start"
+  },
+  {
+    "cue": "swoosh_pullout",
+    "key": "cameraOut",
+    "dt": 0,
+    "role": "whoosh",
+    "f": "swoosh_pullout",
+    "db": -26,
+    "lead": 0.01,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "stamp_disaster",
+    "key": "disaster",
+    "dt": 0,
+    "role": "hit",
+    "f": "stamp",
+    "db": -14,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "pop_square",
+    "key": "square",
+    "dt": 0,
+    "role": "pop",
+    "f": "pop",
+    "db": -18,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "inhale",
+    "key": "pressurised",
+    "dt": 0,
+    "role": "whoosh",
+    "f": "inhale",
+    "db": -22,
+    "lead": 0.49,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "exhale",
+    "key": "relaxed",
+    "dt": 0,
+    "role": "whoosh",
+    "f": "exhale",
+    "db": -24,
+    "lead": 0.43,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "crack",
+    "key": "cracks",
+    "dt": 0,
+    "role": "pop",
+    "f": "crack",
+    "db": -18,
+    "lead": 0.023,
+    "anchor": "start"
+  },
+  {
+    "cue": "crack2",
+    "key": "corners2",
+    "dt": 0,
+    "role": "pop",
+    "f": "crack",
+    "db": -19,
+    "lead": 0.023,
+    "anchor": "start"
+  },
+  {
+    "cue": "stamp_1954",
+    "key": "in1954",
+    "dt": 0,
+    "role": "hit",
+    "f": "stamp",
+    "db": -15,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "tear_impact",
+    "key": "tearBoom",
+    "dt": 0,
+    "role": "hit",
+    "f": "boom",
+    "db": -10,
+    "lead": 0.01,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "spread_chime",
+    "key": "evenly",
+    "dt": 0,
+    "role": "chime",
+    "f": "chime",
+    "db": -18,
+    "lead": 1.59,
+    "anchor": "peak"
+  }
+]

@@ -1,0 +1,82 @@
+[
+  {
+    "t": 1.4,
+    "type": "hit",
+    "label": "burp1"
+  },
+  {
+    "t": 2.35,
+    "type": "whoosh",
+    "label": "puff"
+  },
+  {
+    "t": 3.45,
+    "type": "water",
+    "label": "bubbles1"
+  },
+  {
+    "t": 3.75,
+    "type": "water",
+    "label": "bubbles2"
+  },
+  {
+    "t": 5.14,
+    "type": "paper",
+    "label": "cash_a"
+  },
+  {
+    "t": 5.4,
+    "type": "paper",
+    "label": "cash_b"
+  },
+  {
+    "t": 5.66,
+    "type": "paper",
+    "label": "cash_c"
+  },
+  {
+    "t": 5.79,
+    "type": "hit",
+    "label": "cash_land"
+  },
+  {
+    "t": 5.86,
+    "type": "hit",
+    "label": "cash_coins"
+  },
+  {
+    "t": 7.94,
+    "type": "pop",
+    "label": "label_eng"
+  },
+  {
+    "t": 9.84,
+    "type": "hit",
+    "label": "salary_coins"
+  },
+  {
+    "t": 12.77,
+    "type": "whoosh",
+    "label": "pull_back"
+  },
+  {
+    "t": 13.4,
+    "type": "pop",
+    "label": "x2"
+  },
+  {
+    "t": 14.02,
+    "type": "pop",
+    "label": "median"
+  },
+  {
+    "t": 17.96,
+    "type": "hit",
+    "label": "burp2"
+  },
+  {
+    "t": 19.2,
+    "type": "pop",
+    "label": "qmark"
+  }
+]

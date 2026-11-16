@@ -6,9 +6,9 @@
   "angle": "",
   "_angle": "The twist that makes this channel different from the big channels in the same topics: a different mascot, world or audience, never a copy of another channel's look. Written by the mascot design step (cutout-cartoon-shorts skill, section 12.1) when empty.",
   "mascot": {
-    "chosen": false,
-    "name": "",
-    "library": "",
+    "chosen": true,
+    "name": "engineer",
+    "library": "engineer",
     "look": "simple white character with a big round head, a small soft body, noodle arms with simple four-finger hands and short legs with rounded feet, thick smooth black outlines of even weight, flat white fill with a very soft pale-grey shade on one side, small solid black oval eyes, simple curved black eyebrows, no nose, no hair, no clothes, a pink tongue only when the mouth is open",
     "signature": "",
     "_help": "look = how every character picture is drawn (written to follow 'a' / 'the same'). signature = one ownable detail that is always visible and readable at thumbnail size (a colour, a prop, a silhouette). library = the folder in library/characters/. chosen = true once a person or the mascot design step has settled it."

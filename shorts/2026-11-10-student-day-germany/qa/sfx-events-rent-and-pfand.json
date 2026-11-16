@@ -1,0 +1,77 @@
+[
+  {
+    "t": 128.57,
+    "type": "coins",
+    "label": "rentCoins"
+  },
+  {
+    "t": 131.51,
+    "type": "pop",
+    "label": "wg"
+  },
+  {
+    "t": 133.45,
+    "type": "thump",
+    "label": "price"
+  },
+  {
+    "t": 136.31,
+    "type": "pop",
+    "label": "munich"
+  },
+  {
+    "t": 137.9,
+    "type": "whoosh",
+    "label": "pan"
+  },
+  {
+    "t": 142.49,
+    "type": "glass",
+    "label": "b1"
+  },
+  {
+    "t": 143.65,
+    "type": "glass",
+    "label": "b2"
+  },
+  {
+    "t": 144.19,
+    "type": "glass",
+    "label": "b3"
+  },
+  {
+    "t": 145.13,
+    "type": "coins",
+    "label": "refund"
+  },
+  {
+    "t": 146.85,
+    "type": "pop",
+    "label": "pfand"
+  },
+  {
+    "t": 148.23,
+    "type": "pop",
+    "label": "shops"
+  },
+  {
+    "t": 153.13,
+    "type": "paper",
+    "label": "sunday"
+  },
+  {
+    "t": 156.23,
+    "type": "hit",
+    "label": "shutter"
+  },
+  {
+    "t": 156.23,
+    "type": "thump",
+    "label": "closed"
+  },
+  {
+    "t": 160.55,
+    "type": "pop",
+    "label": "cost"
+  }
+]

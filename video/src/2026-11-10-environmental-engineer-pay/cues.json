@@ -1,0 +1,38 @@
+[
+  {
+    "cue": "whip1",
+    "key": "join1",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -22,
+    "lead": 0.07,
+    "anchor": "peak"
+  },
+  {
+    "cue": "whip2",
+    "key": "join2",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -22,
+    "lead": 0.0697,
+    "anchor": "peak"
+  },
+  {
+    "cue": "whip3",
+    "key": "join3",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -22,
+    "lead": 0.07,
+    "anchor": "peak"
+  },
+  {
+    "cue": "whip4",
+    "key": "join4",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -22,
+    "lead": 0.07,
+    "anchor": "peak"
+  }
+]
