@@ -1,6 +1,8 @@
 {
   "_about": "The channel's own identity. gen_image.py and thumbnail.py draw the mascot from it, the short-script skill packages every video in its style, upload.py takes its settings from it. Change the channel here, not in the scripts. The two null fields under upload are a person's decision: upload.py refuses to publish until both are true or false.",
-  "name": "",
+  "name": "Querious",
+  "handle": "@stayquerious",
+  "youtube_channel_id": "UCLmQHu_XQkPz3GugX8K1TCw",
   "promise": "One surprising question about the everyday world, answered with real sources by a cartoon mascot that acts it out.",
   "audience": "Curious teens and adults who like quick science, engineering, nature and history answers. English.",
   "angle": "",
