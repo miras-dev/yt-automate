@@ -1,0 +1,114 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 115.1,
+      "label": "skills",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 116.94,
+      "label": "flask",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 117.84,
+      "label": "microbe",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/squelch_b.wav",
+      "role": "hit"
+    },
+    {
+      "t": 118.92,
+      "label": "book",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump.wav",
+      "role": "hit"
+    },
+    {
+      "t": 120.6,
+      "label": "fly_off",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 121.2,
+      "label": "certainty",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump.wav",
+      "role": "hit"
+    },
+    {
+      "t": 123.13,
+      "label": "checklist",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/paper.wav",
+      "role": "paper"
+    },
+    {
+      "t": 124.08,
+      "label": "tick1",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 125.86,
+      "label": "tick2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 128.76,
+      "label": "tick3",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 131.18,
+      "label": "st_required",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump.wav",
+      "role": "hit"
+    },
+    {
+      "t": 132.2,
+      "label": "st_urgent",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump_b.wav",
+      "role": "hit"
+    },
+    {
+      "t": 132.86,
+      "label": "st_rare",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/thump.wav",
+      "role": "hit"
+    },
+    {
+      "t": 134.08,
+      "label": "expensive",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/coins.wav",
+      "role": "hit"
+    },
+    {
+      "t": 135.72,
+      "label": "tap_up",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/whoosh_b.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 136.9,
+      "label": "glass",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 138.15,
+      "label": "pour",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/pour.wav",
+      "role": "water"
+    },
+    {
+      "t": 139.04,
+      "label": "smile",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-environmental-engineer-pay/sfx/chime.wav",
+      "role": "chime"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-environmental-engineer-pay-preview.mp4"
+}

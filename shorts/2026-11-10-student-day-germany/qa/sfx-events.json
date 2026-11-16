@@ -1,0 +1,27 @@
+[
+  {
+    "t": 32.1333,
+    "type": "whoosh",
+    "label": "whip1"
+  },
+  {
+    "t": 64.2,
+    "type": "whoosh",
+    "label": "whip2"
+  },
+  {
+    "t": 97.6667,
+    "type": "whoosh",
+    "label": "whip3"
+  },
+  {
+    "t": 127.85,
+    "type": "whoosh",
+    "label": "whip4"
+  },
+  {
+    "t": 161.9667,
+    "type": "whoosh",
+    "label": "whip5"
+  }
+]

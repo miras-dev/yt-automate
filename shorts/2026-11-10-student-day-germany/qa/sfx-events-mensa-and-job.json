@@ -1,0 +1,82 @@
+[
+  {
+    "t": 98.5467,
+    "type": "pop",
+    "label": "mensa"
+  },
+  {
+    "t": 101.5667,
+    "type": "pop",
+    "label": "stw"
+  },
+  {
+    "t": 105.6267,
+    "type": "thump",
+    "label": "four"
+  },
+  {
+    "t": 108.0067,
+    "type": "coins",
+    "label": "count"
+  },
+  {
+    "t": 108.6067,
+    "type": "chime",
+    "label": "spark"
+  },
+  {
+    "t": 110.2667,
+    "type": "whoosh",
+    "label": "pan"
+  },
+  {
+    "t": 110.9867,
+    "type": "pop",
+    "label": "partTime"
+  },
+  {
+    "t": 112.8067,
+    "type": "paper",
+    "label": "week"
+  },
+  {
+    "t": 114.8267,
+    "type": "pop",
+    "label": "twenty"
+  },
+  {
+    "t": 117.0867,
+    "type": "coins",
+    "label": "wage"
+  },
+  {
+    "t": 118.7667,
+    "type": "chime",
+    "label": "hourChime"
+  },
+  {
+    "t": 120.5667,
+    "type": "paper",
+    "label": "year"
+  },
+  {
+    "t": 122.4467,
+    "type": "pop",
+    "label": "days"
+  },
+  {
+    "t": 126.1267,
+    "type": "whoosh",
+    "label": "away"
+  },
+  {
+    "t": 126.1267,
+    "type": "coins",
+    "label": "awayCoins"
+  },
+  {
+    "t": 126.4267,
+    "type": "pop",
+    "label": "q"
+  }
+]

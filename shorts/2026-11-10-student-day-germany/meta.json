@@ -1,0 +1,325 @@
+{
+  "slug": "2026-11-10-student-day-germany",
+  "date": "2026-11-10",
+  "title": "A day as a student in Germany",
+  "category": "education",
+  "topic": "A day in the life of a student in Germany through what each hour costs: no tuition at most public universities, a semester fee with a 37.80-euro nationwide transit ticket, the academic quarter and desk knocking, Mensa lunch under 4 euros, work up to 20 h a week at 13.90 an hour, a 512-euro WG room, 25-cent Pfand, Sunday closing, and the 992-euro-a-month visa proof: studying is free, sleeping isn't.",
+  "status": "rendered",
+  "format": "long-horizontal",
+  "aspect": "16:9",
+  "word_count": 483,
+  "scenes": {
+    "count": 6,
+    "names": [
+      "zero-euros",
+      "the-ticket",
+      "academic-quarter",
+      "mensa-and-job",
+      "rent-and-pfand",
+      "real-bill"
+    ],
+    "durations": [
+      31.84,
+      31.76,
+      33.16,
+      29.88,
+      33.82,
+      28.76
+    ],
+    "gaps": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "starts": [
+      0.0,
+      32.133,
+      64.2,
+      97.667,
+      127.85,
+      161.967
+    ]
+  },
+  "image_budget": 60,
+  "character": "engineer",
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "1gZSmkYVRMS8w1i4plmP",
+    "voice_name": "Tim Riley - Natural. Conversational",
+    "model": "eleven_v4",
+    "settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.75,
+      "style": 0.0,
+      "speed": 1.0,
+      "seed": 4242
+    },
+    "takes": [
+      "video/public/2026-11-10-student-day-germany/vo/scene-1.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-2.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-3.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-4.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-5.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-6.mp3"
+    ],
+    "voice_end_s": {
+      "1": 31.34,
+      "2": 31.26,
+      "3": 32.66,
+      "4": 29.38,
+      "5": 33.32,
+      "6": 28.26
+    },
+    "credits_used": 1095
+  },
+  "images": {
+    "count": 24,
+    "model": "gemini-3.1-flash-image-preview",
+    "est_usd": 3.6,
+    "new": [
+      "alarm_clock",
+      "apartment",
+      "bed",
+      "bottle",
+      "bottle_bag",
+      "bus",
+      "desk_row",
+      "gift_box",
+      "knock_down",
+      "knock_up",
+      "lectern",
+      "mensa_counter",
+      "passport",
+      "pfand_machine",
+      "regional_train",
+      "safe",
+      "supermarket",
+      "tram",
+      "tray_hold",
+      "university",
+      "walk_a",
+      "walk_b",
+      "window"
+    ],
+    "regenerated": [
+      "bus (first take had a ghost copy)"
+    ],
+    "library": "engineer (reused: idle, talk_a, talk_b, point_right, shrug, thinking, happy-free set, laptop_sit, closeup_react)",
+    "note": "count corrected after parallel generation"
+  },
+  "duration_s": 190.717,
+  "files": {
+    "script": "shorts/2026-11-10-student-day-germany/script.md",
+    "sources": "shorts/2026-11-10-student-day-germany/sources.md",
+    "beats": "shorts/2026-11-10-student-day-germany/beats.md",
+    "prompts": "shorts/2026-11-10-student-day-germany/prompts.md",
+    "credits": "shorts/2026-11-10-student-day-germany/credits.txt",
+    "sheet": "shorts/2026-11-10-student-day-germany/qa/sheet.png",
+    "voice": [
+      "video/public/2026-11-10-student-day-germany/vo/scene-1.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-2.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-3.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-4.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-5.mp3",
+      "video/public/2026-11-10-student-day-germany/vo/scene-6.mp3"
+    ],
+    "code": "video/src/2026-11-10-student-day-germany/",
+    "preview": "out/2026-11-10-student-day-germany-preview.mp4",
+    "thumbnail": "shorts/2026-11-10-student-day-germany/qa/thumbnail.png",
+    "earshot_sheet": "shorts/2026-11-10-student-day-germany/qa/earshot-sheet.png",
+    "popscan": "shorts/2026-11-10-student-day-germany/qa/popscan.json",
+    "render_4K": "out/2026-11-10-student-day-germany-4K.mp4",
+    "render_4K_unmastered": "out/2026-11-10-student-day-germany-4K-unmastered.mp4",
+    "verify": "shorts/2026-11-10-student-day-germany/qa/verify/"
+  },
+  "sounds": [
+    {
+      "cue": "music bed",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Blue Sky.mp3",
+      "creator": "Sergmusic",
+      "url": "https://freesound.org/people/Sergmusic/sounds/639933"
+    },
+    {
+      "cue": "alarm",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "alarm clock.aif",
+      "creator": "hookhead",
+      "url": "https://freesound.org/people/hookhead/sounds/13613"
+    },
+    {
+      "cue": "knock",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "rapid knocking.wav",
+      "creator": "tbone1999",
+      "url": "https://freesound.org/people/tbone1999/sounds/427565"
+    },
+    {
+      "cue": "knock_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Knock knock.wav",
+      "creator": "DanaGarcia",
+      "url": "https://freesound.org/people/DanaGarcia/sounds/560225"
+    },
+    {
+      "cue": "tick",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Clock Ticking",
+      "creator": "florianreichelt",
+      "url": "https://freesound.org/people/florianreichelt/sounds/459998"
+    },
+    {
+      "cue": "shutter",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "Roller shutter lowered - 3",
+      "creator": "onda_stazionaria",
+      "url": "https://freesound.org/people/onda_stazionaria/sounds/671804"
+    },
+    {
+      "cue": "bottle",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Glass Bottle Clink",
+      "creator": "twohoursago",
+      "url": "https://freesound.org/people/twohoursago/sounds/135039"
+    },
+    {
+      "cue": "bottle_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Empty Beer Bottles Clinking, Clanking.wav",
+      "creator": "Fugeni",
+      "url": "https://freesound.org/people/Fugeni/sounds/416288"
+    },
+    {
+      "cue": "bite",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Bite (Apple)",
+      "creator": "wadaltmon",
+      "url": "https://freesound.org/people/wadaltmon/sounds/275015"
+    },
+    {
+      "cue": "snore / snore_b / snore_s",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "Snoring 1",
+      "creator": "sankalp",
+      "url": "https://freesound.org/people/sankalp/sounds/180334"
+    },
+    {
+      "cue": "switch",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Light Switch 2.wav",
+      "creator": "RutgerMuller",
+      "url": "https://freesound.org/people/RutgerMuller/sounds/51157"
+    },
+    {
+      "cue": "bell",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "11-1 Tram bell",
+      "creator": "16HPanskaWillheimova_Sara",
+      "url": "https://freesound.org/people/16HPanskaWillheimova_Sara/sounds/497559"
+    },
+    {
+      "cue": "coins",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "20080928.coins.05.wav",
+      "creator": "dobroide"
+    },
+    {
+      "cue": "chime",
+      "source": "openverse",
+      "license": "CC BY 4.0",
+      "title": "Trinkets jingling - Soft jingle",
+      "creator": "AshtiHari"
+    },
+    {
+      "cue": "whoosh / whoosh_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Cartoony whooshes",
+      "creator": "Reitanna"
+    },
+    {
+      "cue": "thump",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Thump.mp3",
+      "creator": "mpuffenbarger"
+    },
+    {
+      "cue": "boom / thump_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "BOOM IMPACT 2",
+      "creator": "cosmicembers"
+    },
+    {
+      "cue": "pop",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Pop Sound",
+      "creator": "DrMinky"
+    },
+    {
+      "cue": "paper / paper_b",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "paper flip 1.wav / paper flip 2.wav",
+      "creator": "gynation"
+    },
+    {
+      "cue": "boing",
+      "source": "openverse",
+      "license": "CC0 1.0",
+      "title": "Boing Spring Mouth harp downward 1.wav",
+      "creator": "pan14"
+    }
+  ],
+  "music": {
+    "title": "Blue Sky.mp3",
+    "creator": "Sergmusic",
+    "license": "CC0 1.0",
+    "file": "video/public/2026-11-10-student-day-germany/sfx/music_bed.wav",
+    "edit": "starts at 3.93 s (the student lands out of bed); looped twice on its own 28-bar phrase (84.96 s -> 37.64 s, 0.25 s crossfades on the bar) so the track's natural ending falls on the last frame",
+    "level": "normalised to -20 LUFS, played -13 dB, -3.5 dB on continuous speech, +2 dB in the joins"
+  },
+  "qa": {
+    "popscan": "474 flags in 69 clusters, all at planned beats after fixes; 6 real pops fixed before the 4K render (scene 2: ticket icons vanished in one frame, bus / tram / regional train started or ended inside the frame, walkers appeared on screen)",
+    "contact_sheets": [
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-1.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-2.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-3.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-4.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-5.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact-scene-6.png",
+      "shorts/2026-11-10-student-day-germany/qa/contact.png"
+    ],
+    "earshot_preview": "99 cues: 96 % with a sound onset within 100 ms, median 30 ms, none without a hit; -19.8 LUFS / -4.5 dBTP before mastering",
+    "earshot": "shorts/2026-11-10-student-day-germany/qa/earshot.md",
+    "verify_mix": "loudness_ok (-16.3 LUFS), peak_ok (-4.3 dBFS), frames_ok",
+    "earshot_final": "-16.3 LUFS, -4.2 dBTP, LRA 3.2 LU, no clipping; 96 % of 99 cues with an onset within 100 ms (median 30 ms)",
+    "rule_3_00": "190.7 s (3:10.7): past 3:00, inside 3:05-3:30"
+  },
+  "render": {
+    "composition": "student-day-germany",
+    "size": "3840x2160",
+    "fps": 60,
+    "frames": 11443,
+    "render_s": 778,
+    "concurrency": 7,
+    "audio_master": "two-pass ffmpeg loudnorm I -16 / TP -4.5 / LRA 11 on the Remotion WAV mix, muxed with -c:v copy"
+  }
+}

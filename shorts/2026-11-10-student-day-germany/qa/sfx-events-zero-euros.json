@@ -1,0 +1,87 @@
+[
+  {
+    "t": 0.0,
+    "type": "ambience",
+    "label": "snore0"
+  },
+  {
+    "t": 0.84,
+    "type": "ambience",
+    "label": "alarm"
+  },
+  {
+    "t": 3.62,
+    "type": "pop",
+    "label": "jump"
+  },
+  {
+    "t": 4.02,
+    "type": "hit",
+    "label": "land"
+  },
+  {
+    "t": 4.06,
+    "type": "paper",
+    "label": "bill"
+  },
+  {
+    "t": 5.48,
+    "type": "chime",
+    "label": "zero"
+  },
+  {
+    "t": 7.66,
+    "type": "whoosh",
+    "label": "panOut"
+  },
+  {
+    "t": 9.88,
+    "type": "pop",
+    "label": "noTuition"
+  },
+  {
+    "t": 13.7,
+    "type": "pop",
+    "label": "exceptions"
+  },
+  {
+    "t": 14.54,
+    "type": "paper",
+    "label": "bw"
+  },
+  {
+    "t": 16.08,
+    "type": "paper",
+    "label": "tum"
+  },
+  {
+    "t": 20.57,
+    "type": "whoosh",
+    "label": "panBack"
+  },
+  {
+    "t": 22.2,
+    "type": "paper",
+    "label": "fee"
+  },
+  {
+    "t": 24.02,
+    "type": "coins",
+    "label": "feeCoins"
+  },
+  {
+    "t": 27.52,
+    "type": "pop",
+    "label": "gift"
+  },
+  {
+    "t": 28.46,
+    "type": "chime",
+    "label": "bonus"
+  },
+  {
+    "t": 30.92,
+    "type": "pop",
+    "label": "what"
+  }
+]

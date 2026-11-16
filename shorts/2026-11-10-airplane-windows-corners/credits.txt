@@ -1,0 +1,9 @@
+air_bed_01.mp3: "Airplane - Cabin Noise" by KenzieVaness is licensed under CC BY 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/3.0/.
+whoosh_01.mp3: "Cartoony whooshes" by Reitanna is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.
+pop_01.mp3: "Pop Sound" by DrMinky is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.
+crack_01.mp3: "Breaking Glass 25.mp3" by michorvath is licensed under CC BY 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/3.0/.
+boom_01.mp3: "BOOM IMPACT 2" by cosmicembers is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.
+chime_01.mp3: "Trinkets jingling - Soft jingle" by AshtiHari is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.
+stamp_01.mp3: "Thump.mp3" by mpuffenbarger is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.
+inhale_01.mp3: "Balloon-Inflate-02.wav" by Gniffelbaf is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.
+exhale_01.mp3: "Balloon-Inflate-01.wav" by Gniffelbaf is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.

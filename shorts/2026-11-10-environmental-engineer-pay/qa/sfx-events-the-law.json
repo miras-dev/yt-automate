@@ -1,0 +1,137 @@
+[
+  {
+    "t": 21.52,
+    "type": "hit",
+    "label": "book_slam"
+  },
+  {
+    "t": 22.84,
+    "type": "pop",
+    "label": "lbl70s"
+  },
+  {
+    "t": 24.36,
+    "type": "pop",
+    "label": "lblair"
+  },
+  {
+    "t": 25.5,
+    "type": "pop",
+    "label": "lblwater"
+  },
+  {
+    "t": 26.86,
+    "type": "whoosh",
+    "label": "limit"
+  },
+  {
+    "t": 29.94,
+    "type": "whoosh",
+    "label": "to_factory"
+  },
+  {
+    "t": 31.04,
+    "type": "hit",
+    "label": "gush"
+  },
+  {
+    "t": 31.14,
+    "type": "water",
+    "label": "gush_pour"
+  },
+  {
+    "t": 33.72,
+    "type": "paper",
+    "label": "permit"
+  },
+  {
+    "t": 34.38,
+    "type": "hit",
+    "label": "tank"
+  },
+  {
+    "t": 35.28,
+    "type": "water",
+    "label": "clean_pour"
+  },
+  {
+    "t": 36.62,
+    "type": "chime",
+    "label": "river_smile"
+  },
+  {
+    "t": 37.68,
+    "type": "hit",
+    "label": "break"
+  },
+  {
+    "t": 38.9,
+    "type": "paper",
+    "label": "fine1"
+  },
+  {
+    "t": 42.52,
+    "type": "paper",
+    "label": "fine2"
+  },
+  {
+    "t": 42.84,
+    "type": "paper",
+    "label": "fine3"
+  },
+  {
+    "t": 43.16,
+    "type": "paper",
+    "label": "fine4"
+  },
+  {
+    "t": 44.56,
+    "type": "whoosh",
+    "label": "balance"
+  },
+  {
+    "t": 45.18,
+    "type": "hit",
+    "label": "salary_pan"
+  },
+  {
+    "t": 46.6,
+    "type": "pop",
+    "label": "nice"
+  },
+  {
+    "t": 49.0,
+    "type": "paper",
+    "label": "fines_pan1"
+  },
+  {
+    "t": 49.22,
+    "type": "paper",
+    "label": "fines_pan2"
+  },
+  {
+    "t": 49.44,
+    "type": "paper",
+    "label": "fines_pan3"
+  },
+  {
+    "t": 50.02,
+    "type": "hit",
+    "label": "slam"
+  },
+  {
+    "t": 50.52,
+    "type": "pop",
+    "label": "rules_tag"
+  },
+  {
+    "t": 52.88,
+    "type": "whoosh",
+    "label": "arrow"
+  },
+  {
+    "t": 53.64,
+    "type": "pop",
+    "label": "qmark2"
+  }
+]

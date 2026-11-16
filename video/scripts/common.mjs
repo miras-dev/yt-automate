@@ -8,7 +8,8 @@ import {fileURLToPath} from 'node:url';
 
 export const VIDEO_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const ROOT = path.resolve(VIDEO_DIR, '..');
-export const BUILD_DIR = path.join(VIDEO_DIR, 'build');
+// REMOTION_BUILD_DIR lets two sessions bundle at the same time without overwriting each other's bundle.
+export const BUILD_DIR = process.env.REMOTION_BUILD_DIR ? path.resolve(process.env.REMOTION_BUILD_DIR) : path.join(VIDEO_DIR, 'build');
 
 export const parseArgs = (argv) => {
   const out = {_: []};

@@ -1,0 +1,21 @@
+# Credits: sounds and music in "Why are environmental engineers paid so well?"
+# All from Openverse (Freesound), CC0 or CC BY only. Attribution lines are verbatim from Openverse.
+
+## Music and sounds that need attribution (CC BY)
+eep_music_01.mp3: "September_Hords_Loop_mp3" by ValentinSosnitskiy is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as music bed (sfx/music_bed.wav, crossfaded with itself at 104.5 s)]
+eep_coins_01.mp3: "20080928.coins.05.wav" by dobroide is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as coins.wav]
+chime_01.mp3: "Trinkets jingling - Soft jingle" by AshtiHari is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/.   [used as chime.wav]
+
+## CC0 sounds (no attribution required, logged)
+whoosh_01.mp3: "Cartoony whooshes" by Reitanna is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as whoosh.wav, whoosh_b.wav]
+stamp_01.mp3: "Thump.mp3" by mpuffenbarger is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as thump.wav]
+boom_01.mp3: "BOOM IMPACT 2" by cosmicembers is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as boom.wav, thump_b.wav]
+pop_01.mp3: "Pop Sound" by DrMinky is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as pop.wav]
+eep_paper_01.mp3: "paper flip 1.wav" by gynation is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as paper.wav]
+eep_paper_02.mp3: "paper flip 2.wav" by gynation is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as paper_b.wav]
+eep_drop_03.mp3: "Water drop / Splash" by bxyorna is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as drop.wav]
+eep_pour_01.mp3: "Water pouring into glass.aif" by carroll27 is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as pour.wav]
+eep_squelch_03.mp3: "Squelching SFX [8]" by SoundDesignForYou is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as squelch.wav]
+eep_squelch_02.mp3: "Squelching SFX [9]" by SoundDesignForYou is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as squelch_b.wav]
+eep_crowd_01.mp3: "Medium crowd cheering 02" by misjoc is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as crowd.wav]
+eep_boing_02.mp3: "Boing Spring Mouth harp downward 1.wav" by pan14 is marked with CC0 1.0. To view the terms, visit https://creativecommons.org/publicdomain/zero/1.0/.   [used as boing.wav]

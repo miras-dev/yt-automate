@@ -1,0 +1,154 @@
+[
+ {
+  "cue": "burp1",
+  "key": "sewage",
+  "role": "hit",
+  "f": "squelch",
+  "db": -15,
+  "lead": 0.23,
+  "anchor": "peak"
+ },
+ {
+  "cue": "puff",
+  "key": "smoke",
+  "role": "whoosh",
+  "f": "whoosh_b",
+  "db": -27,
+  "dt": -0.05,
+  "lead": 0.05,
+  "anchor": "peak"
+ },
+ {
+  "cue": "bubbles1",
+  "key": "soil",
+  "role": "water",
+  "f": "drop",
+  "db": -24,
+  "dt": 0.05,
+  "lead": 0.35,
+  "anchor": "start"
+ },
+ {
+  "cue": "bubbles2",
+  "key": "soil",
+  "role": "water",
+  "f": "drop",
+  "db": -27,
+  "dt": 0.35,
+  "lead": 0.35,
+  "anchor": "start"
+ },
+ {
+  "cue": "cash_a",
+  "key": "cash0",
+  "role": "paper",
+  "f": "paper",
+  "db": -18,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "cash_b",
+  "key": "cash0",
+  "role": "paper",
+  "f": "paper_b",
+  "db": -19,
+  "dt": 0.26,
+  "lead": 0.29,
+  "anchor": "peak"
+ },
+ {
+  "cue": "cash_c",
+  "key": "cash0",
+  "role": "paper",
+  "f": "paper",
+  "db": -19,
+  "dt": 0.52,
+  "lead": 0.11,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "cash_land",
+  "key": "cash0",
+  "role": "hit",
+  "f": "thump",
+  "db": -16,
+  "dt": 0.65,
+  "lead": 0.19,
+  "anchor": "peak"
+ },
+ {
+  "cue": "cash_coins",
+  "key": "cash0",
+  "role": "hit",
+  "f": "coins",
+  "db": -18,
+  "dt": 0.72,
+  "lead": 0.07,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "label_eng",
+  "key": "envEng",
+  "role": "pop",
+  "f": "pop",
+  "db": -23,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "salary_coins",
+  "key": "salary",
+  "role": "hit",
+  "f": "coins",
+  "db": -17,
+  "lead": 0.07,
+  "anchor": "arrive"
+ },
+ {
+  "cue": "pull_back",
+  "key": "reveal",
+  "role": "whoosh",
+  "f": "whoosh",
+  "db": -27,
+  "dt": -0.15,
+  "lead": 0.07,
+  "anchor": "peak"
+ },
+ {
+  "cue": "x2",
+  "key": "double",
+  "role": "pop",
+  "f": "pop",
+  "db": -18,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "median",
+  "key": "median",
+  "role": "pop",
+  "f": "pop",
+  "db": -23,
+  "lead": 0.084,
+  "anchor": "start"
+ },
+ {
+  "cue": "burp2",
+  "key": "dirty",
+  "role": "hit",
+  "f": "squelch_b",
+  "db": -14,
+  "lead": 0.43,
+  "anchor": "peak"
+ },
+ {
+  "cue": "qmark",
+  "key": "much",
+  "role": "pop",
+  "f": "pop",
+  "db": -21,
+  "lead": 0.084,
+  "anchor": "start"
+ }
+]

@@ -1,0 +1,108 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 163.5467,
+      "label": "passport",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 168.3867,
+      "label": "fall",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh_b.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 168.5867,
+      "label": "safe",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/boom.wav",
+      "role": "hit"
+    },
+    {
+      "t": 168.8867,
+      "label": "count",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/coins.wav",
+      "role": "coins"
+    },
+    {
+      "t": 173.5867,
+      "label": "lock",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/switch.wav",
+      "role": "click"
+    },
+    {
+      "t": 175.1867,
+      "label": "pie",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 178.2867,
+      "label": "wg",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 179.3467,
+      "label": "bite",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/bite.wav",
+      "role": "hit"
+    },
+    {
+      "t": 179.8467,
+      "label": "half",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 181.1467,
+      "label": "tuition",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/pop.wav",
+      "role": "pop"
+    },
+    {
+      "t": 184.6867,
+      "label": "hop",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/boing.wav",
+      "role": "pop"
+    },
+    {
+      "t": 185.0867,
+      "label": "flop",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/thump_b.wav",
+      "role": "hit"
+    },
+    {
+      "t": 186.4467,
+      "label": "lamp",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/switch.wav",
+      "role": "click"
+    },
+    {
+      "t": 187.0467,
+      "label": "snore1",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/snore.wav",
+      "role": "ambience"
+    },
+    {
+      "t": 188.0467,
+      "label": "free",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/thump.wav",
+      "role": "thump"
+    },
+    {
+      "t": 189.1167,
+      "label": "snore2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/snore_b.wav",
+      "role": "ambience"
+    },
+    {
+      "t": 189.3067,
+      "label": "isnt",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/thump.wav",
+      "role": "thump"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-student-day-germany-preview.mp4"
+}

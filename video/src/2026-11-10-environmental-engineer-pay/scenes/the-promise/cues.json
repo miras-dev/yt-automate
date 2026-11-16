@@ -1,0 +1,168 @@
+[
+  {
+    "cue": "skills",
+    "key": "skills",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "flask",
+    "key": "chemistry",
+    "role": "pop",
+    "f": "pop",
+    "db": -24,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "microbe",
+    "key": "biology",
+    "role": "hit",
+    "f": "squelch_b",
+    "db": -26,
+    "lead": 0.43,
+    "anchor": "peak"
+  },
+  {
+    "cue": "book",
+    "key": "law",
+    "role": "hit",
+    "f": "thump",
+    "db": -22,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "fly_off",
+    "key": "mostly",
+    "role": "whoosh",
+    "f": "whoosh",
+    "db": -26,
+    "lead": 0.07,
+    "anchor": "peak"
+  },
+  {
+    "cue": "certainty",
+    "key": "certainty",
+    "role": "hit",
+    "f": "thump",
+    "db": -13,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "checklist",
+    "key": "required",
+    "role": "paper",
+    "f": "paper",
+    "db": -21,
+    "dt": -0.45,
+    "lead": 0.11,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "tick1",
+    "key": "required",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "dt": 0.5,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "tick2",
+    "key": "growing",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "tick3",
+    "key": "signOff",
+    "role": "pop",
+    "f": "pop",
+    "db": -23,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "st_required",
+    "key": "required2",
+    "role": "hit",
+    "f": "thump",
+    "db": -15,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "st_urgent",
+    "key": "urgent",
+    "role": "hit",
+    "f": "thump_b",
+    "db": -16,
+    "lead": 0.01,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "st_rare",
+    "key": "rare",
+    "role": "hit",
+    "f": "thump",
+    "db": -15,
+    "lead": 0.19,
+    "anchor": "peak"
+  },
+  {
+    "cue": "expensive",
+    "key": "expensive",
+    "role": "hit",
+    "f": "coins",
+    "db": -14,
+    "lead": 0.07,
+    "anchor": "arrive"
+  },
+  {
+    "cue": "tap_up",
+    "key": "end",
+    "role": "whoosh",
+    "f": "whoosh_b",
+    "db": -27,
+    "dt": 0.2,
+    "lead": 0.05,
+    "anchor": "peak"
+  },
+  {
+    "cue": "glass",
+    "key": "promise",
+    "role": "pop",
+    "f": "pop",
+    "db": -25,
+    "lead": 0.084,
+    "anchor": "start"
+  },
+  {
+    "cue": "pour",
+    "key": "tap",
+    "role": "water",
+    "f": "pour",
+    "db": -19,
+    "dt": -0.15,
+    "lead": 0.35,
+    "anchor": "start"
+  },
+  {
+    "cue": "smile",
+    "key": "hurt",
+    "role": "chime",
+    "f": "chime",
+    "db": -20,
+    "lead": 0.07,
+    "anchor": "arrive"
+  }
+]

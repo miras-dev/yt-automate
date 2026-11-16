@@ -1,0 +1,36 @@
+{
+  "keep_audio": "auto",
+  "cues": [
+    {
+      "t": 32.1333,
+      "label": "whip1",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 64.2,
+      "label": "whip2",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 97.6667,
+      "label": "whip3",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 127.85,
+      "label": "whip4",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh.wav",
+      "role": "whoosh"
+    },
+    {
+      "t": 161.9667,
+      "label": "whip5",
+      "file": "/Users/mirasmujeeb/Desktop/yt-automate/video/public/2026-11-10-student-day-germany/sfx/whoosh.wav",
+      "role": "whoosh"
+    }
+  ],
+  "video": "/Users/mirasmujeeb/Desktop/yt-automate/out/2026-11-10-student-day-germany-preview.mp4"
+}
